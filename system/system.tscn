@@ -5,7 +5,7 @@
 [ext_resource path="res://system/code/loop_sample.gd" type="Script" id=3]
 [ext_resource path="res://game/sound/soundscape1.ogg" type="AudioStream" id=4]
 
-[node name="system" type="Node"]
+[node name="system" type="Node" index="0"]
 
 [node name="SUN" type="DirectionalLight" parent="." index="0"]
 transform = Transform( 0.429547, -0.852165, 0.298836, 0.5, 0.5, 0.707106, -0.75199, -0.154317, 0.640856, -0.893688, 301.399, -0.614712 )

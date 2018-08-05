@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://game/system.tscn" type="PackedScene" id=1]
-[ext_resource path="res://system/theme.tres" type="Theme" id=2]
-[ext_resource path="res://system/fonts/header.tres" type="DynamicFont" id=3]
-[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=4]
-[ext_resource path="res://system/corners.tscn" type="PackedScene" id=5]
-[ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=6]
+[ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=2]
+[ext_resource path="res://system/theme.tres" type="Theme" id=3]
+[ext_resource path="res://system/fonts/header.tres" type="DynamicFont" id=4]
+[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=5]
+[ext_resource path="res://system/corners.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -87,8 +87,27 @@ tracks/1/keys = {
 [node name="Node" type="Node" index="0"]
 
 [node name="system" parent="." index="0" instance=ExtResource( 1 )]
+editor/display_folded = true
 
-[node name="GUI" type="Control" parent="." index="1"]
+[node name="Camera" type="Camera" parent="." index="1"]
+transform = Transform( -0.311008, -0.0576899, -0.948655, 0, 0.998156, -0.0607001, 0.950407, -0.0188782, -0.310435, -187.214, 35.81, -73.21 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 512.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="palm_test" parent="." index="2" instance=ExtResource( 2 )]
+
+[node name="GUI" type="Control" parent="." index="3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -99,7 +118,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 2 )
+theme = ExtResource( 3 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="animations" type="AnimationPlayer" parent="GUI" index="0"]
@@ -112,6 +131,7 @@ anims/intro = SubResource( 1 )
 blend_times = [  ]
 
 [node name="center" type="CenterContainer" parent="GUI" index="1"]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -155,7 +175,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "Mystic Treasure Hunt"
 align = 1
 valign = 1
@@ -180,7 +200,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 text = "Interactive Arcade Adventure Game 
 Made by P1X. Version pre-alpha/01"
 align = 1
@@ -190,7 +210,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Custom Fonts", "custom_fonts/font" ]
 
-[node name="corners" parent="GUI" index="2" instance=ExtResource( 5 )]
+[node name="corners" parent="GUI" index="2" instance=ExtResource( 6 )]
 
 [node name="overdraw" type="Control" parent="GUI" index="3"]
 visible = false
@@ -233,20 +253,5 @@ anims/fade-out = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="Spatial" parent="." index="2" instance=ExtResource( 6 )]
 
-[node name="Camera" type="Camera" parent="." index="3"]
-transform = Transform( 0.776157, -0.0460699, -0.628855, 0, 0.997327, -0.0730641, 0.63054, 0.0567092, 0.774082, -40.0436, 14.25, 37.97 )
-keep_aspect = 1
-cull_mask = 1048575
-environment = null
-h_offset = 0.0
-v_offset = 0.0
-doppler_tracking = 0
-projection = 0
-current = false
-fov = 70.0
-size = 1.0
-near = 0.05
-far = 100.0
-
+[editable path="system"]

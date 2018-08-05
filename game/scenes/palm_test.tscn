@@ -3,95 +3,41 @@
 [ext_resource path="res://game/game_objects/palm.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/game_objects/paprota.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/game_objects/grass3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/maps/test/terrain.material" type="Material" id=4]
 
-[sub_resource type="PlaneMesh" id=2]
+[sub_resource type="PlaneMesh" id=1]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
-size = Vector2( 512, 512 )
-subdivide_width = 0
-subdivide_depth = 0
+size = Vector2( 1024, 1024 )
+subdivide_width = 512
+subdivide_depth = 512
 
-[sub_resource type="SpatialMaterial" id=3]
-
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-flags_do_not_receive_shadows = false
-flags_disable_ambient_light = false
-flags_ensure_correct_normals = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_billboard_keep_scale = false
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 0.321569, 0.227451, 0.0941176, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 1.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "Albedo", "Metallic", "Roughness" ]
-
-[node name="Spatial" type="Spatial"]
+[node name="palm_test" type="Spatial"]
 
 [node name="palm" parent="." index="0" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.67163, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.576, 0 )
 
 [node name="palm2" parent="." index="1" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6402, 5.37804, 39.0091 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6402, 9.30769, 39.0091 )
 
 [node name="palm5" parent="." index="2" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3734, 5.4986, -6.03881 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.4977, 14.3618, 25.057 )
 
 [node name="palm3" parent="." index="3" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.94013, 0.121349, -31.7749 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8561, 17.0012, -56.5064 )
 
 [node name="palm4" parent="." index="4" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1522, -18.3596, 29.7641 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.4687, 1.02, 28.1467 )
 
 [node name="grass2" parent="." index="5" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6239, 1.01756, 6.84365 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9584, 12.7593, -49.987 )
 
 [node name="grass3" parent="." index="6" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1463, 0.916332, -4.81677 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3848, 10.7382, -31.5368 )
 
-[node name="plane" type="MeshInstance" parent="." index="7"]
+[node name="terrain" type="MeshInstance" parent="." index="7"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -4.2413, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -101,8 +47,8 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = SubResource( 3 )
-_sections_unfolded = [ "Material" ]
+material/0 = ExtResource( 4 )
+_sections_unfolded = [ "Material", "Transform" ]
 
