@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://game/models/grass2_low.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://game/materials/grass/vegetation.shader" type="Shader" id=2]
+[ext_resource path="res://game/materials/grass/grass3/Albedo.png" type="Texture" id=3]
+[ext_resource path="res://game/materials/grass/grass3/AmbientOcclusionMap.png" type="Texture" id=4]
+[ext_resource path="res://game/materials/grass/grass3/NormalMap.png" type="Texture" id=5]
+[ext_resource path="res://game/materials/grass/grass3/DisplacementMap.png" type="Texture" id=6]
+[ext_resource path="res://game/materials/grass/grass3/SpecularMap.png" type="Texture" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+render_priority = 0
+shader = ExtResource( 2 )
+shader_param/amplitude = null
+shader_param/speed = null
+shader_param/scale = null
+shader_param/tex_albedo = ExtResource( 3 )
+shader_param/tex_ao = ExtResource( 4 )
+shader_param/tex_nrm = ExtResource( 5 )
+shader_param/tex_spec = ExtResource( 7 )
+shader_param/tex_rgh = ExtResource( 6 )
+_sections_unfolded = [ "Shader Param" ]
+
+[node name="grass3" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1463, 0, -4.81677 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 1 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = SubResource( 1 )
+_sections_unfolded = [ "Material" ]
+
