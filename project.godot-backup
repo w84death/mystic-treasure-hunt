@@ -153,3 +153,4 @@ quality/subsurface_scattering/quality=0
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
 quality/filters/msaa=2
+environment/default_environment="res://system/world_enviroment.tres"

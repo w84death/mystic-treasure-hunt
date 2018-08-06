@@ -1,6 +1,7 @@
 shader_type particles;
 
 uniform float uniq = 0.1234;
+uniform float terrain_scale = 4.0;
 uniform float rows = 12;
 uniform float spacing = 1.0;
 uniform bool red_zone = false;
@@ -57,7 +58,6 @@ void vertex() {
 	
 	// apply our height
 	pos.y = get_height(pos.xz);
-	//pos.y -= (noise.x * 0.2 );
 	
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
@@ -88,7 +88,7 @@ void vertex() {
 	float height_noise = noise.y * 4.0;
 	
 	// update our transform to place
-	TRANSFORM[3][0] = pos.x;
-	TRANSFORM[3][1] = pos.y - height_noise;
-	TRANSFORM[3][2] = pos.z;
+	TRANSFORM[3][0] = pos.x * terrain_scale;
+	TRANSFORM[3][1] = pos.y * terrain_scale - height_noise;
+	TRANSFORM[3][2] = pos.z * terrain_scale;
 }

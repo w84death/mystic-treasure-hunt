@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=2]
-[ext_resource path="res://system/theme.tres" type="Theme" id=3]
-[ext_resource path="res://system/fonts/header.tres" type="DynamicFont" id=4]
-[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=5]
-[ext_resource path="res://system/corners.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/models/text_mystic.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://game/materials/dirty_gold/bronze.material" type="Material" id=4]
+[ext_resource path="res://system/theme.tres" type="Theme" id=5]
+[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=6]
+[ext_resource path="res://system/corners.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 
@@ -89,8 +90,11 @@ tracks/1/keys = {
 [node name="system" parent="." index="0" instance=ExtResource( 1 )]
 editor/display_folded = true
 
+[node name="SUN" parent="system" index="0"]
+light_cull_mask = -1
+
 [node name="Camera" type="Camera" parent="." index="1"]
-transform = Transform( -0.311008, -0.0576899, -0.948655, 0, 0.998156, -0.0607001, 0.950407, -0.0188782, -0.310435, -187.214, 35.81, -73.21 )
+transform = Transform( -0.438078, 0.147321, -0.886783, -0.0266862, 0.983914, 0.17664, 0.898541, 0.101047, -0.427099, -122.326, 37.3541, -95.5034 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -106,8 +110,51 @@ far = 512.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="palm_test" parent="." index="2" instance=ExtResource( 2 )]
+editor/display_folded = true
 
-[node name="GUI" type="Control" parent="." index="3"]
+[node name="grass_particle" parent="palm_test" index="1"]
+rows = 32
+spacing = 2.0
+
+[node name="logo" type="MeshInstance" parent="." index="3"]
+transform = Transform( -6.96501, 1.19989, -3.74819, -0.111197, 7.55608, 2.62551, 3.93399, 2.33794, -6.56184, -100.86, 110.334, -63.1711 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 3 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 4 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="SpotLight" type="SpotLight" parent="logo" index="0"]
+transform = Transform( 0.0626487, 0.026824, -0.104788, 0.0743055, 0.0773281, 0.0642189, 0.0786056, -0.0944766, 0.0228107, -4.70283, 1.85675, 3.84354 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 2.69
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.59
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 69.1377
+spot_attenuation = 0.378929
+spot_angle = 69.1096
+spot_angle_attenuation = 1.0
+_sections_unfolded = [ "Light", "Spot" ]
+
+[node name="GUI" type="Control" parent="." index="4"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -118,7 +165,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 3 )
+theme = ExtResource( 5 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="animations" type="AnimationPlayer" parent="GUI" index="0"]
@@ -130,69 +177,27 @@ playback_speed = 1.0
 anims/intro = SubResource( 1 )
 blend_times = [  ]
 
-[node name="center" type="CenterContainer" parent="GUI" index="1"]
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-use_top_left = false
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Panel" type="Panel" parent="GUI/center" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 142.0
-margin_right = 960.0
-margin_bottom = 398.0
-rect_min_size = Vector2( 960, 256 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Rect", "Visibility" ]
-
-[node name="logo" type="Label" parent="GUI/center/Panel" index="0"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 4 )
-text = "Mystic Treasure Hunt"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Custom Fonts", "custom_fonts/font" ]
-
-[node name="info" type="Label" parent="GUI/center/Panel" index="1"]
-anchor_left = 0.0
+[node name="center" type="Control" parent="GUI" index="1"]
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 11.0
-margin_top = -81.0
-margin_right = -28.0
-margin_bottom = -15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="info" type="Label" parent="GUI/center" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -137.0
+margin_top = -72.0
+margin_right = 137.0
+margin_bottom = -8.0
 rect_min_size = Vector2( 0, 64 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -200,9 +205,9 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 text = "Interactive Arcade Adventure Game 
-Made by P1X. Version pre-alpha/01"
+Made by P1X. Version pre-alpha/02"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -210,7 +215,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Custom Fonts", "custom_fonts/font" ]
 
-[node name="corners" parent="GUI" index="2" instance=ExtResource( 6 )]
+[node name="corners" parent="GUI" index="2" instance=ExtResource( 7 )]
 
 [node name="overdraw" type="Control" parent="GUI" index="3"]
 visible = false
@@ -255,3 +260,5 @@ _sections_unfolded = [ "Playback Options" ]
 
 
 [editable path="system"]
+
+[editable path="palm_test"]

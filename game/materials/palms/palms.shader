@@ -26,7 +26,7 @@ void fragment() {
 	ALPHA_SCISSOR = 0.7;
 	
 	SPECULAR = texture(tex_spec, UV).r;
-	ROUGHNESS = 1.0;//texture(tex_rgh, UV).r;
+	ROUGHNESS = texture(tex_rgh, UV).r;
 	METALLIC = 0.75;
 	NORMALMAP = texture(tex_nrm, UV).rgb;
 	NORMALMAP_DEPTH = -1.0;

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://game/game_objects/palm.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/game_objects/paprota.tscn" type="PackedScene" id=2]
-[ext_resource path="res://game/game_objects/grass3.tscn" type="PackedScene" id=3]
-[ext_resource path="res://game/maps/test/terrain.material" type="Material" id=4]
+[ext_resource path="res://game/maps/test/terrain.material" type="Material" id=1]
+[ext_resource path="res://game/materials/grass/grass_particle.material" type="Material" id=2]
+[ext_resource path="res://game/game_objects/grass.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://system/code/particle_follow_camera_rig.gd" type="Script" id=4]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -15,29 +15,8 @@ subdivide_depth = 512
 
 [node name="palm_test" type="Spatial"]
 
-[node name="palm" parent="." index="0" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.576, 0 )
-
-[node name="palm2" parent="." index="1" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6402, 9.30769, 39.0091 )
-
-[node name="palm5" parent="." index="2" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.4977, 14.3618, 25.057 )
-
-[node name="palm3" parent="." index="3" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8561, 17.0012, -56.5064 )
-
-[node name="palm4" parent="." index="4" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -85.4687, 1.02, 28.1467 )
-
-[node name="grass2" parent="." index="5" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9584, 12.7593, -49.987 )
-
-[node name="grass3" parent="." index="6" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.3848, 10.7382, -31.5368 )
-
-[node name="terrain" type="MeshInstance" parent="." index="7"]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -4.2413, 0 )
+[node name="terrain" type="MeshInstance" parent="." index="0"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -49,6 +28,37 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 4 )
+material/0 = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
+
+[node name="grass_particle" type="Particles" parent="." index="1"]
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 8.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 256.0
+lod_max_hysteresis = 128.0
+emitting = true
+amount = 65536
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = false
+draw_order = 0
+process_material = ExtResource( 2 )
+draw_passes = 1
+draw_pass_1 = ExtResource( 3 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Draw Passes", "Lod", "Process Material", "Script" ]
+rows = 256
+spacing = 4.0
 

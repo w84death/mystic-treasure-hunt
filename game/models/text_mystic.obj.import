@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/text_mystic.obj-330d6819afaf31a857374a2b23f66972.mesh"
+
+[deps]
+
+files=[ "res://.import/text_mystic.obj-330d6819afaf31a857374a2b23f66972.mesh" ]
+
+source_file="res://game/models/text_mystic.obj"
+dest_files=[ "res://.import/text_mystic.obj-330d6819afaf31a857374a2b23f66972.mesh", "res://.import/text_mystic.obj-330d6819afaf31a857374a2b23f66972.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

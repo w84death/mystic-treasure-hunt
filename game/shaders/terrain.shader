@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
-uniform vec2 map_size = vec2(512.0, 512.0);
+uniform vec2 map_size = vec2(1024.0, 1024.0);
 uniform float max_height = 18.0;
 uniform float water_height = 0.6;
 
@@ -95,7 +95,7 @@ void fragment() {
 	}
 	
 	ALBEDO = clamp((albedo_0 + albedo_r + albedo_g + albedo_b) * underwater_color, 0.0, 1.0);
-	METALLIC = 0.75;
+	METALLIC = 0.55;
 	SPECULAR = spec_0.r + spec_r.r + spec_g.r + spec_b.r;
 	ROUGHNESS = rgh_0.r + rgh_r.r + rgh_g.r + rgh_b.r;
 	NORMALMAP = nrm_0 + nrm_r + nrm_g + nrm_b;
