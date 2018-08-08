@@ -1,8 +1,8 @@
 shader_type spatial;
-//render_mode cull_disabled;
+render_mode cull_disabled;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
-//render_mode depth_draw_alpha_prepass;
+render_mode depth_draw_alpha_prepass;
 
 
 uniform float amplitude = 0.2;

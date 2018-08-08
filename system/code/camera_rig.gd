@@ -4,9 +4,12 @@ export var rotate_speed = 1.0;
 export var move_speed = 1.0;
 export var move_speed_lr = 0.5;
 export var move_speed_fb = 1.5;
-export var terrain_height = 256;
-export var water_height = 52;
-export var map_size = Vector2(2048, 2048);
+export var terrain_height = 64;
+export var terrain_scale = 4.0;
+export var mountains_level = 0.22;
+export var mountains_size = 3.0;
+export var water_height = 64*.3;
+export var map_size = Vector2(1024, 1024);
 const DEADZONE = 0.15;
 
 var angle_x = 0;
@@ -22,7 +25,7 @@ var axis_value;
 
 func _ready():
 	move_to = transform.origin
-	var minimap = get_node("../GUI/demo/minimap/map")
+	var minimap = get_node("map")
 	var tex = minimap.get_texture()
 	height_map = tex.get_data()
 
@@ -52,8 +55,10 @@ func _process(delta):
 		transform.basis = basis
 		
 	if move_to != transform.origin:
-		var pos = Vector2(int(1024+transform.origin.x), int(1024+transform.origin.z));
-		move_to.y = terrain_height * get_height(pos).r
+		var pos = Vector2(int(map_size.x*.5+transform.origin.x/terrain_scale), int(map_size.y*.5+transform.origin.z/terrain_scale));
+		move_to.y = terrain_height * get_height(pos).r * terrain_scale
+		if terrain_height > mountains_level:
+			move_to.y *= mountains_size
 		if move_to.y < water_height:
 			move_to.y = water_height
 		transform.origin += (move_to - transform.origin) * delta * 10.0

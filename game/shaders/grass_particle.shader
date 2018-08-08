@@ -47,8 +47,8 @@ void vertex() {
 	pos *= spacing;
 	
 	// now center on our particle location but within our spacing
-	pos.x += EMISSION_TRANSFORM[3][0] - mod(EMISSION_TRANSFORM[3][0], spacing);
-	pos.z += EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], spacing);
+	pos.x += (EMISSION_TRANSFORM[3][0] - mod(EMISSION_TRANSFORM[3][0], spacing*terrain_scale))/terrain_scale;
+	pos.z += (EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], spacing*terrain_scale))/terrain_scale;
 
 	// now add some noise based on our _world_ position
 	vec2 noise = faker(pos.xz);

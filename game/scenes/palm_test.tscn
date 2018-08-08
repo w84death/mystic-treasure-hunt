@@ -10,12 +10,12 @@
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 1024, 1024 )
-subdivide_width = 512
-subdivide_depth = 512
+subdivide_width = 256
+subdivide_depth = 256
 
 [node name="palm_test" type="Spatial"]
 
-[node name="terrain" type="MeshInstance" parent="." index="0"]
+[node name="terrain" type="MeshInstance" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 layers = 1
 material_override = null
@@ -31,18 +31,19 @@ skeleton = NodePath("..")
 material/0 = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
 
-[node name="grass_particle" type="Particles" parent="." index="1"]
+[node name="grass_particle" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -210.282, 0, 13.6191 )
 layers = 1
 material_override = null
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
-lod_min_distance = 8.0
+lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
-lod_max_distance = 256.0
-lod_max_hysteresis = 128.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
 emitting = true
-amount = 65536
+amount = 16384
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -51,14 +52,16 @@ explosiveness = 1.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
-visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+visibility_aabb = AABB( -512, 0, -512, 256, 20, 256 )
 local_coords = false
 draw_order = 0
 process_material = ExtResource( 2 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 3 )
 script = ExtResource( 4 )
-_sections_unfolded = [ "Draw Passes", "Lod", "Process Material", "Script" ]
-rows = 256
+_sections_unfolded = [ "Draw Passes", "Drawing", "Process Material", "Script", "Transform", "script" ]
+terrain_height = 64
+terrain_scale = 3.0
+rows = 128
 spacing = 4.0
 
