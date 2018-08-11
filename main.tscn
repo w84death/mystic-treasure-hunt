@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://system/theme.tres" type="Theme" id=5]
 [ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=6]
 [ext_resource path="res://system/corners.tscn" type="PackedScene" id=7]
-[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=8]
-[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=9]
+[ext_resource path="res://system/fps.gd" type="Script" id=8]
+[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=9]
+[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 
@@ -96,10 +97,6 @@ tracks/1/keys = {
 [node name="Node" type="Node"]
 
 [node name="system" parent="." instance=ExtResource( 1 )]
-editor/display_folded = true
-
-[node name="SUN" parent="system" index="0"]
-light_cull_mask = -1
 
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
@@ -114,11 +111,9 @@ blend_times = [  ]
 
 [node name="grass_particle" parent="palm_test" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -378.097, 0, -307.858 )
-cast_shadow = 0
 lod_max_distance = 27.0
 lod_max_hysteresis = 18.0
-_sections_unfolded = [ "Draw Passes", "Geometry", "Lod", "Process Material", "Script", "Transform", "script" ]
-terrain_height = 64
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Lod", "Process Material", "Script", "Transform", "script" ]
 
 [node name="logo" type="MeshInstance" parent="."]
 transform = Transform( -7.96772, 0, 0.717988, 0, 8, 0, -0.717988, 0, -7.96771, -23.9374, 14.3349, 29.0044 )
@@ -137,7 +132,6 @@ material/0 = ExtResource( 4 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="GUI" type="Control" parent="."]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -241,9 +235,30 @@ anims/fade-out = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
+[node name="Label" type="Label" parent="GUI"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 69.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+align = 2
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 8 )
+_sections_unfolded = [ "Script" ]
+
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( -0.862416, 0, -0.506201, 0, 1, 0, 0.506201, 0, -0.862416, 0, 32, 0 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 1.0
 move_speed = 1.0
@@ -257,6 +272,7 @@ water_height = 19.2
 map_size = Vector2( 1024, 1024 )
 
 [node name="cam" type="Camera" parent="Position3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -273,7 +289,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="map" type="Sprite" parent="Position3D"]
 visible = false
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 centered = false
 _sections_unfolded = [ "Offset", "texture" ]
 

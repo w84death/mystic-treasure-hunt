@@ -2,11 +2,14 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path.s3tc="res://.import/DisplacementMap.png-35a98ccd919e6f8d976d1a862cb8daba.s3tc.stex"
+path.etc2="res://.import/DisplacementMap.png-35a98ccd919e6f8d976d1a862cb8daba.etc2.stex"
 
 [deps]
 
 source_file="res://game/materials/grass/paprota/DisplacementMap.png"
+dest_files=[ "res://.import/DisplacementMap.png-35a98ccd919e6f8d976d1a862cb8daba.s3tc.stex", "res://.import/DisplacementMap.png-35a98ccd919e6f8d976d1a862cb8daba.etc2.stex" ]
+
 [params]
 
 compress/mode=2

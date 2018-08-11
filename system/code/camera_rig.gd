@@ -56,12 +56,18 @@ func _process(delta):
 		
 	if move_to != transform.origin:
 		var pos = Vector2(int(map_size.x*.5+transform.origin.x/terrain_scale), int(map_size.y*.5+transform.origin.z/terrain_scale));
-		move_to.y = terrain_height * get_height(pos).r * terrain_scale
-		if terrain_height > mountains_level:
-			move_to.y *= mountains_size
+		move_to.y = get_adjustet_height(pos)
 		if move_to.y < water_height:
 			move_to.y = water_height
 		transform.origin += (move_to - transform.origin) * delta * 10.0
+	
+func get_adjustet_height(pos):
+	var h = get_height(pos).r;
+	
+	if (h > mountains_level):
+		h += (h-mountains_level)*mountains_size;
+		
+	return terrain_height * h * terrain_scale;
 	
 func _physics_process(delta):
 	for axis in range(JOY_AXIS_0, JOY_AXIS_MAX):

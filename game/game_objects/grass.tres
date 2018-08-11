@@ -1,6 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=2 format=2]
-
-[ext_resource path="res://game/materials/grass/grass2.material" type="Material" id=1]
+[gd_resource type="ArrayMesh" format=2]
 
 [resource]
 
@@ -25,7 +23,6 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 96,
-"material": ExtResource( 1 ),
 "name": "image",
 "primitive": 4,
 "skeleton_aabb": [  ],
