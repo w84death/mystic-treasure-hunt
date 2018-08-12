@@ -98,6 +98,9 @@ tracks/1/keys = {
 
 [node name="system" parent="." instance=ExtResource( 1 )]
 
+[node name="SUN" parent="system" index="0"]
+light_cull_mask = -1
+
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
 autoplay = ""
@@ -109,14 +112,14 @@ blend_times = [  ]
 
 [node name="palm_test" parent="." instance=ExtResource( 2 )]
 
-[node name="grass_particle" parent="palm_test" index="1"]
+[node name="grass_particle" parent="palm_test" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -378.097, 0, -307.858 )
 lod_max_distance = 27.0
 lod_max_hysteresis = 18.0
 _sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Lod", "Process Material", "Script", "Transform", "script" ]
 
 [node name="logo" type="MeshInstance" parent="."]
-transform = Transform( -7.96772, 0, 0.717988, 0, 8, 0, -0.717988, 0, -7.96771, -23.9374, 14.3349, 29.0044 )
+transform = Transform( -0.854848, -16.8525, 17.0664, 0.0843728, 17.075, 16.8653, -23.9846, 0.660715, -0.548943, -408.791, 157.603, 168.646 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -155,6 +158,7 @@ anims/intro = SubResource( 2 )
 blend_times = [  ]
 
 [node name="center" type="Control" parent="GUI"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -183,8 +187,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 6 )
-text = "Interactive Arcade Adventure Game 
-Made by P1X. Version pre-alpha/02"
+text = "Version pre-alpha/03"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -236,6 +239,7 @@ blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="Label" type="Label" parent="GUI"]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -281,10 +285,10 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = true
-fov = 70.0
+fov = 90.0
 size = 1.0
 near = 0.05
-far = 1024.0
+far = 2048.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="map" type="Sprite" parent="Position3D"]
