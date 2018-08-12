@@ -4,11 +4,11 @@
 
 radiance_size = 4
 sky_top_color = Color( 1, 1, 1, 1 )
-sky_horizon_color = Color( 0.917647, 0.941176, 0.635294, 1 )
+sky_horizon_color = Color( 0.980392, 0.992157, 0.65098, 1 )
 sky_curve = 0.25
 sky_energy = 1.0
-ground_bottom_color = Color( 0.596078, 0.670588, 0.407843, 1 )
-ground_horizon_color = Color( 0.917647, 0.941176, 0.635294, 1 )
+ground_bottom_color = Color( 0.352941, 0.517647, 0.321569, 1 )
+ground_horizon_color = Color( 0.980392, 0.992157, 0.65098, 1 )
 ground_curve = 0.1442
 ground_energy = 1.0
 sun_color = Color( 1, 1, 1, 1 )
@@ -100,5 +100,5 @@ adjustment_enabled = false
 adjustment_brightness = 1.5
 adjustment_contrast = 0.9
 adjustment_saturation = 1.3
-_sections_unfolded = [ "Ambient Light", "Auto Exposure", "Background", "Dof Far Blur", "Fog", "Glow", "Levels", "Ssao", "levels" ]
+_sections_unfolded = [ "Ambient Light", "Auto Exposure", "Background", "Dof Far Blur", "Fog", "Glow", "Levels", "Ssao", "background_sky", "levels" ]
 
