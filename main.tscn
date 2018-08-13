@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=2]
-[ext_resource path="res://game/models/text_mystic.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://game/materials/dirty_gold/bronze.material" type="Material" id=4]
-[ext_resource path="res://system/theme.tres" type="Theme" id=5]
-[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=6]
-[ext_resource path="res://system/corners.tscn" type="PackedScene" id=7]
-[ext_resource path="res://system/fps.gd" type="Script" id=8]
-[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=9]
-[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=10]
+[ext_resource path="res://game/materials/walls/stones.material" type="Material" id=3]
+[ext_resource path="res://game/models/text_mystic.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://game/materials/dirty_gold/bronze.material" type="Material" id=5]
+[ext_resource path="res://system/theme.tres" type="Theme" id=6]
+[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=7]
+[ext_resource path="res://system/corners.tscn" type="PackedScene" id=8]
+[ext_resource path="res://system/fps.gd" type="Script" id=9]
+[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=10]
+[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -27,6 +28,16 @@ tracks/0/keys = {
 "clips": PoolStringArray( "fade-in" ),
 "times": PoolRealArray( 0.2 )
 }
+
+[sub_resource type="CubeMesh" id=5]
+
+material = ExtResource( 3 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector3( 128, 64, 32 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
 
 [sub_resource type="Animation" id=2]
 
@@ -109,7 +120,7 @@ tracks/1/keys = {
 [node name="system" parent="." instance=ExtResource( 1 )]
 
 [node name="SUN" parent="system" index="0"]
-light_cull_mask = -1
+transform = Transform( 0.707107, -0.707107, 0, 0.5, 0.5, 0.707107, -0.5, -0.5, 0.707107, -0.893688, 301.399, -0.614716 )
 
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
@@ -128,6 +139,21 @@ lod_max_distance = 27.0
 lod_max_hysteresis = 18.0
 _sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Lod", "Process Material", "Script", "Transform", "script" ]
 
+[node name="MeshInstance" type="MeshInstance" parent="palm_test"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -68.4911, 42.8392, 167.013 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+
 [node name="logo" type="MeshInstance" parent="."]
 transform = Transform( -0.854848, -16.8525, 17.0664, 0.0843728, 17.075, 16.8653, -23.9846, 0.660715, -0.548943, -408.791, 157.603, 168.646 )
 layers = 1
@@ -139,9 +165,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 3 )
+mesh = ExtResource( 4 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 4 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="GUI" type="Control" parent="."]
@@ -155,7 +181,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 5 )
+theme = ExtResource( 6 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="animations" type="AnimationPlayer" parent="GUI"]
@@ -195,7 +221,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "Version pre-alpha/03"
 align = 1
 valign = 1
@@ -244,10 +270,9 @@ anims/fade-out = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="corners" parent="GUI" instance=ExtResource( 7 )]
+[node name="corners" parent="GUI" instance=ExtResource( 8 )]
 
-[node name="Label" type="Label" parent="GUI"]
-visible = false
+[node name="fps" type="Label" parent="GUI"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -265,12 +290,12 @@ valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Script" ]
 
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( -0.862416, 0, -0.506201, 0, 1, 0, 0.506201, 0, -0.862416, 0, 32, 0 )
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 1.0
 move_speed = 1.0
@@ -301,7 +326,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="map" type="Sprite" parent="Position3D"]
 visible = false
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 centered = false
 _sections_unfolded = [ "Offset", "texture" ]
 

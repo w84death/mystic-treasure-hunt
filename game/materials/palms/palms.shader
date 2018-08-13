@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_blinn;
 
 uniform sampler2D tex_albedo : hint_albedo;
 uniform sampler2D tex_ao : hint_albedo;

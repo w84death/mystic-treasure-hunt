@@ -95,9 +95,9 @@ void fragment() {
 	}
 	
 	ALBEDO = clamp((albedo_0 + albedo_r + albedo_g + albedo_b) * underwater_color, 0.0, 1.0);
-	METALLIC = 0.55;
+	METALLIC = 0.85;
 	SPECULAR = spec_0.r + spec_r.r + spec_g.r + spec_b.r;
 	ROUGHNESS = rgh_0.r + rgh_r.r + rgh_g.r + rgh_b.r;
 	NORMALMAP = nrm_0 + nrm_r + nrm_g + nrm_b;
-	NORMALMAP_DEPTH = -5.0;
+	NORMALMAP_DEPTH = 5.0;
 }

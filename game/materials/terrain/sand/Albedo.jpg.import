@@ -2,13 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/ALbedo.jpg-1129e5d28b41b6a9169178a963f3f4c7.s3tc.stex"
-path.etc2="res://.import/ALbedo.jpg-1129e5d28b41b6a9169178a963f3f4c7.etc2.stex"
+path.s3tc="res://.import/Albedo.jpg-d41e6f3f04f60c3bc5128b7bfd777d66.s3tc.stex"
+path.etc2="res://.import/Albedo.jpg-d41e6f3f04f60c3bc5128b7bfd777d66.etc2.stex"
 
 [deps]
 
-source_file="res://game/materials/terrain/forest/ALbedo.jpg"
-dest_files=[ "res://.import/ALbedo.jpg-1129e5d28b41b6a9169178a963f3f4c7.s3tc.stex", "res://.import/ALbedo.jpg-1129e5d28b41b6a9169178a963f3f4c7.etc2.stex" ]
+source_file="res://game/materials/terrain/sand/Albedo.jpg"
+dest_files=[ "res://.import/Albedo.jpg-d41e6f3f04f60c3bc5128b7bfd777d66.s3tc.stex", "res://.import/Albedo.jpg-d41e6f3f04f60c3bc5128b7bfd777d66.etc2.stex" ]
 
 [params]
 
