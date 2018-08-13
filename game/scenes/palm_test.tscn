@@ -20,16 +20,16 @@
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 1024, 1024 )
-subdivide_width = 1024
-subdivide_depth = 1024
+subdivide_width = 512
+subdivide_depth = 512
 
 [sub_resource type="PlaneMesh" id=2]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 1024, 1024 )
-subdivide_width = 256
-subdivide_depth = 256
+subdivide_width = 128
+subdivide_depth = 128
 
 [sub_resource type="ArrayMesh" id=3]
 
@@ -95,7 +95,7 @@ material/0 = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="water" type="MeshInstance" parent="."]
-transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -122,7 +122,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 16384
+amount = 4096
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -141,47 +141,14 @@ script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Script", "Transform", "script" ]
 terrain_height = 64
 terrain_scale = 4.0
-rows = 128
-spacing = 2.0
+rows = 64
+spacing = 6.0
 
 [node name="grass2_particle" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -210.282, 0, 13.6191 )
 layers = 1
 material_override = ExtResource( 7 )
 cast_shadow = 0
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-emitting = true
-amount = 16384
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 1.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_aabb = AABB( -512, 0, -512, 256, 20, 256 )
-local_coords = false
-draw_order = 0
-process_material = ExtResource( 8 )
-draw_passes = 1
-draw_pass_1 = ExtResource( 5 )
-script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Script", "Transform", "script" ]
-terrain_height = 64
-terrain_scale = 4.0
-rows = 128
-spacing = 2.0
-
-[node name="paprotas_big" type="Particles" parent="."]
-layers = 1
-material_override = ExtResource( 9 )
-cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
 lod_min_distance = 0.0
@@ -201,6 +168,39 @@ fract_delta = true
 visibility_aabb = AABB( -512, 0, -512, 256, 20, 256 )
 local_coords = false
 draw_order = 0
+process_material = ExtResource( 8 )
+draw_passes = 1
+draw_pass_1 = ExtResource( 5 )
+script = ExtResource( 6 )
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Script", "Transform", "script" ]
+terrain_height = 64
+terrain_scale = 4.0
+rows = 64
+spacing = 4.0
+
+[node name="paprotas_big" type="Particles" parent="."]
+layers = 1
+material_override = ExtResource( 9 )
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = true
+amount = 1024
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -512, 0, -512, 256, 20, 256 )
+local_coords = false
+draw_order = 0
 process_material = ExtResource( 10 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 11 )
@@ -208,8 +208,8 @@ script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Script" ]
 terrain_height = 64
 terrain_scale = 4.0
-rows = 64
-spacing = 8.0
+rows = 32
+spacing = 14.0
 
 [node name="palms_particle" type="Particles" parent="."]
 layers = 1

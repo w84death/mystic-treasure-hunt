@@ -19,7 +19,7 @@ uniform float VORONOI_MIX = 0.5;
 uniform sampler2D height_map;
 
 float height(vec2 pos, float time, float noise){
-	float t_height = texture(height_map, pos.xy * vec2(1.0)).r;
+	float t_height = texture(height_map, pos.xy).r;
 	float th = 1.0;
 	if (waves_by_height) {
 		th = t_height*.2;
@@ -77,8 +77,8 @@ void fragment(){
 		w_color.b += mix(w_color.r, v, m);
 	}
 	
-	ROUGHNESS = 0.3 * gfx;
-	METALLIC = 0.8;
+	ROUGHNESS = 0.5 * gfx;
+	METALLIC = 0.6;
 	SPECULAR = 1.0 - gfx;
 	ALPHA = water_alpha;
 	
