@@ -28,7 +28,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.2 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 length = 2.0
 loop = false
@@ -44,7 +44,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.5 )
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 length = 1.0
 loop = false
@@ -74,7 +74,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 length = 1.0
 loop = false
@@ -110,6 +110,7 @@ tracks/1/keys = {
 
 [node name="SUN" parent="system" index="0"]
 transform = Transform( 0.707107, -0.707107, 0, 0.5, 0.5, 0.707107, -0.5, -0.5, 0.707107, -0.893688, 301.399, -0.614716 )
+light_cull_mask = -1
 
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
@@ -164,7 +165,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/intro = SubResource( 3 )
+anims/intro = SubResource( 2 )
 blend_times = [  ]
 
 [node name="center" type="Control" parent="GUI"]
@@ -239,8 +240,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 0.5
-anims/fade-in = SubResource( 4 )
-anims/fade-out = SubResource( 5 )
+anims/fade-in = SubResource( 3 )
+anims/fade-out = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
