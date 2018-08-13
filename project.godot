@@ -144,5 +144,12 @@ common/physics_fps=75
 
 [rendering]
 
+quality/directional_shadow/size=1024
+quality/directional_shadow/size.mobile=1024
+quality/shadow_atlas/size=1024
+quality/shadow_atlas/size.mobile=1024
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
+quality/filters/msaa=2

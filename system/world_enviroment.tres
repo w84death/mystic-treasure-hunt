@@ -4,7 +4,7 @@
 
 [sub_resource type="PanoramaSky" id=1]
 
-radiance_size = 5
+radiance_size = 1
 panorama = ExtResource( 1 )
 
 [resource]
@@ -13,7 +13,7 @@ background_mode = 2
 background_sky = SubResource( 1 )
 background_sky_custom_fov = 90.0
 background_color = Color( 0.992157, 0, 1, 1 )
-background_energy = 1.5
+background_energy = 1.0
 background_canvas_max_layer = 0
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 3.0
@@ -31,8 +31,8 @@ fog_height_enabled = true
 fog_height_min = 128.0
 fog_height_max = 512.0
 fog_height_curve = 1.51572
-tonemap_mode = 2
-tonemap_exposure = 1.6
+tonemap_mode = 3
+tonemap_exposure = 1.0
 tonemap_white = 1.0
 auto_exposure_enabled = false
 auto_exposure_scale = 0.85
@@ -57,25 +57,25 @@ ssao_color = Color( 0, 0, 0, 1 )
 ssao_quality = 2
 ssao_blur = 3
 ssao_edge_sharpness = 0.0
-dof_blur_far_enabled = true
+dof_blur_far_enabled = false
 dof_blur_far_distance = 768.0
-dof_blur_far_transition = 128.0
-dof_blur_far_amount = 0.12
+dof_blur_far_transition = 32.0
+dof_blur_far_amount = 0.07
 dof_blur_far_quality = 2
 dof_blur_near_enabled = false
-dof_blur_near_distance = 11.4732
-dof_blur_near_transition = 206.11
-dof_blur_near_amount = 0.14
-dof_blur_near_quality = 1
+dof_blur_near_distance = 13.0
+dof_blur_near_transition = 0.2
+dof_blur_near_amount = 0.2
+dof_blur_near_quality = 2
 glow_enabled = false
 glow_levels/1 = true
 glow_levels/2 = false
-glow_levels/3 = false
+glow_levels/3 = true
 glow_levels/4 = false
 glow_levels/5 = false
 glow_levels/6 = false
 glow_levels/7 = false
-glow_intensity = 0.9
+glow_intensity = 1.71
 glow_strength = 0.5
 glow_bloom = 0.0
 glow_blend_mode = 1
@@ -86,5 +86,5 @@ adjustment_enabled = false
 adjustment_brightness = 1.5
 adjustment_contrast = 0.9
 adjustment_saturation = 1.3
-_sections_unfolded = [ "Ambient Light", "Background", "Fog", "Glow", "Levels", "Tonemap", "background_sky", "levels" ]
+_sections_unfolded = [ "Background", "Glow", "Levels", "Tonemap", "background_sky", "levels" ]
 
