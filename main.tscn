@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/models/text_mystic.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://game/materials/dirty_gold/bronze.material" type="Material" id=4]
 [ext_resource path="res://system/theme.tres" type="Theme" id=5]
-[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=6]
-[ext_resource path="res://system/corners.tscn" type="PackedScene" id=7]
-[ext_resource path="res://system/fps.gd" type="Script" id=8]
-[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=9]
-[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=10]
+[ext_resource path="res://game/gui/mystic-treasure-hunt-logo.png" type="Texture" id=6]
+[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=7]
+[ext_resource path="res://system/corners.tscn" type="PackedScene" id=8]
+[ext_resource path="res://system/fps.gd" type="Script" id=9]
+[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=10]
+[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -169,7 +170,25 @@ playback_speed = 1.0
 anims/intro = SubResource( 2 )
 blend_times = [  ]
 
-[node name="center" type="Control" parent="GUI"]
+[node name="top" type="Control" parent="GUI"]
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Sprite" type="Sprite" parent="GUI/top"]
+position = Vector2( 0, 30 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bottom" type="Control" parent="GUI"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -181,7 +200,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="info" type="Label" parent="GUI/center"]
+[node name="info" type="Label" parent="GUI/bottom"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -197,7 +216,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
 text = "Version pre-alpha/05"
 align = 1
 valign = 1
@@ -246,9 +265,10 @@ anims/fade-out = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="corners" parent="GUI" instance=ExtResource( 7 )]
+[node name="corners" parent="GUI" instance=ExtResource( 8 )]
 
 [node name="fps" type="Label" parent="GUI"]
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -261,17 +281,18 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+text = "fps/060"
 align = 2
 valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Script" ]
 
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 493.987, 36.47, 695.307 )
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 1.0
 move_speed = 1.0
@@ -302,7 +323,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="map" type="Sprite" parent="Position3D"]
 visible = false
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 centered = false
 _sections_unfolded = [ "Offset", "texture" ]
 
