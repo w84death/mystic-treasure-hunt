@@ -69,6 +69,10 @@ At last we have a name, right?
 
 Work in progress..
 
+- [new] Super Panavision 70 aspect ratio (2.20:1 - 800x364)
+  ![uper Panavision 70 aspect ratio ](web-stuff/panavision.png)
+- [updated] back to 60fps (on nVidia 1050)
+
 ### alpha/04
 
 ![alpha/04 screen](web-stuff/alpha04.png)
