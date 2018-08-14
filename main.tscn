@@ -110,6 +110,7 @@ tracks/1/keys = {
 
 [node name="SUN" parent="system" index="0"]
 transform = Transform( 0.707107, -0.707107, 0, 0.5, 0.5, 0.707107, -0.5, -0.5, 0.707107, -0.893688, 301.399, -0.614716 )
+light_energy = 6.0
 light_cull_mask = -1
 
 [node name="animations" type="AnimationPlayer" parent="."]
@@ -130,7 +131,7 @@ lod_max_hysteresis = 18.0
 _sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Lod", "Process Material", "Script", "Transform", "script" ]
 
 [node name="logo" type="MeshInstance" parent="."]
-transform = Transform( -12.4527, -4.84553, -19.9362, -1.51024, 23.4742, -4.76211, 20.4609, -1.21637, -12.4848, -49.5994, 87.0636, -151.837 )
+transform = Transform( 23.9993, 0, 0.175509, 0, 23.9999, 0, -0.17551, 0, 23.9994, 189.8, 87.9273, -473.766 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -197,7 +198,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 6 )
-text = "Version pre-alpha/04"
+text = "Version pre-alpha/05"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -269,7 +270,7 @@ script = ExtResource( 8 )
 _sections_unfolded = [ "Script" ]
 
 [node name="Position3D" type="Position3D" parent="."]
-transform = Transform( -0.862416, 0, -0.506201, 0, 1, 0, 0.506201, 0, -0.862416, 0, 32, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 493.987, 36.47, 695.307 )
 script = ExtResource( 9 )
 _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 1.0
@@ -278,13 +279,13 @@ move_speed_lr = 0.5
 move_speed_fb = 1.5
 terrain_height = 64
 terrain_scale = 4.0
-mountains_level = 0.22
+mountains_level = 0.32
 mountains_size = 3.0
-water_height = 19.2
+water_height = 32.0
 map_size = Vector2( 1024, 1024 )
 
 [node name="cam" type="Camera" parent="Position3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0 )
+transform = Transform( 1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 64, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -293,10 +294,10 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = true
-fov = 90.0
+fov = 70.0
 size = 1.0
 near = 0.05
-far = 1024.0
+far = 3072.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="map" type="Sprite" parent="Position3D"]

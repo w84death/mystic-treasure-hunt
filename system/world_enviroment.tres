@@ -4,27 +4,27 @@
 
 [sub_resource type="PanoramaSky" id=1]
 
-radiance_size = 2
+radiance_size = 6
 panorama = ExtResource( 1 )
 
 [resource]
 
 background_mode = 2
 background_sky = SubResource( 1 )
-background_sky_custom_fov = 90.0
+background_sky_custom_fov = 70.0
 background_color = Color( 0.992157, 0, 1, 1 )
 background_energy = 1.0
 background_canvas_max_layer = 0
 ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 3.0
-ambient_light_sky_contribution = 0.45
+ambient_light_energy = 5.0
+ambient_light_sky_contribution = 0.8
 fog_enabled = true
-fog_color = Color( 0.905882, 0.980392, 0.666667, 1 )
-fog_sun_color = Color( 1, 0.996078, 0.741176, 1 )
-fog_sun_amount = 1.0
+fog_color = Color( 0.956863, 1, 0.819608, 1 )
+fog_sun_color = Color( 1, 1, 1, 1 )
+fog_sun_amount = 0.0
 fog_depth_enabled = true
 fog_depth_begin = 128.0
-fog_depth_curve = 1.23114
+fog_depth_curve = 0.499998
 fog_transmit_enabled = false
 fog_transmit_curve = 0.707107
 fog_height_enabled = false
@@ -67,10 +67,10 @@ dof_blur_near_distance = 13.0
 dof_blur_near_transition = 0.2
 dof_blur_near_amount = 0.2
 dof_blur_near_quality = 2
-glow_enabled = false
-glow_levels/1 = true
-glow_levels/2 = false
-glow_levels/3 = true
+glow_enabled = true
+glow_levels/1 = false
+glow_levels/2 = true
+glow_levels/3 = false
 glow_levels/4 = false
 glow_levels/5 = false
 glow_levels/6 = false
@@ -86,5 +86,5 @@ adjustment_enabled = false
 adjustment_brightness = 1.5
 adjustment_contrast = 0.9
 adjustment_saturation = 1.3
-_sections_unfolded = [ "Auto Exposure", "Background", "Dof Far Blur", "Dof Near Blur", "Fog", "Glow", "Levels", "Tonemap", "background_sky", "levels" ]
+_sections_unfolded = [ "Ambient Light", "Auto Exposure", "Background", "Dof Far Blur", "Dof Near Blur", "Fog", "Glow", "Levels", "Tonemap", "background_sky", "levels" ]
 

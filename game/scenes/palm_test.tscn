@@ -28,8 +28,8 @@ subdivide_depth = 512
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 1024, 1024 )
-subdivide_width = 128
-subdivide_depth = 128
+subdivide_width = 256
+subdivide_depth = 256
 
 [sub_resource type="ArrayMesh" id=3]
 
@@ -95,7 +95,7 @@ material/0 = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="water" type="MeshInstance" parent="."]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1

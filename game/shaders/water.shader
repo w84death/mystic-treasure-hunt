@@ -66,10 +66,10 @@ void vertex(){
 void fragment(){
 	vec2 uv2 = UV * -1.0;
 	float height = texture(height_map, uv2.xy).r;
-	float gfx = smoothstep(0.1, water_shore, height);
+	float gfx = smoothstep(0.0, water_shore, height);
 	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
+	
 	if (VORONOI_ENABLED) { 
-		//w_color += voronoi(uv2*128.0, TIME) * .5; 
 		float v = voronoi(uv2*VORONOI_CELL_SIZE, TIME);
 		float m = VORONOI_MIX;
 		w_color.r += mix(w_color.r, v, m);
@@ -78,17 +78,8 @@ void fragment(){
 	}
 	
 	ROUGHNESS = 0.5 * gfx;
-	METALLIC = 0.6;
+	METALLIC = 0.0;
 	SPECULAR = 1.0 - gfx;
 	ALPHA = water_alpha;
-	
 	ALBEDO = clamp(w_color, 0.0, 1.0);
-	
-	// REFRACTION
-	vec3 ref_normal = normalize( mix(VERTEX,TANGENT * NORMALMAP.x + BINORMAL * NORMALMAP.y + VERTEX * NORMALMAP.z, NORMALMAP_DEPTH) );
-	vec2 ref_ofs = SCREEN_UV + ref_normal.xy * water_refraction;
-	EMISSION += textureLod(SCREEN_TEXTURE, ref_ofs, ROUGHNESS * water_clearnes).rgb * (1.0 - ALPHA);
-	ALBEDO *= ALPHA;
-	ALPHA = 1.0;
-	
 }

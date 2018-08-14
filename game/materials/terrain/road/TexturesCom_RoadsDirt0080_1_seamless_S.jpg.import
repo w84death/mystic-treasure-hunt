@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/screen2.png-c6159c7bc75d017a0b4b49d3c758ef51.stex"
+path="res://.import/TexturesCom_RoadsDirt0080_1_seamless_S.jpg-d47434f3ed03150b4656e415818acd12.stex"
 
 [deps]
 
-source_file="res://web-stuff/screen2.png"
-dest_files=[ "res://.import/screen2.png-c6159c7bc75d017a0b4b49d3c758ef51.stex" ]
+source_file="res://game/materials/terrain/road/TexturesCom_RoadsDirt0080_1_seamless_S.jpg"
+dest_files=[ "res://.import/TexturesCom_RoadsDirt0080_1_seamless_S.jpg-d47434f3ed03150b4656e415818acd12.stex" ]
 
 [params]
 

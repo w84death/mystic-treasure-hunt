@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_blinn;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
 uniform sampler2D tex_albedo : hint_albedo;
 uniform sampler2D tex_ao : hint_albedo;
@@ -27,7 +27,7 @@ void fragment() {
 	
 	SPECULAR = texture(tex_spec, UV).r;
 	ROUGHNESS = texture(tex_rgh, UV).r;
-	METALLIC = 0.75;
+	METALLIC = 1.0;
 	NORMALMAP = texture(tex_nrm, UV).rgb;
 	NORMALMAP_DEPTH = -1.0;
 }
