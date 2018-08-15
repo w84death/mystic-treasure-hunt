@@ -37,7 +37,7 @@ And lastly, based on the feedback and ideas final game will be made, closing las
 #### To-do
 
 - butterflies, birds
--  clouds
+- clouds
 - easy changing maps
 - movement with fov change
 - motion blur
@@ -46,6 +46,8 @@ And lastly, based on the feedback and ideas final game will be made, closing las
 - buildings materials
 - locomotion (probably one-railer)
 - portals
+- collecting letters (TREASURE) hidden on islands
+- lots of "stars" to collect
 - ...
 
 ### Milestone B: Prototype

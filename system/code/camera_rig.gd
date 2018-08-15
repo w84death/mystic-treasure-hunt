@@ -10,9 +10,10 @@ export var mountains_level = 0.22;
 export var mountains_size = 3.0;
 export var water_height = 64*.3;
 export var map_size = Vector2(1024, 1024);
+export var move_fov_zoom = true;
 const DEADZONE = 0.05;
 const CAMERA_MIN_FOV = 60;
-const CAMERA_MAX_FOV = 85;
+const CAMERA_MAX_FOV = 75;
 const CAMERA_ACCELERATION_FOV = 2;
 const CAMERA_DEACCELERATION_FOV = 4;
 
@@ -68,18 +69,15 @@ func _process(delta):
 			move_to.y = water_height
 		transform.origin += (move_to - transform.origin) * delta * 10.0
 	
-	#if get_node("cam").get_fov() > CAMERA_MIN_FOV:
-		
-		
-	if camera_set_fov > get_node("cam").get_fov() and get_node("cam").get_fov() < CAMERA_MAX_FOV:
-		get_node("cam").set_fov(get_node("cam").get_fov()+CAMERA_ACCELERATION_FOV);
-
-		
-	if camera_set_fov < get_node("cam").get_fov() and get_node("cam").get_fov() > CAMERA_MIN_FOV:
-		get_node("cam").set_fov(get_node("cam").get_fov()-CAMERA_ACCELERATION_FOV);
-		
-	if abs(camera_set_fov - camera_fov) < 2:
-		camera_set_fov = CAMERA_MIN_FOV;
+	if move_fov_zoom:
+		if camera_set_fov > get_node("cam").get_fov() and get_node("cam").get_fov() < CAMERA_MAX_FOV:
+			get_node("cam").set_fov(get_node("cam").get_fov()+CAMERA_ACCELERATION_FOV);
+			
+		if camera_set_fov < get_node("cam").get_fov() and get_node("cam").get_fov() > CAMERA_MIN_FOV:
+			get_node("cam").set_fov(get_node("cam").get_fov()-CAMERA_ACCELERATION_FOV);
+			
+		if abs(camera_set_fov - camera_fov) < 2:
+			camera_set_fov = CAMERA_MIN_FOV;
 		
 func get_adjustet_height(pos):
 	var h = get_height(pos).r;
