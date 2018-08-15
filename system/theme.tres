@@ -34,17 +34,17 @@ _sections_unfolded = [ "Corner Radius" ]
 [resource]
 
 default_font = ExtResource( 1 )
-Label/colors/font_color = Color( 0, 0, 0, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
-Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 Panel/styles/panel = SubResource( 1 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
-_sections_unfolded = [ "Colors", "Label", "Panel", "Panel/styles/panel", "Styles", "default_font" ]
+_sections_unfolded = [ "Colors", "Constants", "Label", "Panel", "Panel/styles/panel", "Styles", "default_font" ]
 

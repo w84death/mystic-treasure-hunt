@@ -74,6 +74,8 @@ Work in progress..
 - [new] Super Panavision 70 aspect ratio (2.20:1 - 800x364)
   ![uper Panavision 70 aspect ratio ](web-stuff/panavision.png)
 - [updated] back to 60fps (on nVidia 1050)
+- [updated] grass/terrain materials
+- [updated] bigger grass models
 
 ### alpha/04
 

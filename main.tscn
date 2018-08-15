@@ -1,18 +1,16 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=2]
-[ext_resource path="res://game/models/text_mystic.obj" type="ArrayMesh" id=3]
-[ext_resource path="res://game/materials/dirty_gold/bronze.material" type="Material" id=4]
-[ext_resource path="res://system/theme.tres" type="Theme" id=5]
-[ext_resource path="res://system/fonts/heade_thin.tres" type="DynamicFont" id=6]
-[ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=7]
-[ext_resource path="res://system/fonts/paragraph_light.tres" type="DynamicFont" id=8]
-[ext_resource path="res://system/fps.gd" type="Script" id=9]
-[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=10]
-[ext_resource path="res://system/corners.tscn" type="PackedScene" id=11]
-[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=12]
-[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=13]
+[ext_resource path="res://system/theme.tres" type="Theme" id=3]
+[ext_resource path="res://system/fonts/heade_thin.tres" type="DynamicFont" id=4]
+[ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=5]
+[ext_resource path="res://system/fonts/paragraph_light.tres" type="DynamicFont" id=6]
+[ext_resource path="res://system/fps.gd" type="Script" id=7]
+[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=8]
+[ext_resource path="res://system/corners.tscn" type="PackedScene" id=9]
+[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=10]
+[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -132,22 +130,6 @@ lod_max_distance = 27.0
 lod_max_hysteresis = 18.0
 _sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Lod", "Process Material", "Script", "Transform", "script" ]
 
-[node name="logo" type="MeshInstance" parent="."]
-transform = Transform( 23.9993, 0, 0.175509, 0, 23.9999, 0, -0.17551, 0, 23.9994, 189.8, 87.9273, -473.766 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = ExtResource( 3 )
-skeleton = NodePath("..")
-material/0 = ExtResource( 4 )
-_sections_unfolded = [ "Material", "Transform" ]
-
 [node name="GUI" type="Control" parent="."]
 anchor_left = 0.0
 anchor_top = 0.0
@@ -159,7 +141,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 5 )
+theme = ExtResource( 3 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="animations" type="AnimationPlayer" parent="GUI"]
@@ -212,12 +194,12 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 4 )
 text = "MYSTHIC"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Custom Fonts", "custom_fonts/font" ]
+_sections_unfolded = [ "Custom Colors", "Custom Fonts", "custom_fonts/font" ]
 
 [node name="treasure_hunt" type="Label" parent="GUI/top/logo"]
 anchor_left = 0.0
@@ -234,7 +216,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 5 )
 text = "TREASURE HUNT"
 percent_visible = 1.0
 lines_skipped = 0
@@ -256,13 +238,13 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 6 )
 text = "FPS/060"
 valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 9 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Custom Fonts", "Script", "custom_fonts/font" ]
 
 [node name="bottom" type="Control" parent="GUI"]
@@ -293,11 +275,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 10 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 8 )
 text = "Version pre-alpha/05"
 align = 1
 valign = 1
@@ -347,11 +325,11 @@ anims/fade-out = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="corners" parent="GUI" instance=ExtResource( 11 )]
+[node name="corners" parent="GUI" instance=ExtResource( 9 )]
 
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 493.987, 36.47, 695.307 )
-script = ExtResource( 12 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 1.0
 move_speed = 1.0
@@ -383,7 +361,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="map" type="Sprite" parent="Position3D"]
 visible = false
-texture = ExtResource( 13 )
+texture = ExtResource( 11 )
 centered = false
 _sections_unfolded = [ "Offset", "texture" ]
 
