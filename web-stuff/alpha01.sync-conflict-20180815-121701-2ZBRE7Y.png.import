@@ -2,11 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/alpha01.sync-conflict-20180815-121701-2ZBRE7Y.png-520381ba0d43fef87b0340dc6c348084.stex"
 
 [deps]
 
-source_file="res://web-stuff/alpha01.png"
+source_file="res://web-stuff/alpha01.sync-conflict-20180815-121701-2ZBRE7Y.png"
+dest_files=[ "res://.import/alpha01.sync-conflict-20180815-121701-2ZBRE7Y.png-520381ba0d43fef87b0340dc6c348084.stex" ]
+
 [params]
 
 compress/mode=0

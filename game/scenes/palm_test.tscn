@@ -222,7 +222,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 1024
+amount = 4096
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -241,6 +241,6 @@ script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Script" ]
 terrain_height = 64
 terrain_scale = 4.0
-rows = 32
-spacing = 18.0
+rows = 64
+spacing = 22.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=2]
@@ -7,11 +7,12 @@
 [ext_resource path="res://system/theme.tres" type="Theme" id=5]
 [ext_resource path="res://system/fonts/heade_thin.tres" type="DynamicFont" id=6]
 [ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=7]
-[ext_resource path="res://system/fps.gd" type="Script" id=8]
-[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=9]
-[ext_resource path="res://system/corners.tscn" type="PackedScene" id=10]
-[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=11]
-[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=12]
+[ext_resource path="res://system/fonts/paragraph_light.tres" type="DynamicFont" id=8]
+[ext_resource path="res://system/fps.gd" type="Script" id=9]
+[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=10]
+[ext_resource path="res://system/corners.tscn" type="PackedScene" id=11]
+[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=12]
+[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=1]
 
@@ -256,13 +257,14 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 8 )
 text = "FPS/060"
 valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 8 )
-_sections_unfolded = [ "Script" ]
+script = ExtResource( 9 )
+_sections_unfolded = [ "Custom Fonts", "Script", "custom_fonts/font" ]
 
 [node name="bottom" type="Control" parent="GUI"]
 anchor_left = 0.5
@@ -276,7 +278,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="info" type="Label" parent="GUI/bottom"]
+[node name="version" type="Label" parent="GUI/bottom"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -292,14 +294,18 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 2
 text = "Version pre-alpha/05"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Custom Fonts", "custom_fonts/font" ]
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
 
 [node name="overdraw" type="Control" parent="GUI"]
 visible = false
@@ -342,16 +348,16 @@ anims/fade-out = SubResource( 4 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="corners" parent="GUI" instance=ExtResource( 10 )]
+[node name="corners" parent="GUI" instance=ExtResource( 11 )]
 
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 493.987, 36.47, 695.307 )
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 1.0
 move_speed = 1.0
-move_speed_lr = 0.5
-move_speed_fb = 1.5
+move_speed_lr = 1.0
+move_speed_fb = 5.0
 terrain_height = 64
 terrain_scale = 4.0
 mountains_level = 0.32
@@ -377,7 +383,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="map" type="Sprite" parent="Position3D"]
 visible = false
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 centered = false
 _sections_unfolded = [ "Offset", "texture" ]
 

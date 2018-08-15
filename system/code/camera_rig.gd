@@ -10,7 +10,14 @@ export var mountains_level = 0.22;
 export var mountains_size = 3.0;
 export var water_height = 64*.3;
 export var map_size = Vector2(1024, 1024);
-const DEADZONE = 0.15;
+const DEADZONE = 0.05;
+const CAMERA_MIN_FOV = 60;
+const CAMERA_MAX_FOV = 85;
+const CAMERA_ACCELERATION_FOV = 2;
+const CAMERA_DEACCELERATION_FOV = 4;
+
+var camera_fov = CAMERA_MIN_FOV;
+var camera_set_fov = CAMERA_MIN_FOV;
 
 var angle_x = 0;
 var angle_y = 0;
@@ -61,6 +68,19 @@ func _process(delta):
 			move_to.y = water_height
 		transform.origin += (move_to - transform.origin) * delta * 10.0
 	
+	#if get_node("cam").get_fov() > CAMERA_MIN_FOV:
+		
+		
+	if camera_set_fov > get_node("cam").get_fov() and get_node("cam").get_fov() < CAMERA_MAX_FOV:
+		get_node("cam").set_fov(get_node("cam").get_fov()+CAMERA_ACCELERATION_FOV);
+
+		
+	if camera_set_fov < get_node("cam").get_fov() and get_node("cam").get_fov() > CAMERA_MIN_FOV:
+		get_node("cam").set_fov(get_node("cam").get_fov()-CAMERA_ACCELERATION_FOV);
+		
+	if abs(camera_set_fov - camera_fov) < 2:
+		camera_set_fov = CAMERA_MIN_FOV;
+		
 func get_adjustet_height(pos):
 	var h = get_height(pos).r;
 	
@@ -106,16 +126,18 @@ func _physics_process(delta):
 			# MOVE FRONT - BACK
 			if axis == JOY_ANALOG_LY:
 				if axis_value < 0:
+					camera_set_fov = CAMERA_MIN_FOV + abs(axis_value) * (CAMERA_MAX_FOV-CAMERA_MIN_FOV);
 					var front_back = transform.basis.z
 					front_back.y = 0.0
 					front_back = front_back.normalized()
 					move_to -= front_back * move_speed_fb * abs(axis_value);
 				else:
+					camera_set_fov = CAMERA_MIN_FOV;
 					var front_back = transform.basis.z
 					front_back.y = 0.0
 					front_back = front_back.normalized()
 					move_to += front_back * move_speed_fb * abs(axis_value);
-
+			
 func get_height(pos):
 	var px = Color(0,0,0);
 	if pos.x >= 0 && pos.y >= 0 && pos.x < map_size.x && pos.y < map_size.y:
