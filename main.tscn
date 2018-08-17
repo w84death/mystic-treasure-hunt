@@ -111,7 +111,7 @@ tracks/1/keys = {
 
 [node name="SUN" parent="system" index="0"]
 transform = Transform( 0.707107, -0.707107, 0, 0.5, 0.5, 0.707107, -0.5, -0.5, 0.707107, -0.893688, 301.399, -0.614716 )
-light_energy = 6.0
+light_cull_mask = -1
 
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
@@ -285,7 +285,6 @@ max_lines_visible = -1
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
 
 [node name="overdraw" type="Control" parent="GUI"]
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -334,7 +333,7 @@ _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 1.0
 move_speed = 1.0
 move_speed_lr = 1.0
-move_speed_fb = 5.0
+move_speed_fb = 2.0
 terrain_height = 64
 terrain_scale = 4.0
 mountains_level = 0.32
