@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://system/corners.tscn" type="PackedScene" id=9]
 [ext_resource path="res://system/code/camera_rig.gd" type="Script" id=10]
 [ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=11]
+[ext_resource path="res://game/materials/plasma/plasma.material" type="Material" id=12]
 
 [sub_resource type="Animation" id=1]
 
@@ -105,6 +106,16 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
+[sub_resource type="SphereMesh" id=5]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+radius = 8.0
+height = 16.0
+radial_segments = 16
+rings = 16
+is_hemisphere = false
+
 [node name="Node" type="Node"]
 
 [node name="system" parent="." instance=ExtResource( 1 )]
@@ -123,12 +134,6 @@ anims/demo = SubResource( 1 )
 blend_times = [  ]
 
 [node name="palm_test" parent="." instance=ExtResource( 2 )]
-
-[node name="grass_particle" parent="palm_test" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -378.097, 0, -307.858 )
-lod_max_distance = 27.0
-lod_max_hysteresis = 18.0
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Lod", "Process Material", "Script", "Transform", "script" ]
 
 [node name="GUI" type="Control" parent="."]
 anchor_left = 0.0
@@ -327,7 +332,7 @@ _sections_unfolded = [ "Playback Options" ]
 [node name="corners" parent="GUI" instance=ExtResource( 9 )]
 
 [node name="Position3D" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 463.806, 48, 410.443 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 664.688, 212.963, 328.23 )
 script = ExtResource( 10 )
 _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 1.0
@@ -342,7 +347,7 @@ map_size = Vector2( 2048, 2048 )
 move_fov_zoom = false
 
 [node name="cam" type="Camera" parent="Position3D"]
-transform = Transform( 1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 40, 0 )
+transform = Transform( 1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 40, 70 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -362,6 +367,22 @@ visible = false
 texture = ExtResource( 11 )
 centered = false
 _sections_unfolded = [ "Offset", "texture" ]
+
+[node name="plasma" type="MeshInstance" parent="Position3D"]
+transform = Transform( -0.219043, 0.560901, 0.79838, -0.32152, 0.731056, -0.601815, -0.921219, -0.388519, 0.0202087, 0, 8, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 12 )
+_sections_unfolded = [ "Material", "Transform" ]
 
 
 [editable path="system"]

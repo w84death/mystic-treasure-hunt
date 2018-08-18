@@ -26,8 +26,8 @@ settings/fps/force_fps=60
 
 [display]
 
-window/size/width=800
-window/size/height=364
+window/size/width=640
+window/size/height=290
 window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
@@ -152,7 +152,9 @@ quality/directional_shadow/size=1024
 quality/directional_shadow/size.mobile=1024
 quality/shadow_atlas/size=1024
 quality/shadow_atlas/size.mobile=1024
+quality/shadows/filter_mode=0
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
+quality/filters/msaa=3

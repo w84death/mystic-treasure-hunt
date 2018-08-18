@@ -61,7 +61,7 @@ void fragment() {
 	uv2 *= vec2(-1.0,-1.0); // mirrored
 	
 	// get zones
-	float zone_0 = clamp(1.0 - texture(features_map, uv2).r - texture(features_map, uv2).g - texture(features_map, uv2).b,0.0,1.0);
+	float zone_0 = clamp(1.0 - texture(features_map, uv2).r - texture(features_map, uv2).g - texture(features_map, uv2).b, 0.0, 1.0);
 	float zone_r = texture(features_map, uv2).r;
 	float zone_g = texture(features_map, uv2).g;
 	float zone_b = texture(features_map, uv2).b;
@@ -85,18 +85,10 @@ void fragment() {
 	vec3 spec_r = texture(red_spec, uv2 * uv_scale).rgb * zone_r;
 	vec3 spec_g = texture(green_spec, uv2 * uv_scale).rgb * zone_g;
 	vec3 spec_b = texture(blue_spec, uv2 * uv_scale).rgb * zone_b;
+
 	
-	vec3 underwater_color = vec3(1.0);
-	float height = texture(height_map, uv2).r;
-	if (height < water_height){
-		float h = clamp((water_height-height), 0.0, 1.0);
-		underwater_color.r = 0.4;
-		underwater_color.g = 0.4;
-		underwater_color.b = 1.0;
-	}
-	
-	ALBEDO = clamp((albedo_0 + albedo_r + albedo_g + albedo_b) * underwater_color, 0.0, 1.0);
-	METALLIC = 0.75;
+	ALBEDO = albedo_0 + albedo_r + albedo_g + albedo_b;
+	METALLIC = 0.95;
 	SPECULAR = spec_0.r + spec_r.r + spec_g.r + spec_b.r;
 	ROUGHNESS = rgh_0.r + rgh_r.r + rgh_g.r + rgh_b.r;
 	NORMALMAP = nrm_0 + nrm_r + nrm_g + nrm_b;

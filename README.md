@@ -33,16 +33,18 @@ And lastly, based on the feedback and ideas final game will be made, closing las
 - bigger terrain with mountains
 - grass, bush, palms
 - PBR for all assets
+- movement with fov change (kinda bugged, turned off by default)
 
-#### To-do
+#### To-do (priority ordered)
 
+- one terrain settings (heightmap/size) + script that propagates this to all shaders
 - butterflies, birds
 - clouds
 - easy changing maps
-- movement with fov change
+- grass  shader reacts to movement
 - motion blur
 - good map to discover
-- water shader
+- waterfall shader
 - buildings materials
 - locomotion (probably one-railer)
 - portals
@@ -67,12 +69,26 @@ At last we have a name, right?
 
 ## Changelog
 
-### alpha/05
+### alpha/06
 
 Work in progress..
 
+![alpha6](web-stuff/alpha06.png)
+
+- [change] resolution downgrade to 640x290 (2.20:1) to support 60fps
+- [update] grass and terrain materials
+- [updated] skybox material
+- [update] terrain is now 2048x2048 (scale x4)
+- [update] thick grass
+- [added] butterflies
+
+### alpha/05
+
+Most of the time I worked on look and feel of the assets I've already have. I want to know the direction before making more of them. Also testing lot of heightmaps to get used to making good looking maps.
+
+![uper Panavision 70 aspect ratio ](web-stuff/alpha05.png)
+
 - [new] Super Panavision 70 aspect ratio (2.20:1 - 800x364)
-  ![uper Panavision 70 aspect ratio ](web-stuff/panavision.png)
 - [updated] back to 60fps (on nVidia 1050)
 - [updated] grass/terrain materials
 - [updated] bigger grass models

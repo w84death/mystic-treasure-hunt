@@ -11,7 +11,7 @@
 transform = Transform( 0.703688, -0.710509, 0, 0.502406, 0.497583, 0.707107, -0.502406, -0.497583, 0.707107, -0.893688, 301.399, -0.614716 )
 layers = 1
 light_color = Color( 1, 1, 0.815686, 1 )
-light_energy = 4.0
+light_energy = 2.0
 light_indirect_energy = 0.0
 light_negative = false
 light_specular = 0.1

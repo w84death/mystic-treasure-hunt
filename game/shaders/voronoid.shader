@@ -4,6 +4,11 @@ shader_type spatial;
 uniform float UNIQ = 4323.1454;
 uniform float MAX_ITER = 128.0;
 uniform float SPEED = 0.2;
+uniform float EMMISION_POWER = 4.0;
+
+uniform vec2 amplitude = vec2(0.5, 0.3);
+uniform vec2 frequency = vec2(.2, .2);
+uniform vec2 time_factor = vec2(2.0, 2.0);
 
 float fake_random(vec2 p){
 	return fract(sin(dot(p.xy, vec2(12.9898,78.233))) * 43758.5453);
@@ -30,6 +35,17 @@ float voronoi (vec2 uv, float t) {
 	return md;
 }
 
+float wave(vec2 pos, float time) {
+	float noise = fake_random(pos);
+	return (amplitude.x * sin(pos.x * frequency.x * noise + time * time_factor.x)) + (amplitude.y * sin(pos.y * frequency.y * noise + time * time_factor.y));
+}
+
+void vertex() {
+	VERTEX.x += wave(VERTEX.xz, TIME);
+	VERTEX.y += wave(VERTEX.yz, TIME);
+	//VERTEX.z += wave(VERTEX.xz, TIME);
+}
+
 void fragment() {
 	float c = voronoi(UV, TIME);
 	
@@ -41,4 +57,5 @@ void fragment() {
 	METALLIC = .6;
 	SPECULAR = 0.0;
 	ROUGHNESS = 0.5;
+	EMISSION = vec3(r, g, b) * EMMISION_POWER;
 }
