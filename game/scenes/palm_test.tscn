@@ -20,17 +20,17 @@
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
-size = Vector2( 1024, 1024 )
-subdivide_width = 1024
-subdivide_depth = 1024
+size = Vector2( 2048, 2048 )
+subdivide_width = 512
+subdivide_depth = 512
 
 [sub_resource type="PlaneMesh" id=2]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
-size = Vector2( 1024, 1024 )
-subdivide_width = 128
-subdivide_depth = 128
+size = Vector2( 2048, 2048 )
+subdivide_width = 256
+subdivide_depth = 256
 
 [sub_resource type="ArrayMesh" id=3]
 
@@ -112,7 +112,6 @@ material/0 = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="grass_particle" type="Particles" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -210.282, 0, 13.6191 )
 layers = 1
 material_override = ExtResource( 3 )
 cast_shadow = 0
@@ -146,7 +145,6 @@ rows = 48
 spacing = 18.0
 
 [node name="grass2_particle" type="Particles" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -210.282, 0, 13.6191 )
 layers = 1
 material_override = ExtResource( 7 )
 cast_shadow = 0
@@ -206,7 +204,7 @@ process_material = ExtResource( 11 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 12 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Script" ]
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Script", "Transform" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 32
@@ -239,7 +237,7 @@ process_material = ExtResource( 13 )
 draw_passes = 1
 draw_pass_1 = SubResource( 3 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Script" ]
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "Process Material", "Script", "Transform" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 64

@@ -49,8 +49,8 @@ float get_height(vec2 pos) {
 
 void vertex() {
 	VERTEX.y = get_height(VERTEX.xz);
-	float A = 0.2;
-	float B = 0.2;
+	float A = 0.4;
+	float B = 0.4;
 	TANGENT = normalize( vec3(0.0, get_height(VERTEX.xz + vec2(0.0, B)) - get_height(VERTEX.xz + vec2(0.0, -0.1)), A));
 	BINORMAL = normalize( vec3(A, get_height(VERTEX.xz + vec2(B, 0.0)) - get_height(VERTEX.xz + vec2(-0.1, 0.0)), 0.0));
 	NORMAL = cross(TANGENT, BINORMAL);
@@ -89,13 +89,14 @@ void fragment() {
 	vec3 underwater_color = vec3(1.0);
 	float height = texture(height_map, uv2).r;
 	if (height < water_height){
-		float h = clamp((water_height-height)*6.0, 0.0, 1.0);
-		underwater_color.r -= h;
-		underwater_color.g -= h*.5;
+		float h = clamp((water_height-height), 0.0, 1.0);
+		underwater_color.r = 0.4;
+		underwater_color.g = 0.4;
+		underwater_color.b = 1.0;
 	}
 	
 	ALBEDO = clamp((albedo_0 + albedo_r + albedo_g + albedo_b) * underwater_color, 0.0, 1.0);
-	METALLIC = 0.85;
+	METALLIC = 0.75;
 	SPECULAR = spec_0.r + spec_r.r + spec_g.r + spec_b.r;
 	ROUGHNESS = rgh_0.r + rgh_r.r + rgh_g.r + rgh_b.r;
 	NORMALMAP = nrm_0 + nrm_r + nrm_g + nrm_b;

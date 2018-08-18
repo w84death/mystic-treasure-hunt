@@ -1,7 +1,6 @@
 extends Position3D
 
 export var rotate_speed = 1.0;
-export var move_speed = 1.0;
 export var move_speed_lr = 0.5;
 export var move_speed_fb = 1.5;
 export var terrain_height = 64;
@@ -46,12 +45,12 @@ func _input(event):
 		var front_back = transform.basis.z
 		front_back.y = 0.0
 		front_back = front_back.normalized()
-		move_to -= front_back * move_speed;
+		move_to -= front_back * move_speed_fb;
 	if Input.is_action_pressed("ui_down"):
 		var front_back = transform.basis.z
 		front_back.y = 0.0
 		front_back = front_back.normalized()
-		move_to += front_back * move_speed;
+		move_to += front_back * move_speed_fb;
 
 func _process(delta):
 	if angle_x != _angle_x or angle_y != _angle_y:
