@@ -14,25 +14,21 @@ uniform sampler2D features_map;
 uniform sampler2D black_albedo : hint_albedo;
 uniform sampler2D black_ao : hint_albedo;
 uniform sampler2D black_nrm : hint_normal;
-uniform sampler2D black_spec;
 uniform sampler2D black_rgh;
 
 uniform sampler2D red_albedo : hint_albedo;
 uniform sampler2D red_ao : hint_albedo;
 uniform sampler2D red_nrm : hint_normal;
-uniform sampler2D red_spec;
 uniform sampler2D red_rgh;
 
 uniform sampler2D green_albedo : hint_albedo;
 uniform sampler2D green_ao : hint_albedo;
 uniform sampler2D green_nrm : hint_normal;
-uniform sampler2D green_spec;
 uniform sampler2D green_rgh;
 
 uniform sampler2D blue_albedo : hint_albedo;
 uniform sampler2D blue_ao : hint_albedo;
 uniform sampler2D blue_nrm : hint_normal;
-uniform sampler2D blue_spec;
 uniform sampler2D blue_rgh;
 
 uniform float uv_scale = 32.0;
@@ -49,8 +45,8 @@ float get_height(vec2 pos) {
 
 void vertex() {
 	VERTEX.y = get_height(VERTEX.xz);
-	float A = 0.4;
-	float B = 0.4;
+	float A = 0.1;
+	float B = 0.1;
 	TANGENT = normalize( vec3(0.0, get_height(VERTEX.xz + vec2(0.0, B)) - get_height(VERTEX.xz + vec2(0.0, -0.1)), A));
 	BINORMAL = normalize( vec3(A, get_height(VERTEX.xz + vec2(B, 0.0)) - get_height(VERTEX.xz + vec2(-0.1, 0.0)), 0.0));
 	NORMAL = cross(TANGENT, BINORMAL);
@@ -80,16 +76,9 @@ void fragment() {
 	vec3 rgh_r = texture(red_rgh, uv2 * uv_scale).rgb * zone_r;
 	vec3 rgh_g = texture(green_rgh, uv2 * uv_scale).rgb * zone_g;
 	vec3 rgh_b = texture(blue_rgh, uv2 * uv_scale).rgb * zone_b;
-
-	vec3 spec_0 = texture(black_spec, uv2 * uv_scale).rgb * zone_0;
-	vec3 spec_r = texture(red_spec, uv2 * uv_scale).rgb * zone_r;
-	vec3 spec_g = texture(green_spec, uv2 * uv_scale).rgb * zone_g;
-	vec3 spec_b = texture(blue_spec, uv2 * uv_scale).rgb * zone_b;
-
 	
 	ALBEDO = albedo_0 + albedo_r + albedo_g + albedo_b;
-	METALLIC = 0.95;
-	SPECULAR = spec_0.r + spec_r.r + spec_g.r + spec_b.r;
+	METALLIC = 0.90;
 	ROUGHNESS = rgh_0.r + rgh_r.r + rgh_g.r + rgh_b.r;
 	NORMALMAP = nrm_0 + nrm_r + nrm_g + nrm_b;
 	NORMALMAP_DEPTH = 5.0;

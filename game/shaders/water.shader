@@ -1,16 +1,16 @@
+/* WATER SHADER 3.3 "Back to the roots" */
 shader_type spatial;
-/* WATER SHADER 3.2 "Back to the roots" */
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
 uniform vec2 amplitude = vec2(0.5, 0.3);
 uniform vec2 frequency = vec2(.2, .2);
 uniform vec2 time_factor = vec2(2.0, 2.0);
 uniform bool waves_by_height = false;
 uniform float water_height = 2.5;
-uniform float water_clearnes = 0.4;
-uniform float water_refraction = 0.014;
+uniform vec3 water_color = vec3(0.1,0.4,0.8);
 uniform float water_alpha = 0.2;
 uniform float water_shore = 0.37;
-uniform float water_color_contrast = 6.0;
+uniform float water_shore_contrast = 6.0;
 
 uniform sampler2D height_map;
 
@@ -43,10 +43,11 @@ void fragment(){
 	vec2 uv2 = UV * -1.0;
 	float height = texture(height_map, uv2.xy).r;
 	float gfx = smoothstep(0.0, water_shore, height);
-	vec3 w_color = vec3(gfx, gfx, gfx) * water_color_contrast;
+	vec3 w_color = water_color;
+	w_color += vec3(gfx, gfx, gfx) * water_shore_contrast;
 	
 	ROUGHNESS = 0.5 * gfx;
-	METALLIC = 0.0;
+	METALLIC = 1.0 - gfx;
 	SPECULAR = 1.0 - gfx;
 	ALPHA = water_alpha;
 	ALBEDO = clamp(w_color, 0.0, 1.0);

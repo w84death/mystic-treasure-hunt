@@ -69,9 +69,13 @@ At last we have a name, right?
 
 ## Changelog
 
-### alpha/06
+### alpha/07
 
 Work in progress..
+
+### alpha/06
+
+Lot have changed on the visual side. Basically everything was updated.
 
 ![alpha6](web-stuff/alpha06.png)
 
@@ -134,3 +138,34 @@ Project is empty but all the main files are moved. New directories created.
 
 - [new] proper project structure
 - [ported] few models and textures
+
+
+
+## Ideas
+
+Until Milestone A will be finished I need to have at last some height level idea. Here I'll be writing all ideas and probably sentence something from them.
+
+### Soul Quest
+
+Player starts in the heavens. As a soul he lands on an island in a mission to find as many artifacts as possible in a restricted timespan. This has a problem of being one player game.
+
+ ### Piradice II
+
+My first successful game was Piradice. And now looking at this awesome tech for rendering islands it feels like the time for a sequel. Probably first thing I do after this arcade game will be created. So more like 2019.
+
+### ### Pac-man style
+
+There are bad actors on the map. They will chase the player if close by. Player searches for artifacts. There are shrooms in the forest terrain that eaten gives player power to catch enemies. They will retreat.
+
+### Brainstorming
+
+What the ~arcade game for expo~ needs to have:
+
+- two player mode - option for one player (ex. sports games)
+- one button - all 4 should work as one (no dead buttons)
+- understandable without instruction - WYSIWYG no hidden parts, inventory etc 
+- colorful content - players and main items must be different than background; bg should be colorful but avoid those main colors
+- competitive in nature - fight against or it can be also to get most points together 
+- leader board - print flyer score certifivate for each player
+- feel of progression - levels instead of points
+- leader board 2 - each level gives a code for future continue; that way each player "owns" his status by knowing the code for particular level. 

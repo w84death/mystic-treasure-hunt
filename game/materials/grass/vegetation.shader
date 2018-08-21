@@ -25,7 +25,7 @@ void fragment() {
 	vec4 color = texture(tex_albedo, UV);
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
-	ALPHA_SCISSOR = 0.7;
+	ALPHA_SCISSOR = 0.8;
 	
 	SPECULAR = texture(tex_spec, UV).r;
 	ROUGHNESS = texture(tex_rgh, UV).r;
