@@ -42,7 +42,6 @@ And lastly, based on the feedback and ideas final game will be made, closing las
 - clouds
 - easy changing maps
 - grass  shader reacts to movement
-- motion blur
 - good map to discover
 - waterfall shader
 - buildings materials
@@ -73,6 +72,10 @@ At last we have a name, right?
 
 Work in progress..
 
+- [change] resolution 800x364
+- [new] camera motion blur
+- [updated] grass textures
+
 ### alpha/06
 
 Lot have changed on the visual side. Basically everything was updated.
@@ -80,10 +83,10 @@ Lot have changed on the visual side. Basically everything was updated.
 ![alpha6](web-stuff/alpha06.png)
 
 - [change] resolution downgrade to 640x290 (2.20:1) to support 60fps
-- [update] grass and terrain materials
+- [updated] grass and terrain materials
 - [updated] skybox material
-- [update] terrain is now 2048x2048 (scale x4)
-- [update] thick grass
+- [updated] terrain is now 2048x2048 (scale x4)
+- [updated] thick grass
 - [added] butterflies
 
 ### alpha/05

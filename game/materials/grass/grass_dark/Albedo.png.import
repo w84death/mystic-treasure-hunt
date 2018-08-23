@@ -14,6 +14,7 @@ dest_files=[ "res://.import/Albedo.png-08e637550f1a975c6f77c766f8c2b619.s3tc.ste
 
 compress/mode=2
 compress/lossy_quality=0.7
+compress/no_bptc_if_rgb=false
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=true

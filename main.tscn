@@ -1,17 +1,18 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://system/code/camera_rig.gd" type="Script" id=2]
-[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=3]
-[ext_resource path="res://game/materials/plasma/plasma.material" type="Material" id=4]
-[ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=5]
-[ext_resource path="res://system/theme.tres" type="Theme" id=6]
-[ext_resource path="res://system/fonts/heade_thin.tres" type="DynamicFont" id=7]
-[ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=8]
-[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=9]
-[ext_resource path="res://system/fonts/paragraph_light.tres" type="DynamicFont" id=10]
-[ext_resource path="res://system/fps.gd" type="Script" id=11]
-[ext_resource path="res://system/corners.tscn" type="PackedScene" id=12]
+[ext_resource path="res://motion_blur/motion_blur.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=4]
+[ext_resource path="res://game/materials/plasma/plasma.material" type="Material" id=5]
+[ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=6]
+[ext_resource path="res://system/theme.tres" type="Theme" id=7]
+[ext_resource path="res://system/fonts/heade_thin.tres" type="DynamicFont" id=8]
+[ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=9]
+[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=10]
+[ext_resource path="res://system/fonts/paragraph_light.tres" type="DynamicFont" id=11]
+[ext_resource path="res://system/fps.gd" type="Script" id=12]
+[ext_resource path="res://system/corners.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 
@@ -44,8 +45,8 @@ tracks/1/keys = {
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
-radius = 8.0
-height = 16.0
+radius = 12.0
+height = 24.0
 radial_segments = 16
 rings = 16
 is_hemisphere = false
@@ -147,8 +148,8 @@ tracks/1/keys = {
 
 [node name="SUN" parent="system" index="0"]
 transform = Transform( 0.707107, -0.707107, 0, 0.183012, 0.183012, 0.965926, -0.683013, -0.683013, 0.258819, -0.893688, 301.399, -0.614716 )
-light_specular = 0.05
 light_cull_mask = -1
+_sections_unfolded = [ "Editor", "Light", "Shadow", "Transform" ]
 
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
@@ -160,7 +161,7 @@ anims/demo = SubResource( 1 )
 blend_times = [  ]
 
 [node name="PLAYER" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 664.688, 212.963, 328.23 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 659.228, 171.183, 389.2 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 2.0
@@ -174,8 +175,8 @@ water_height = 20.0
 map_size = Vector2( 2048, 2048 )
 move_fov_zoom = false
 
-[node name="cam" type="Camera" parent="PLAYER"]
-transform = Transform( 1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 80, 140 )
+[node name="Camera" type="Camera" parent="PLAYER"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 120 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -190,14 +191,16 @@ near = 0.05
 far = 2048.0
 _sections_unfolded = [ "Transform" ]
 
+[node name="motion_blur" parent="PLAYER/Camera" instance=ExtResource( 3 )]
+
 [node name="map" type="Sprite" parent="PLAYER"]
 visible = false
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 centered = false
 _sections_unfolded = [ "Offset", "texture" ]
 
 [node name="plasma" type="MeshInstance" parent="PLAYER"]
-transform = Transform( -0.219043, 0.560901, 0.79838, -0.32152, 0.731056, -0.601815, -0.921219, -0.388519, 0.0202087, 0, 8, 0 )
+transform = Transform( -0.0568831, 0.633878, 0.771338, -0.219352, 0.745776, -0.629049, -0.973986, -0.204977, 0.0966205, 0, 8, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -209,15 +212,16 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 2 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 4 )
-_sections_unfolded = [ "Material", "Transform" ]
+material/0 = ExtResource( 5 )
+_sections_unfolded = [ "Material", "Matrix", "Transform", "material" ]
 
-[node name="MAP" parent="." instance=ExtResource( 5 )]
+[node name="MAP" parent="." instance=ExtResource( 6 )]
 
 [node name="terrain" parent="MAP" index="0"]
 _sections_unfolded = [ "Geometry", "Material", "Script", "Transform", "material" ]
 
 [node name="water" parent="MAP" index="1"]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, -2.11798, -9.68553, 4.34766 )
 _sections_unfolded = [ "Material", "Transform", "material" ]
 
 [node name="GUI" type="Control" parent="."]
@@ -231,7 +235,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 _sections_unfolded = [ "Theme", "theme" ]
 
 [node name="middle" type="Control" parent="GUI"]
@@ -274,7 +278,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 8 )
 text = "MYSTHIC"
 percent_visible = 1.0
 lines_skipped = 0
@@ -296,7 +300,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 9 )
 text = "TREASURE HUNT"
 percent_visible = 1.0
 lines_skipped = 0
@@ -343,7 +347,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
 text = "Version pre-alpha/07"
 align = 1
 valign = 1
@@ -367,16 +371,16 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "FPS/060"
 valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Custom Fonts", "Script", "custom_fonts/font" ]
 
-[node name="corners" parent="GUI" instance=ExtResource( 12 )]
+[node name="corners" parent="GUI" instance=ExtResource( 13 )]
 
 [node name="overdraw" type="Control" parent="GUI"]
 anchor_left = 0.0

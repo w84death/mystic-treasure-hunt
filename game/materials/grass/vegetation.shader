@@ -25,11 +25,11 @@ void fragment() {
 	vec4 color = texture(tex_albedo, UV);
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
-	ALPHA_SCISSOR = 0.8;
+	ALPHA_SCISSOR = 0.3;
 	
 	SPECULAR = texture(tex_spec, UV).r;
 	ROUGHNESS = texture(tex_rgh, UV).r;
-	METALLIC = 0.75;
+	METALLIC = 0.70;
 	NORMALMAP = texture(tex_nrm, UV).rgb;
-	NORMALMAP_DEPTH = -1.0;
+	NORMALMAP_DEPTH = -1.5;
 }

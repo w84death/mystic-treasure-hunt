@@ -46,9 +46,10 @@ void fragment(){
 	vec3 w_color = water_color;
 	w_color += vec3(gfx, gfx, gfx) * water_shore_contrast;
 	
-	ROUGHNESS = 0.5 * gfx;
+	ROUGHNESS = 0.3;
 	METALLIC = 1.0 - gfx;
 	SPECULAR = 1.0 - gfx;
-	ALPHA = water_alpha;
+	ALPHA = clamp(water_alpha - gfx * 4.0, 0.0, 1.0);
 	ALBEDO = clamp(w_color, 0.0, 1.0);
+	//EMISSION = water_color * 0.4;
 }

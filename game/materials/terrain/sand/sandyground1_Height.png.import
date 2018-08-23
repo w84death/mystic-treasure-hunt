@@ -14,6 +14,7 @@ dest_files=[ "res://.import/sandyground1_Height.png-c7177511e47e4375c666c7c25e39
 
 compress/mode=2
 compress/lossy_quality=0.7
+compress/no_bptc_if_rgb=false
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=true

@@ -4,9 +4,8 @@
 
 [sub_resource type="PanoramaSky" id=1]
 
-radiance_size = 4
+radiance_size = 3
 panorama = ExtResource( 1 )
-_sections_unfolded = [ "panorama" ]
 
 [resource]
 
@@ -17,15 +16,15 @@ background_color = Color( 0.992157, 0, 1, 1 )
 background_energy = 1.0
 background_canvas_max_layer = 0
 ambient_light_color = Color( 0.643137, 0.933333, 1, 1 )
-ambient_light_energy = 5.0
+ambient_light_energy = 1.0
 ambient_light_sky_contribution = 0.8
 fog_enabled = true
-fog_color = Color( 0.867605, 0.980469, 0.666412, 1 )
+fog_color = Color( 0.866667, 0.980392, 0.662745, 1 )
 fog_sun_color = Color( 1, 1, 1, 1 )
 fog_sun_amount = 0.5
 fog_depth_enabled = true
 fog_depth_begin = 256.0
-fog_depth_curve = 0.840894
+fog_depth_curve = 0.683018
 fog_transmit_enabled = false
 fog_transmit_curve = 1.0
 fog_height_enabled = false
@@ -52,22 +51,22 @@ ssao_intensity = 32.0
 ssao_radius2 = 0.0
 ssao_intensity2 = 0.0
 ssao_bias = 0.001
-ssao_light_affect = 1.0
-ssao_ao_channel_affect = 0.0
+ssao_light_affect = 0.5
+ssao_ao_channel_affect = 1.0
 ssao_color = Color( 0, 0, 0, 1 )
-ssao_quality = 2
+ssao_quality = 0
 ssao_blur = 3
 ssao_edge_sharpness = 0.0
 dof_blur_far_enabled = true
 dof_blur_far_distance = 768.0
 dof_blur_far_transition = 32.0
-dof_blur_far_amount = 0.07
-dof_blur_far_quality = 2
+dof_blur_far_amount = 0.08
+dof_blur_far_quality = 1
 dof_blur_near_enabled = true
 dof_blur_near_distance = 64.0
 dof_blur_near_transition = 21.0
 dof_blur_near_amount = 0.1
-dof_blur_near_quality = 2
+dof_blur_near_quality = 1
 glow_enabled = true
 glow_levels/1 = false
 glow_levels/2 = true
@@ -76,16 +75,16 @@ glow_levels/4 = false
 glow_levels/5 = false
 glow_levels/6 = false
 glow_levels/7 = false
-glow_intensity = 1.3
-glow_strength = 0.5
+glow_intensity = 2.5
+glow_strength = 0.56
 glow_bloom = 0.0
 glow_blend_mode = 1
-glow_hdr_threshold = 0.25
+glow_hdr_threshold = 0.3
 glow_hdr_scale = 1.0
 glow_bicubic_upscale = false
-adjustment_enabled = true
+adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Adjustments", "Ambient Light", "Background", "Fog", "Levels", "Resource", "Tonemap", "background_sky", "levels" ]
+_sections_unfolded = [ "Adjustments", "Ambient Light", "Background", "DOF Far Blur", "DOF Near Blur", "Glow", "Levels", "background_sky", "levels" ]
 

@@ -2,13 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Albedo_dark.png-16eed9f0c5e26fc0d0478c00b93502d3.s3tc.stex"
-path.etc2="res://.import/Albedo_dark.png-16eed9f0c5e26fc0d0478c00b93502d3.etc2.stex"
+path.s3tc="res://.import/cloud1.png-839e4b4c6175284b553b1604547f395f.s3tc.stex"
+path.etc2="res://.import/cloud1.png-839e4b4c6175284b553b1604547f395f.etc2.stex"
 
 [deps]
 
-source_file="res://game/materials/grass/grass_dark/Albedo_dark.png"
-dest_files=[ "res://.import/Albedo_dark.png-16eed9f0c5e26fc0d0478c00b93502d3.s3tc.stex", "res://.import/Albedo_dark.png-16eed9f0c5e26fc0d0478c00b93502d3.etc2.stex" ]
+source_file="res://game/materials/clouds/cloud1.png"
+dest_files=[ "res://.import/cloud1.png-839e4b4c6175284b553b1604547f395f.s3tc.stex", "res://.import/cloud1.png-839e4b4c6175284b553b1604547f395f.etc2.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

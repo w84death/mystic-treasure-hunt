@@ -91,5 +91,5 @@ void vertex() {
 	// update our transform to place
 	TRANSFORM[3][0] = pos.x * terrain_scale;
 	TRANSFORM[3][1] = pos.y * terrain_scale - height_noise;
-	TRANSFORM[3][2] = pos.z * terrain_scale;
+	TRANSFORM[3][2] = pos.z * terrain_scale;	
 }
