@@ -2,7 +2,7 @@
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://system/code/camera_rig.gd" type="Script" id=2]
-[ext_resource path="res://motion_blur/motion_blur.tscn" type="PackedScene" id=3]
+[ext_resource path="res://system/motion_blur/motion_blur.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=4]
 [ext_resource path="res://game/materials/plasma/plasma.material" type="Material" id=5]
 [ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=6]
@@ -11,7 +11,7 @@
 [ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=9]
 [ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=10]
 [ext_resource path="res://system/fonts/paragraph_light.tres" type="DynamicFont" id=11]
-[ext_resource path="res://system/fps.gd" type="Script" id=12]
+[ext_resource path="res://system/code/fps.gd" type="Script" id=12]
 [ext_resource path="res://system/corners.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
@@ -142,7 +142,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[node name="Node" type="Node"]
+[node name="game" type="Node"]
 
 [node name="system" parent="." instance=ExtResource( 1 )]
 
@@ -372,7 +372,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 11 )
-text = "FPS/060"
+text = "FPS/60"
 valign = 2
 percent_visible = 1.0
 lines_skipped = 0
@@ -398,8 +398,6 @@ __meta__ = {
 }
 
 [node name="fade" type="ColorRect" parent="GUI/overdraw"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0

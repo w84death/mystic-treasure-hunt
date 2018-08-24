@@ -2,13 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/NormalMap.png-4a58b8fcec8da47e57a358545edb4c25.s3tc.stex"
-path.etc2="res://.import/NormalMap.png-4a58b8fcec8da47e57a358545edb4c25.etc2.stex"
+path.s3tc="res://.import/NormalMap.png-9721170540513a62e4711e41adfbd8ae.s3tc.stex"
+path.etc2="res://.import/NormalMap.png-9721170540513a62e4711e41adfbd8ae.etc2.stex"
 
 [deps]
 
-source_file="res://game/materials/grass/grass_flowers/NormalMap.png"
-dest_files=[ "res://.import/NormalMap.png-4a58b8fcec8da47e57a358545edb4c25.s3tc.stex", "res://.import/NormalMap.png-4a58b8fcec8da47e57a358545edb4c25.etc2.stex" ]
+source_file="res://game/materials/grass/grass_dead/NormalMap.png"
+dest_files=[ "res://.import/NormalMap.png-9721170540513a62e4711e41adfbd8ae.s3tc.stex", "res://.import/NormalMap.png-9721170540513a62e4711e41adfbd8ae.etc2.stex" ]
 
 [params]
 

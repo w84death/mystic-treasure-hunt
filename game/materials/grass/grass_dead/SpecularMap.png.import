@@ -2,13 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Albedo.png-73ea7a2a52b179db8842f866e7c6e8f7.s3tc.stex"
-path.etc2="res://.import/Albedo.png-73ea7a2a52b179db8842f866e7c6e8f7.etc2.stex"
+path.s3tc="res://.import/SpecularMap.png-90bb5742048ade91ae7ea6b11e7a5bc0.s3tc.stex"
+path.etc2="res://.import/SpecularMap.png-90bb5742048ade91ae7ea6b11e7a5bc0.etc2.stex"
 
 [deps]
 
-source_file="res://game/materials/grass/grass_flowers/Albedo.png"
-dest_files=[ "res://.import/Albedo.png-73ea7a2a52b179db8842f866e7c6e8f7.s3tc.stex", "res://.import/Albedo.png-73ea7a2a52b179db8842f866e7c6e8f7.etc2.stex" ]
+source_file="res://game/materials/grass/grass_dead/SpecularMap.png"
+dest_files=[ "res://.import/SpecularMap.png-90bb5742048ade91ae7ea6b11e7a5bc0.s3tc.stex", "res://.import/SpecularMap.png-90bb5742048ade91ae7ea6b11e7a5bc0.etc2.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

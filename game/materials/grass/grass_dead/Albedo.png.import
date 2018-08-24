@@ -2,13 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Albedo.png-73ea7a2a52b179db8842f866e7c6e8f7.s3tc.stex"
-path.etc2="res://.import/Albedo.png-73ea7a2a52b179db8842f866e7c6e8f7.etc2.stex"
+path.s3tc="res://.import/Albedo.png-aee86ce782a80225f2578eab18467739.s3tc.stex"
+path.etc2="res://.import/Albedo.png-aee86ce782a80225f2578eab18467739.etc2.stex"
 
 [deps]
 
-source_file="res://game/materials/grass/grass_flowers/Albedo.png"
-dest_files=[ "res://.import/Albedo.png-73ea7a2a52b179db8842f866e7c6e8f7.s3tc.stex", "res://.import/Albedo.png-73ea7a2a52b179db8842f866e7c6e8f7.etc2.stex" ]
+source_file="res://game/materials/grass/grass_dead/Albedo.png"
+dest_files=[ "res://.import/Albedo.png-aee86ce782a80225f2578eab18467739.s3tc.stex", "res://.import/Albedo.png-aee86ce782a80225f2578eab18467739.etc2.stex" ]
 
 [params]
 

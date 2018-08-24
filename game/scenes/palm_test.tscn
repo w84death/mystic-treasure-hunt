@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://game/maps/test/terrain.material" type="Material" id=1]
 [ext_resource path="res://system/code/terrain.gd" type="Script" id=2]
@@ -8,16 +8,18 @@
 [ext_resource path="res://system/code/particle_follow_camera_rig.gd" type="Script" id=6]
 [ext_resource path="res://game/materials/grass/grass_dark_particle.material" type="Material" id=7]
 [ext_resource path="res://game/models/grass_dark.tres" type="ArrayMesh" id=8]
-[ext_resource path="res://game/materials/grass/grass_particle.material" type="Material" id=9]
+[ext_resource path="res://game/materials/grass/grass_flowers_particle.material" type="Material" id=9]
 [ext_resource path="res://game/models/grass_flowers.tres" type="ArrayMesh" id=10]
-[ext_resource path="res://game/materials/paprotas/paprotas_big_particle.material" type="Material" id=11]
-[ext_resource path="res://game/models/paprota_big_light.tres" type="ArrayMesh" id=12]
-[ext_resource path="res://game/materials/palms/palms_particle.material" type="Material" id=13]
-[ext_resource path="res://game/materials/palms/palm_bark.material" type="Material" id=14]
-[ext_resource path="res://game/materials/palms/palm_leafs.material" type="Material" id=15]
-[ext_resource path="res://game/materials/butterflies/insects.material" type="Material" id=16]
-[ext_resource path="res://game/materials/butterflies/insects_particles.material" type="Material" id=17]
-[ext_resource path="res://game/models/butterfly.obj" type="ArrayMesh" id=18]
+[ext_resource path="res://game/materials/grass/grass_dead_particle.material" type="Material" id=11]
+[ext_resource path="res://game/models/grass_dead.tres" type="ArrayMesh" id=12]
+[ext_resource path="res://game/materials/paprotas/paprotas_big_particle.material" type="Material" id=13]
+[ext_resource path="res://game/models/paprota_big_light.tres" type="ArrayMesh" id=14]
+[ext_resource path="res://game/materials/palms/palms_particle.material" type="Material" id=15]
+[ext_resource path="res://game/materials/palms/palm_bark.material" type="Material" id=16]
+[ext_resource path="res://game/materials/palms/palm_leafs.material" type="Material" id=17]
+[ext_resource path="res://game/materials/butterflies/insects.material" type="Material" id=18]
+[ext_resource path="res://game/materials/butterflies/insects_particles.material" type="Material" id=19]
+[ext_resource path="res://game/models/butterfly.obj" type="ArrayMesh" id=20]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -46,7 +48,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 108,
-"material": ExtResource( 14 ),
+"material": ExtResource( 16 ),
 "name": "bark_sep13_auv",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -59,7 +61,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97539,
 "index_count": 636,
-"material": ExtResource( 15 ),
+"material": ExtResource( 17 ),
 "name": "default",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -72,7 +74,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 504,
-"material": ExtResource( 15 ),
+"material": ExtResource( 17 ),
 "name": "image2",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -214,6 +216,39 @@ terrain_scale = 4.0
 rows = 32
 spacing = 12.0
 
+[node name="grass_dead" type="Particles" parent="."]
+layers = 1
+material_override = null
+cast_shadow = 0
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = true
+amount = 1024
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 1.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -512, 0, -512, 256, 20, 256 )
+local_coords = false
+draw_order = 0
+process_material = ExtResource( 11 )
+draw_passes = 1
+draw_pass_1 = ExtResource( 12 )
+script = ExtResource( 6 )
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "script" ]
+terrain_height = 64
+terrain_scale = 4.0
+rows = 32
+spacing = 12.0
+
 [node name="paprotas" type="Particles" parent="."]
 layers = 1
 material_override = null
@@ -237,9 +272,9 @@ fract_delta = true
 visibility_aabb = AABB( -512, 0, -512, 256, 20, 256 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 11 )
+process_material = ExtResource( 13 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 12 )
+draw_pass_1 = ExtResource( 14 )
 script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform" ]
 terrain_height = 64
@@ -270,7 +305,7 @@ fract_delta = true
 visibility_aabb = AABB( -512, 0, -512, 256, 20, 256 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 13 )
+process_material = ExtResource( 15 )
 draw_passes = 1
 draw_pass_1 = SubResource( 3 )
 script = ExtResource( 6 )
@@ -282,7 +317,7 @@ spacing = 16.0
 
 [node name="butterflies" type="Particles" parent="."]
 layers = 1
-material_override = ExtResource( 16 )
+material_override = ExtResource( 18 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -303,9 +338,9 @@ fract_delta = true
 visibility_aabb = AABB( -512, 0, -512, 256, 20, 256 )
 local_coords = false
 draw_order = 0
-process_material = ExtResource( 17 )
+process_material = ExtResource( 19 )
 draw_passes = 1
-draw_pass_1 = ExtResource( 18 )
+draw_pass_1 = ExtResource( 20 )
 script = ExtResource( 6 )
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform" ]
 terrain_height = 64
