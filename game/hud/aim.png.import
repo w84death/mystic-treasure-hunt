@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sky.jpg-8098346e5849222c7c69a7dd0562f35c.stex"
+path="res://.import/aim.png-0138cd7cb5eab5051b393262403bb8c1.stex"
 
 [deps]
 
-source_file="res://game/materials/sky/sky.jpg"
-dest_files=[ "res://.import/sky.jpg-8098346e5849222c7c69a7dd0562f35c.stex" ]
+source_file="res://game/hud/aim.png"
+dest_files=[ "res://.import/aim.png-0138cd7cb5eab5051b393262403bb8c1.stex" ]
 
 [params]
 

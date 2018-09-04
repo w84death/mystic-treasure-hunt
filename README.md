@@ -156,9 +156,15 @@ Player starts in the heavens. As a soul he lands on an island in a mission to fi
 
 My first successful game was Piradice. And now looking at this awesome tech for rendering islands it feels like the time for a sequel. Probably first thing I do after this arcade game will be created. So more like 2019.
 
-### ### Pac-man style
+### Pac-man style
 
 There are bad actors on the map. They will chase the player if close by. Player searches for artifacts. There are shrooms in the forest terrain that eaten gives player power to catch enemies. They will retreat.
+
+### Dijkstra
+
+On the island there are distributed T, R, E, A, S, U, R and E letters to collect. Also lot of stars to collect. Stars are just for pleasure and helps aim the map (shows paths). Player main goal is to collect all letters and also in the correct order.  And in the shortest possible time.
+
+hint: word treasure is not the best one as it have doubled R and E letters.
 
 ### Brainstorming
 

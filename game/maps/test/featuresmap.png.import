@@ -14,13 +14,13 @@ dest_files=[ "res://.import/featuresmap.png-c606c1b0eb35d9f62254259a06948041.s3t
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/no_bptc_if_rgb=false
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
-flags/anisotropic=false
+flags/anisotropic=true
 flags/srgb=2
 process/fix_alpha_border=false
 process/premult_alpha=false

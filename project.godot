@@ -28,6 +28,7 @@ settings/fps/force_fps=60
 
 window/size/width=800
 window/size/height=364
+window/size/fullscreen=true
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
@@ -148,11 +149,13 @@ common/physics_fps=75
 
 [rendering]
 
+threads/thread_model=2
+quality/filters/anisotropic_filter_level=8
 quality/directional_shadow/size=1024
 quality/shadow_atlas/size=1024
 quality/shadows/filter_mode=0
-quality/reflections/texture_array_reflections=false
-quality/reflections/high_quality_ggx=false
 quality/shading/force_vertex_shading.mobile=false
+quality/subsurface_scattering/quality=0
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
+quality/filters/msaa=3

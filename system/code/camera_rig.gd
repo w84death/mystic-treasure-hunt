@@ -9,7 +9,8 @@ export var mountains_level = 0.22;
 export var mountains_size = 3.0;
 export var water_height = 64*.3;
 export var map_size = Vector2(1024, 1024);
-export var move_fov_zoom = true;
+export var move_fov_zoom = false;
+export var camera_height_offset = 12.0;
 const DEADZONE = 0.05;
 const CAMERA_MIN_FOV = 60;
 const CAMERA_MAX_FOV = 75;
@@ -32,7 +33,7 @@ var axis_value;
 
 func _ready():
 	move_to = transform.origin
-	var minimap = get_node("map")
+	var minimap = $HUD/right/map
 	var tex = minimap.get_texture()
 	height_map = tex.get_data()
 
@@ -84,7 +85,7 @@ func get_adjustet_height(pos):
 	if (h > mountains_level):
 		h += (h-mountains_level)*mountains_size;
 		
-	return terrain_height * h * terrain_scale;
+	return terrain_height * h * terrain_scale + camera_height_offset;
 	
 func _physics_process(delta):
 	for axis in range(JOY_AXIS_0, JOY_AXIS_MAX):

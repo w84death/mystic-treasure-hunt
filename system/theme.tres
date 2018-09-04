@@ -41,10 +41,10 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = null
+Label/fonts/font = ExtResource( 1 )
 Label/styles/normal = null
 Panel/styles/panel = SubResource( 1 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
-_sections_unfolded = [ "Colors", "Constants", "Label", "Panel", "Panel/styles/panel", "Styles", "default_font" ]
+_sections_unfolded = [ "Colors", "Constants", "Label", "Label/fonts", "Panel", "Panel/styles/panel", "Styles", "default_font" ]
 
