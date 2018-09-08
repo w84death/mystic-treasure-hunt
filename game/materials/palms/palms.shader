@@ -1,11 +1,6 @@
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
 uniform sampler2D tex_albedo : hint_albedo;
-uniform sampler2D tex_ao : hint_albedo;
-uniform sampler2D tex_nrm : hint_normal;
-uniform sampler2D tex_spec;
-uniform sampler2D tex_rgh;
 
 uniform float amplitude = 0.1;
 uniform vec2 speed = vec2(2.0, 1.5);
@@ -23,11 +18,7 @@ void fragment() {
 	vec4 color = texture(tex_albedo, UV);
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
-	ALPHA_SCISSOR = 0.7;
 	
-	SPECULAR = texture(tex_spec, UV).r;
-	ROUGHNESS = texture(tex_rgh, UV).r;
-	METALLIC = 1.0;
-	NORMALMAP = texture(tex_nrm, UV).rgb;
-	NORMALMAP_DEPTH = -1.0;
+	//ROUGHNESS = 0.5;
+	//METALLIC = 0.5;
 }

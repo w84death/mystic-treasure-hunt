@@ -11,7 +11,7 @@
 transform = Transform( 0.619886, -0.777461, -0.106285, -0.501528, -0.496714, 0.70834, -0.6035, -0.385785, -0.697824, -0.893688, 301.399, -0.614716 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
-light_energy = 3.0
+light_energy = 1.0
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.2
@@ -21,7 +21,7 @@ shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_bias = 0.1
 shadow_contact = 0.0
-shadow_reverse_cull_face = true
+shadow_reverse_cull_face = false
 editor_only = false
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.1
@@ -31,8 +31,8 @@ directional_shadow_blend_splits = false
 directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
-directional_shadow_max_distance = 1024.0
-_sections_unfolded = [ "Directional Shadow", "Editor", "Light", "Shadow", "Transform" ]
+directional_shadow_max_distance = 256.0
+_sections_unfolded = [ "Editor", "Light", "Transform" ]
 
 [node name="enviroment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )

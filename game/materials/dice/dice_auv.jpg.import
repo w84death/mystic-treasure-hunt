@@ -2,18 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TexturesCom_RoadsDirt0080_1_seamless_S.jpg-d47434f3ed03150b4656e415818acd12.stex"
+path="res://.import/dice_auv.jpg-5ae31d66b2862e2339b47ef8c28e72e8.stex"
 
 [deps]
 
-source_file="res://game/materials/terrain/road/TexturesCom_RoadsDirt0080_1_seamless_S.jpg"
-dest_files=[ "res://.import/TexturesCom_RoadsDirt0080_1_seamless_S.jpg-d47434f3ed03150b4656e415818acd12.stex" ]
+source_file="res://game/materials/dice/dice_auv.jpg"
+dest_files=[ "res://.import/dice_auv.jpg-5ae31d66b2862e2339b47ef8c28e72e8.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -23,6 +24,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

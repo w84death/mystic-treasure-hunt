@@ -12,24 +12,9 @@ uniform sampler2D height_map;
 uniform sampler2D features_map;
 
 uniform sampler2D black_albedo : hint_albedo;
-uniform sampler2D black_ao : hint_albedo;
-uniform sampler2D black_nrm : hint_normal;
-uniform sampler2D black_rgh;
-
 uniform sampler2D red_albedo : hint_albedo;
-uniform sampler2D red_ao : hint_albedo;
-uniform sampler2D red_nrm : hint_normal;
-uniform sampler2D red_rgh;
-
 uniform sampler2D green_albedo : hint_albedo;
-uniform sampler2D green_ao : hint_albedo;
-uniform sampler2D green_nrm : hint_normal;
-uniform sampler2D green_rgh;
-
 uniform sampler2D blue_albedo : hint_albedo;
-uniform sampler2D blue_ao : hint_albedo;
-uniform sampler2D blue_nrm : hint_normal;
-uniform sampler2D blue_rgh;
 
 uniform float uv_scale = 32.0;
 
@@ -66,20 +51,7 @@ void fragment() {
 	vec3 albedo_r = texture(red_albedo, uv2 * uv_scale).rgb * zone_r;
 	vec3 albedo_g = texture(green_albedo, uv2 * uv_scale).rgb * zone_g;
 	vec3 albedo_b = texture(blue_albedo, uv2 * uv_scale).rgb * zone_b;
-
-	vec3 nrm_0 = texture(black_nrm, uv2 * uv_scale).rgb * zone_0;
-	vec3 nrm_r = texture(red_nrm, uv2 * uv_scale).rgb * zone_r;
-	vec3 nrm_g = texture(green_nrm, uv2 * uv_scale).rgb * zone_g;
-	vec3 nrm_b = texture(blue_nrm, uv2 * uv_scale).rgb * zone_b;
-	
-	vec3 rgh_0 = texture(black_rgh, uv2 * uv_scale).rgb * zone_0;
-	vec3 rgh_r = texture(red_rgh, uv2 * uv_scale).rgb * zone_r;
-	vec3 rgh_g = texture(green_rgh, uv2 * uv_scale).rgb * zone_g;
-	vec3 rgh_b = texture(blue_rgh, uv2 * uv_scale).rgb * zone_b;
 	
 	ALBEDO = albedo_0 + albedo_r + albedo_g + albedo_b;
-	METALLIC = 0.90;
-	ROUGHNESS = rgh_0.r + rgh_r.r + rgh_g.r + rgh_b.r;
-	NORMALMAP = nrm_0 + nrm_r + nrm_g + nrm_b;
-	NORMALMAP_DEPTH = 5.0;
+	METALLIC = 0.5;
 }

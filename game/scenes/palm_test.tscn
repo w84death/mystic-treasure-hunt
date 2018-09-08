@@ -26,8 +26,8 @@
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 2048, 2048 )
-subdivide_width = 1024
-subdivide_depth = 1024
+subdivide_width = 512
+subdivide_depth = 512
 
 [sub_resource type="PlaneMesh" id=2]
 
@@ -128,7 +128,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 16384
+amount = 9216
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -144,11 +144,11 @@ process_material = ExtResource( 4 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 5 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "process_material", "script" ]
 terrain_height = 64
 terrain_scale = 4.0
-rows = 128
-spacing = 4.0
+rows = 96
+spacing = 5.0
 
 [node name="grass_dark" type="Particles" parent="."]
 layers = 1
@@ -161,7 +161,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 16384
+amount = 9216
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -177,11 +177,11 @@ process_material = ExtResource( 7 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 8 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "process_material", "script" ]
 terrain_height = 64
 terrain_scale = 4.0
-rows = 128
-spacing = 4.0
+rows = 96
+spacing = 5.0
 
 [node name="grass_flowers" type="Particles" parent="."]
 layers = 1
@@ -309,7 +309,7 @@ process_material = ExtResource( 15 )
 draw_passes = 1
 draw_pass_1 = SubResource( 3 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "LOD", "Process Material", "Script", "Transform" ]
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 64
