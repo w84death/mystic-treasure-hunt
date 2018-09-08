@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+render_mode cull_disabled,diffuse_toon,specular_toon;
 
 uniform float amplitude = 0.2;
 uniform vec2 speed = vec2(2.0, 1.5);
@@ -23,8 +23,8 @@ void fragment() {
 	ALPHA = color.a;
 	ALPHA_SCISSOR = alpha_cut;
 	
-	SPECULAR = 0.0;
-	ROUGHNESS = 0.4;
-	METALLIC = 0.6;
+	SPECULAR = 0.2;
+	ROUGHNESS = 0.2;
+	METALLIC = 0.7;
 	TRANSMISSION = color.rgb * 0.25;
 }

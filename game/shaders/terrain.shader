@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+render_mode cull_disabled,diffuse_toon,specular_toon;
 
 uniform vec2 map_size = vec2(1024.0, 1024.0);
 uniform float max_height = 18.0;
@@ -53,7 +53,7 @@ void fragment() {
 	vec3 albedo_b = texture(blue_albedo, uv2 * uv_scale).rgb * zone_b;
 	
 	ALBEDO = albedo_0 + albedo_r + albedo_g + albedo_b;
-	SPECULAR = 0.5;
-	ROUGHNESS = 1.0;
-	METALLIC = 0.2;
+	SPECULAR = 0.3;
+	ROUGHNESS = 0.8;
+	METALLIC = 0.7;
 }
