@@ -15,6 +15,7 @@ dest_files=[ "res://.import/cavefloor1_Normal.png-8ed98f9a76162866f245521c573afd
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

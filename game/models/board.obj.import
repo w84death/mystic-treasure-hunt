@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/board.obj-84168b11c9ab04a54d72c5f11f122745.mesh"
+
+[deps]
+
+files=[ "res://.import/board.obj-84168b11c9ab04a54d72c5f11f122745.mesh" ]
+
+source_file="res://game/models/board.obj"
+dest_files=[ "res://.import/board.obj-84168b11c9ab04a54d72c5f11f122745.mesh", "res://.import/board.obj-84168b11c9ab04a54d72c5f11f122745.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

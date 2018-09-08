@@ -15,6 +15,7 @@ dest_files=[ "res://.import/branches_twisted_ao.png-38ac07fa893db4120989052c924f
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

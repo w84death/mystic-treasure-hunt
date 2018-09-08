@@ -15,6 +15,7 @@ dest_files=[ "res://.import/DisplacementMap.png-23d2c8e517b607dc3839c24358032785
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

@@ -14,6 +14,7 @@ dest_files=[ "res://.import/alpha01.png-7c8ce7a0c94e78e96768a68672703793.stex" ]
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true

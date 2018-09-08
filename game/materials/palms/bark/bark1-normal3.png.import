@@ -15,6 +15,7 @@ dest_files=[ "res://.import/bark1-normal3.png-be9aed771c78c0177a075076d612bb81.s
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

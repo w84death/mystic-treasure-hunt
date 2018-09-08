@@ -15,6 +15,7 @@ dest_files=[ "res://.import/cavefloor1_Ambient_Occlusion.png-21cf9eb00d22a41b80b
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

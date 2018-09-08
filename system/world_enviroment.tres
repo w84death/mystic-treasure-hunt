@@ -1,23 +1,36 @@
-[gd_resource type="Environment" load_steps=3 format=2]
+[gd_resource type="Environment" load_steps=2 format=2]
 
-[ext_resource path="res://game/materials/sky/sky.jpg" type="Texture" id=1]
+[sub_resource type="ProceduralSky" id=1]
 
-[sub_resource type="PanoramaSky" id=1]
-
-radiance_size = 4
-panorama = ExtResource( 1 )
+radiance_size = 0
+sky_top_color = Color( 0.647059, 0.839216, 0.945098, 1 )
+sky_horizon_color = Color( 0.839216, 0.917647, 0.980392, 1 )
+sky_curve = 0.09
+sky_energy = 1.0
+ground_bottom_color = Color( 0.298039, 0.341176, 0.117647, 1 )
+ground_horizon_color = Color( 0.866667, 0.980392, 0.662745, 1 )
+ground_curve = 0.32
+ground_energy = 1.0
+sun_color = Color( 1, 1, 1, 1 )
+sun_latitude = 35.0
+sun_longitude = 0.0
+sun_angle_min = 1.0
+sun_angle_max = 100.0
+sun_curve = 0.05
+sun_energy = 16.0
+texture_size = 2
 
 [resource]
 
 background_mode = 2
 background_sky = SubResource( 1 )
 background_sky_custom_fov = 75.0
-background_color = Color( 0.992157, 0, 1, 1 )
+background_color = Color( 0.909804, 0.976471, 1, 1 )
 background_energy = 1.5
 background_canvas_max_layer = 0
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 1.0
-ambient_light_sky_contribution = 0.3
+ambient_light_sky_contribution = 1.0
 fog_enabled = true
 fog_color = Color( 0.866667, 0.980392, 0.662745, 1 )
 fog_sun_color = Color( 1, 1, 1, 1 )
@@ -33,7 +46,7 @@ fog_height_max = 512.0
 fog_height_curve = 1.51572
 tonemap_mode = 0
 tonemap_exposure = 1.0
-tonemap_white = 11.4
+tonemap_white = 1.0
 auto_exposure_enabled = false
 auto_exposure_scale = 0.85
 auto_exposure_min_luma = 0.05
@@ -45,7 +58,7 @@ ss_reflections_fade_in = 0.999999
 ss_reflections_fade_out = 1.0
 ss_reflections_depth_tolerance = 0.1
 ss_reflections_roughness = false
-ssao_enabled = true
+ssao_enabled = false
 ssao_radius = 14.0
 ssao_intensity = 32.0
 ssao_radius2 = 0.0
@@ -57,7 +70,7 @@ ssao_color = Color( 0, 0, 0, 1 )
 ssao_quality = 0
 ssao_blur = 3
 ssao_edge_sharpness = 0.0
-dof_blur_far_enabled = true
+dof_blur_far_enabled = false
 dof_blur_far_distance = 768.0
 dof_blur_far_transition = 32.0
 dof_blur_far_amount = 0.08
@@ -86,5 +99,5 @@ adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Background", "Glow", "Levels", "Tonemap", "background_sky", "levels" ]
+_sections_unfolded = [ "Ambient Light", "Background", "DOF Near Blur", "Levels", "background_sky", "levels" ]
 

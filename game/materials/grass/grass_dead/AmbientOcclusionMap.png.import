@@ -14,8 +14,8 @@ dest_files=[ "res://.import/AmbientOcclusionMap.png-67393c77b0a349b97e40c36b4b92
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/no_bptc_if_rgb=false
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

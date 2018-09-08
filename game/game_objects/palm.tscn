@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/models/pro_palm.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://game/materials/palms/palm_bark.material" type="Material" id=2]
+[ext_resource path="res://game/materials/palms/bark/palm_bark.material" type="Material" id=2]
 [ext_resource path="res://game/materials/palms/palm_leafs.material" type="Material" id=3]
+
 
 [node name="palm" type="MeshInstance" index="0"]
 layers = 1

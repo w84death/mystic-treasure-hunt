@@ -15,7 +15,7 @@
 [ext_resource path="res://game/materials/paprotas/paprotas_big_particle.material" type="Material" id=13]
 [ext_resource path="res://game/models/paprota_big_light.tres" type="ArrayMesh" id=14]
 [ext_resource path="res://game/materials/palms/palms_particle.material" type="Material" id=15]
-[ext_resource path="res://game/materials/palms/palm_bark.material" type="Material" id=16]
+[ext_resource path="res://game/materials/palms/bark/palm_bark.material" type="Material" id=16]
 [ext_resource path="res://game/materials/palms/palm_leafs.material" type="Material" id=17]
 [ext_resource path="res://game/materials/butterflies/insects.material" type="Material" id=18]
 [ext_resource path="res://game/materials/butterflies/insects_particles.material" type="Material" id=19]
@@ -128,7 +128,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 16384
+amount = 4096
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -144,11 +144,11 @@ process_material = ExtResource( 4 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 5 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "process_material", "script" ]
 terrain_height = 64
 terrain_scale = 4.0
-rows = 128
-spacing = 4.0
+rows = 64
+spacing = 12.0
 
 [node name="grass_dark" type="Particles" parent="."]
 layers = 1
@@ -161,7 +161,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 16384
+amount = 4096
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0
@@ -177,11 +177,11 @@ process_material = ExtResource( 7 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 8 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "process_material", "script" ]
 terrain_height = 64
 terrain_scale = 4.0
-rows = 128
-spacing = 4.0
+rows = 64
+spacing = 12.0
 
 [node name="grass_flowers" type="Particles" parent="."]
 layers = 1
@@ -210,11 +210,11 @@ process_material = ExtResource( 9 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 10 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "process_material", "script" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 32
-spacing = 12.0
+spacing = 24.0
 
 [node name="grass_dead" type="Particles" parent="."]
 layers = 1
@@ -243,11 +243,11 @@ process_material = ExtResource( 11 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 12 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "script" ]
+_sections_unfolded = [ "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 32
-spacing = 12.0
+spacing = 24.0
 
 [node name="paprotas" type="Particles" parent="."]
 layers = 1
@@ -276,11 +276,11 @@ process_material = ExtResource( 13 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 14 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "process_material" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 32
-spacing = 24.0
+spacing = 28.0
 
 [node name="palms" type="Particles" parent="."]
 layers = 1
@@ -309,11 +309,11 @@ process_material = ExtResource( 15 )
 draw_passes = 1
 draw_pass_1 = SubResource( 3 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "LOD", "Process Material", "Script", "Transform" ]
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 64
-spacing = 16.0
+spacing = 18.0
 
 [node name="butterflies" type="Particles" parent="."]
 layers = 1

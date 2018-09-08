@@ -14,8 +14,8 @@ dest_files=[ "res://.import/NormalMap.png-d8fe2ae11af7b4e87ea9053f2daa3b95.s3tc.
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/no_bptc_if_rgb=false
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

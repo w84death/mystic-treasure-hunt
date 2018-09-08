@@ -15,6 +15,7 @@ dest_files=[ "res://.import/bark1-albedo.png-a70215d28cd20a47786ab123b33a0cd1.s3
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true
