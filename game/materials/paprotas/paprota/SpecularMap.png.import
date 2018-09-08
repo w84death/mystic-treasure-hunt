@@ -15,6 +15,7 @@ dest_files=[ "res://.import/SpecularMap.png-4840ac00c4f1f9b6341b918b594a136f.s3t
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

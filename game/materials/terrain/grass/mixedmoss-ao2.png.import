@@ -15,6 +15,7 @@ dest_files=[ "res://.import/mixedmoss-ao2.png-d216cd00c7b33c0e8717cd8425482cbd.s
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true

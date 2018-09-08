@@ -4,7 +4,7 @@
 
 [sub_resource type="PanoramaSky" id=1]
 
-radiance_size = 0
+radiance_size = 4
 panorama = ExtResource( 1 )
 
 [resource]
@@ -31,9 +31,9 @@ fog_height_enabled = false
 fog_height_min = 128.0
 fog_height_max = 512.0
 fog_height_curve = 1.51572
-tonemap_mode = 0
+tonemap_mode = 2
 tonemap_exposure = 1.0
-tonemap_white = 11.4
+tonemap_white = 1.0
 auto_exposure_enabled = false
 auto_exposure_scale = 0.85
 auto_exposure_min_luma = 0.05
@@ -67,7 +67,7 @@ dof_blur_near_distance = 32.0
 dof_blur_near_transition = 16.0
 dof_blur_near_amount = 0.1
 dof_blur_near_quality = 2
-glow_enabled = false
+glow_enabled = true
 glow_levels/1 = false
 glow_levels/2 = true
 glow_levels/3 = false
@@ -86,5 +86,5 @@ adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Background", "Levels", "background_sky", "levels" ]
+_sections_unfolded = [ "Ambient Light", "Auto Exposure", "Background", "Levels", "Tonemap", "background_sky", "levels" ]
 

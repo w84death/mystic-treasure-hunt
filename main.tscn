@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
 [ext_resource path="res://system/code/camera_rig.gd" type="Script" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=11]
 [ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=12]
 [ext_resource path="res://system/corners.tscn" type="PackedScene" id=13]
-[ext_resource path="res://game/scenes/game-of-ur.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
 
@@ -148,7 +147,7 @@ tracks/1/keys = {
 [node name="system" parent="." instance=ExtResource( 1 )]
 
 [node name="SUN" parent="system" index="0"]
-transform = Transform( 0.970632, 0.172231, -0.167955, 0, 0.698166, 0.715937, 0.240567, -0.694912, 0.677662, -0.893688, 301.399, -0.614716 )
+transform = Transform( 0.970632, -0.16687, -0.173283, 0, 0.720309, -0.693654, 0.240567, 0.673283, 0.699155, -0.893688, 301.399, -0.614716 )
 light_cull_mask = -1
 _sections_unfolded = [ "Editor", "Light", "Shadow", "Transform" ]
 
@@ -194,6 +193,7 @@ fov = 75.0
 size = 1.0
 near = 0.05
 far = 2048.0
+_sections_unfolded = [ "Transform" ]
 
 [node name="motion_blur" parent="PLAYER/Camera" instance=ExtResource( 3 )]
 
@@ -305,19 +305,17 @@ _sections_unfolded = [ "Offset", "Transform" ]
 [node name="MAP" parent="." instance=ExtResource( 9 )]
 
 [node name="terrain" parent="MAP" index="0"]
-_sections_unfolded = [ "Geometry", "Material", "Script", "Transform", "material", "mesh" ]
+_sections_unfolded = [ "Geometry", "Material", "Script", "Transform", "material" ]
 
 [node name="water" parent="MAP" index="1"]
 transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, -2.11798, -9.68553, 4.34766 )
-_sections_unfolded = [ "Material", "Transform", "material", "mesh" ]
+_sections_unfolded = [ "Material", "Transform", "material" ]
 
 [node name="grass_basic" parent="MAP" index="2"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
-spacing = 6.0
+_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "script" ]
 
 [node name="grass_dark" parent="MAP" index="3"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
-spacing = 6.0
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "script" ]
 
 [node name="grass_flowers" parent="MAP" index="4"]
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "script" ]
@@ -327,9 +325,6 @@ _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", 
 
 [node name="paprotas" parent="MAP" index="6"]
 _sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1" ]
-
-[node name="palms" parent="MAP" index="7"]
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material" ]
 
 [node name="GUI" type="Control" parent="."]
 anchor_left = 0.0
@@ -343,7 +338,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 5 )
-_sections_unfolded = [ "Theme", "theme" ]
+_sections_unfolded = [ "Rect", "theme" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="middle" type="Control" parent="GUI"]
 anchor_left = 0.5
@@ -504,10 +502,6 @@ anims/fade-in = SubResource( 4 )
 anims/fade-out = SubResource( 5 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
-
-[node name="Spatial" parent="." instance=ExtResource( 14 )]
-transform = Transform( 3.02561, 0, 2.61643, 0, 4, 0, -2.61643, 0, 3.02561, 675.53, 160.057, 275.56 )
-_sections_unfolded = [ "Transform" ]
 
 
 [editable path="system"]

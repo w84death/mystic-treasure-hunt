@@ -15,6 +15,7 @@ dest_files=[ "res://.import/mixedmoss-normal2-inverted.png-5fba9b608755c85056246
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=1
 flags/repeat=true
 flags/filter=true

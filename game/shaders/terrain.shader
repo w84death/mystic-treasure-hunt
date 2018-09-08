@@ -30,11 +30,11 @@ float get_height(vec2 pos) {
 
 void vertex() {
 	VERTEX.y = get_height(VERTEX.xz);
-	float A = 0.8;
-	float B = 0.8;
+	/*float A = 0.2;
+	float B = 0.2;
 	TANGENT = normalize( vec3(0.0, get_height(VERTEX.xz + vec2(0.0, B)) - get_height(VERTEX.xz + vec2(0.0, -0.1)), A));
 	BINORMAL = normalize( vec3(A, get_height(VERTEX.xz + vec2(B, 0.0)) - get_height(VERTEX.xz + vec2(-0.1, 0.0)), 0.0));
-	NORMAL = cross(TANGENT, BINORMAL);
+	NORMAL = cross(TANGENT, BINORMAL);*/
 }
 
 void fragment() {
@@ -53,5 +53,7 @@ void fragment() {
 	vec3 albedo_b = texture(blue_albedo, uv2 * uv_scale).rgb * zone_b;
 	
 	ALBEDO = albedo_0 + albedo_r + albedo_g + albedo_b;
-	METALLIC = 0.5;
+	SPECULAR = 0.5;
+	ROUGHNESS = 1.0;
+	METALLIC = 0.2;
 }
