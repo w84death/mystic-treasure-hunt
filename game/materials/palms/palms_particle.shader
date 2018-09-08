@@ -8,6 +8,7 @@ uniform sampler2D height_map;
 uniform sampler2D features_map;
 uniform float max_height = 18.0;
 uniform float heigh_noise_scale = 64.0;
+uniform float size_noise_scale = 2.0;
 uniform vec2 heightmap_size = vec2(512.0, 512.0);
 uniform float terrain_scale = 4.0;
 uniform float water_level = 0.0;
@@ -75,9 +76,14 @@ void vertex() {
 	}
 	
 	float height_noise = clamp(noise.y * heigh_noise_scale, 0.2, heigh_noise_scale);
-	
-	// update our transform to place
 	TRANSFORM[3][0] = pos.x * terrain_scale;
 	TRANSFORM[3][1] = pos.y * terrain_scale - height_noise;
 	TRANSFORM[3][2] = pos.z * terrain_scale;
+	
+	float scale_noise = clamp(noise.y * size_noise_scale, 0.5, size_noise_scale);
+	TRANSFORM[0][0] = scale_noise;
+	TRANSFORM[1][1] = scale_noise;
+	TRANSFORM[2][2] = scale_noise;
+
+
 }

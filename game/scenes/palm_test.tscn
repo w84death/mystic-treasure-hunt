@@ -148,7 +148,7 @@ _sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Sc
 terrain_height = 64
 terrain_scale = 4.0
 rows = 64
-spacing = 8.0
+spacing = 12.0
 
 [node name="grass_dark" type="Particles" parent="."]
 layers = 1
@@ -181,7 +181,7 @@ _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", 
 terrain_height = 64
 terrain_scale = 4.0
 rows = 64
-spacing = 8.0
+spacing = 12.0
 
 [node name="grass_flowers" type="Particles" parent="."]
 layers = 1
@@ -210,11 +210,11 @@ process_material = ExtResource( 9 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 10 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "process_material", "script" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 32
-spacing = 12.0
+spacing = 24.0
 
 [node name="grass_dead" type="Particles" parent="."]
 layers = 1
@@ -243,11 +243,11 @@ process_material = ExtResource( 11 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 12 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "script" ]
+_sections_unfolded = [ "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 32
-spacing = 12.0
+spacing = 24.0
 
 [node name="paprotas" type="Particles" parent="."]
 layers = 1
@@ -276,11 +276,11 @@ process_material = ExtResource( 13 )
 draw_passes = 1
 draw_pass_1 = ExtResource( 14 )
 script = ExtResource( 6 )
-_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "process_material" ]
 terrain_height = 64
 terrain_scale = 4.0
 rows = 32
-spacing = 24.0
+spacing = 28.0
 
 [node name="palms" type="Particles" parent="."]
 layers = 1
@@ -313,7 +313,7 @@ _sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "LOD", "Process Mat
 terrain_height = 64
 terrain_scale = 4.0
 rows = 64
-spacing = 16.0
+spacing = 18.0
 
 [node name="butterflies" type="Particles" parent="."]
 layers = 1

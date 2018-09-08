@@ -5,6 +5,7 @@ uniform float terrain_scale = 4.0;
 uniform float rows = 12;
 uniform float spacing = 1.0;
 uniform float heigh_noise_scale = 18.0;
+uniform float size_noise_scale = 2.0;
 uniform bool red_zone = false;
 uniform bool green_zone = false;
 uniform bool blue_zone = false;
@@ -87,9 +88,12 @@ void vertex() {
 	}
 	
 	float height_noise = clamp(noise.y * heigh_noise_scale, 0.2, heigh_noise_scale);
-	
-	// update our transform to place
 	TRANSFORM[3][0] = pos.x * terrain_scale;
 	TRANSFORM[3][1] = pos.y * terrain_scale - height_noise;
-	TRANSFORM[3][2] = pos.z * terrain_scale;	
+	TRANSFORM[3][2] = pos.z * terrain_scale;
+	
+	float scale_noise = clamp(noise.y * size_noise_scale, 0.5, size_noise_scale);
+	TRANSFORM[0][0] = scale_noise;
+	TRANSFORM[1][1] = scale_noise;
+	TRANSFORM[2][2] = scale_noise;
 }

@@ -176,7 +176,7 @@ mountains_size = 3.0
 water_height = 20.0
 map_size = Vector2( 2048, 2048 )
 move_fov_zoom = false
-camera_height_offset = 24.0
+camera_height_offset = 48.0
 
 [node name="Camera" type="Camera" parent="PLAYER"]
 editor/display_folded = true
@@ -320,10 +320,10 @@ _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", 
 _sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
 
 [node name="grass_dead" parent="MAP" index="5"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "script" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
 
 [node name="paprotas" parent="MAP" index="6"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1" ]
+_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material" ]
 
 [node name="palms" parent="MAP" index="7"]
 draw_pass_1 = ExtResource( 10 )
