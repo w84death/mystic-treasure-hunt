@@ -148,6 +148,7 @@ tracks/1/keys = {
 [node name="system" parent="." instance=ExtResource( 1 )]
 
 [node name="SUN" parent="system" index="0"]
+light_cull_mask = -1
 _sections_unfolded = [ "Light", "Shadow", "Transform" ]
 
 [node name="enviroment" parent="system" index="1"]

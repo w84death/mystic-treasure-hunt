@@ -38,7 +38,7 @@ And lastly, based on the feedback and ideas final game will be made, closing las
 #### To-do (priority ordered)
 
 - one terrain settings (heightmap/size) + script that propagates this to all shaders
-- butterflies, birds
+- birds
 - clouds
 - easy changing maps
 - grass  shader reacts to movement
@@ -68,9 +68,17 @@ At last we have a name, right?
 
 ## Changelog
 
-### alpha/07
+### alpha/08
 
-Work in progress..
+![alpha08](web-stuff/alpha08.png)
+
+- [change] back to HD ready (1280x720)
+- [update] big grass shader changes (scale, height, rotate)
+- [new] aim sprite (circle in the center)
+- [update] optimizations to all materials
+- [removed] all normal/spec/ao/disp textures
+
+### alpha/07
 
 - [change] resolution 800x364
 - [new] camera motion blur
