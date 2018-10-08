@@ -309,7 +309,6 @@ _sections_unfolded = [ "Geometry", "Material", "Script", "Transform", "material"
 
 [node name="water" parent="MAP" index="1"]
 transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, -2.11798, -9.68553, 4.34766 )
-_sections_unfolded = [ "Material", "Transform", "material" ]
 
 [node name="grass_basic" parent="MAP" index="2"]
 _sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]

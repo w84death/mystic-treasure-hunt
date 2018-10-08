@@ -1,109 +1,139 @@
+// -----------------------------------------------------------------------------
+// VEGETATION PARTICLE SHADER
+// -----------------------------------------------------------------------------
+// based on many tutorials / final version by Krzysztof Jankowski
+// (c) P1X 2018 / fill free to use just don't bother me
+// -----------------------------------------------------------------------------
+
 shader_type particles;
 
-uniform float uniq = 0.1234;
-uniform float terrain_scale = 4.0;
-uniform float rows = 12;
-uniform float spacing = 1.0;
-uniform float size_scale_min = 0.5;
-uniform float size_scale_max = 2.0;
-uniform bool red_zone = false;
-uniform bool green_zone = false;
-uniform bool blue_zone = false;
-uniform sampler2D height_map;
-uniform sampler2D features_map;
-uniform float max_height = 18.0;
-uniform float water_level = 54.0;
-uniform vec2 heightmap_size = vec2(512.0, 512.0);
-uniform float mountains_level = 0.6;
-uniform float mountains_size = 6.0;
+// SETTINGS --------------------------------------------------------------------
 
+// SET RANDOM FLOAT FOR EACH VEGETATION TYPE
+uniform float RANDOM_SEED = 0.1234;
+
+// TERRAIN SETTINGS
+uniform float TERRAIN_SURFACE_SCALE = 4.0;
+uniform float TERRAIN_HEIGHT_SCALE = 64.0;
+uniform float TERRAIN_WATER_LEVEL = 4.0;
+uniform float TERRAIN_MOINTAINS_LEVEL = 0.65;
+uniform float TERRAIN_MOINTAINS_TWIST_SCALE = 3.0;
+
+// VEGETATION SETTINGS
+uniform float GRASS_ROWS = 64;
+uniform float GRASS_SPACING = 12.0;
+uniform float GRASS_TWIST_SCALE_MIN = 0.5;
+uniform float GRASS_TWIST_SCALE_MAX = 2.0;
+uniform bool ZONE_RED = false;
+uniform bool ZONE_GREEN = false;
+uniform bool ZONE_BLUE = false;
+
+// MAPS
+uniform sampler2D HEIGHT_MAP;
+uniform sampler2D FEATURES_MAP;
+uniform vec2 MAP_SIZE = vec2(2048.0, 2048.0);
+
+
+// HELPERS ---------------------------------------------------------------------
+
+// RETURNS HEIGHT FROM HEIGHT_MAP
 float get_height(vec2 pos) {
-	pos -= 0.5 * heightmap_size;
-	pos /= heightmap_size;
-	float h = texture(height_map, pos).r;
-	if (h>mountains_level) {
-		h += (h-mountains_level)*mountains_size;
+	pos -= 0.5 * MAP_SIZE;
+	pos /= MAP_SIZE; // center
+	float h = texture(HEIGHT_MAP, pos).r; // read height from texture
+	if (h>TERRAIN_MOINTAINS_LEVEL) { // check if we hit the mountain level
+		h += (h-TERRAIN_MOINTAINS_LEVEL)*TERRAIN_MOINTAINS_TWIST_SCALE; // TWIST_SCALE up for mountain effect
 	}
-	return max_height * h;
+	return TERRAIN_HEIGHT_SCALE * h; // adjust for the overall terrain TWIST_SCALE
 }
 
+// RANDOM NUMBER GENERATORS
 float fake_random(vec2 p){
 	return fract(sin(dot(p.xy, vec2(12.9898,78.233))) * 43758.5453);
 }
 vec2 faker(vec2 p){
-	return vec2(fake_random(p),fake_random(p*uniq));
+	return vec2(fake_random(p),fake_random(p*RANDOM_SEED));
 }
 
-mat4 enterTheMatrix(vec3 pos, vec3 axis, float angle, float scale){
+// THREE DIMENSIONAL MATRIX MANIPULATION
+mat4 enterTheMatrix(vec3 pos, vec3 axis, float angle, float TWIST_SCALE){
     axis = normalize(axis);
     float s = sin(angle);
     float c = cos(angle);
     float oc = 1.0 - c;
-    
-    return mat4(vec4((oc * axis.x * axis.x + c)* scale,		oc * axis.x * axis.y - axis.z * s,	oc * axis.z * axis.x + axis.y * s,	0.0),
-                vec4(oc * axis.x * axis.y + axis.z * s,		(oc * axis.y * axis.y + c) * scale,	oc * axis.y * axis.z - axis.x * s,	0.0),
-                vec4(oc * axis.z * axis.x - axis.y * s,		oc * axis.y * axis.z + axis.x * s,	(oc * axis.z * axis.z + c) * scale,	0.0),
+
+	// converts matrix for position, angle (for each axix) and TWIST_SCALE
+    return mat4(vec4((oc * axis.x * axis.x + c)* TWIST_SCALE,		oc * axis.x * axis.y - axis.z * s,	oc * axis.z * axis.x + axis.y * s,	0.0),
+                vec4(oc * axis.x * axis.y + axis.z * s,		(oc * axis.y * axis.y + c) * TWIST_SCALE,	oc * axis.y * axis.z - axis.x * s,	0.0),
+                vec4(oc * axis.z * axis.x - axis.y * s,		oc * axis.y * axis.z + axis.x * s,	(oc * axis.z * axis.z + c) * TWIST_SCALE,	0.0),
                 vec4(pos.x,									pos.y,								pos.z,								1.0));
 }
 
+// VERTEX ----------------------------------------------------------------------
+
 void vertex() {
-	// obtain our position based on which particle we're rendering
+
 	vec3 pos = vec3(0.0, 0.0, 0.0);
 	pos.z = float(INDEX);
-	pos.x = mod(pos.z, rows);
-	pos.z = (pos.z - pos.x) / rows;
-	
-	// center this
-	pos.x -= rows * 0.5;
-	pos.z -= rows * 0.5;
-	
-	// and now apply our spacing
-	pos *= spacing;
-	
-	// now center on our particle location but within our spacing
-	pos.x += (EMISSION_TRANSFORM[3][0] - mod(EMISSION_TRANSFORM[3][0], spacing*terrain_scale))/terrain_scale;
-	pos.z += (EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], spacing*terrain_scale))/terrain_scale;
+	pos.x = mod(pos.z, GRASS_ROWS);
+	pos.z = (pos.z - pos.x) / GRASS_ROWS; // obtain our position based on which particle we're rendering
 
-	// now add some noise based on our _world_ position
-	vec2 noise = faker(pos.xz);
 
-	pos.x += (noise.x * 4.0 ) * spacing;
-	pos.z += (noise.y * 4.0 ) * spacing;
-	
-	// apply our height
-	pos.y = get_height(pos.xz);
-	
+	pos.x -= GRASS_ROWS * 0.5;
+	pos.z -= GRASS_ROWS * 0.5; // center
+	pos *= GRASS_SPACING; // apply grass spacing
+
+	// center on our particle location but within our spacing and TWIST_SCALE
+	pos.x += (EMISSION_TRANSFORM[3][0] - mod(EMISSION_TRANSFORM[3][0], GRASS_SPACING*TERRAIN_SURFACE_SCALE))/TERRAIN_SURFACE_SCALE;
+	pos.z += (EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], GRASS_SPACING*TERRAIN_SURFACE_SCALE))/TERRAIN_SURFACE_SCALE;
+
+
+	vec2 noise = faker(pos.xz); // generate some noise based on our _world_ position
+
+	pos.x += (noise.x * 4.0 ) * GRASS_SPACING;
+	pos.z += (noise.y * 4.0 ) * GRASS_SPACING; // apply noise and spacing
+	pos.y = get_height(pos.xz); // apply height
+
+	// check if on flat land or clif
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
-	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
+	float y3 = get_height(pos.xz + vec2(0.0, 1.0)); // get near positions
 
 	vec2 feat_pos = pos.xz;
-	feat_pos -= 0.5 * heightmap_size;
-	feat_pos /= heightmap_size;
-	
-	float terrain_mask = 0.0;
-	if (red_zone) {
-		terrain_mask += texture(features_map, feat_pos).r;
-	}
-	if (green_zone) {
-		terrain_mask += texture(features_map, feat_pos).g;
-	}
-	if (blue_zone) {
-		terrain_mask += texture(features_map, feat_pos).b;
-	}
-	
-	if (terrain_mask < 0.65 || pos.y < water_level) {
-		pos.y = -10000.0;
-	} else if (abs(y2 - pos.y) > 0.5) {
-		pos.y = -10000.0;
-	} else if (abs(y3 - pos.y) > 0.5) {
-		pos.y = -10000.0;
-	}
-	
-	float scale_mod = clamp(noise.x * size_scale_max, size_scale_min, size_scale_max);
+	feat_pos -= 0.5 * MAP_SIZE;
+	feat_pos /= MAP_SIZE; // center
 
+	// prepare terrain mask for each zone
+	float terrain_mask = 0.0;
+	if (ZONE_RED) {
+		terrain_mask += texture(FEATURES_MAP, feat_pos).r;
+	}
+	if (ZONE_GREEN) {
+		terrain_mask += texture(FEATURES_MAP, feat_pos).g;
+	}
+	if (ZONE_BLUE) {
+		terrain_mask += texture(FEATURES_MAP, feat_pos).b;
+	}
+
+	// remove particle if
+	if (terrain_mask < 0.65 || pos.y < TERRAIN_WATER_LEVEL) { // don't fit any terrain mask or is underwater
+		pos.y = -10000.0;
+	} else if (abs(y2 - pos.y) > 0.5) { // it's on clif
+		pos.y = -10000.0;
+	} else if (abs(y3 - pos.y) > 0.5) { // it's on clif
+		pos.y = -10000.0;
+	}
+
+	// calculate random scaling but within min/max
+	float TWIST_SCALE_mod = clamp(noise.x * GRASS_TWIST_SCALE_MAX, GRASS_TWIST_SCALE_MIN, GRASS_TWIST_SCALE_MAX);
+
+	// do the final transformation
 	TRANSFORM = enterTheMatrix(
-		vec3(pos.x * terrain_scale, pos.y * terrain_scale, pos.z * terrain_scale), 
-		vec3(0.0, 1.0, 0.0), 
-		clamp(noise.y * 320.0, 0.0, 320.0), 
-		scale_mod);
+		vec3(pos.x * TERRAIN_SURFACE_SCALE, pos.y * TERRAIN_SURFACE_SCALE, pos.z * TERRAIN_SURFACE_SCALE), // set position
+		vec3(0.0, 1.0, 0.0), // lock Y axis
+		clamp(noise.y * 320.0, 0.0, 320.0), // rotate 0-360 (over Y)
+		TWIST_SCALE_mod); // TWIST_SCALE
 }
+
+// -----------------------------------------------------------------------------
+// EOF.
+// -----------------------------------------------------------------------------

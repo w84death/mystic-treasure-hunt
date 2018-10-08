@@ -115,7 +115,7 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = ExtResource( 3 )
-_sections_unfolded = [ "Material", "Transform" ]
+_sections_unfolded = [ "Material", "Transform", "material" ]
 
 [node name="grass_basic" type="Particles" parent="."]
 layers = 1
