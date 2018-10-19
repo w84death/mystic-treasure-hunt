@@ -1,10 +1,12 @@
 shader_type spatial;
-render_mode cull_disabled,diffuse_toon,specular_toon;
+
 
 uniform float amplitude = 0.2;
 uniform vec2 speed = vec2(2.0, 1.5);
 uniform vec2 scale = vec2(0.1, 0.2);
 uniform float alpha_cut = 0.15;
+
+uniform bool reflections = false;
 
 uniform sampler2D tex_albedo : hint_albedo;
 
@@ -23,8 +25,14 @@ void fragment() {
 	ALPHA = color.a;
 	ALPHA_SCISSOR = alpha_cut;
 	
-	SPECULAR = 0.2;
-	ROUGHNESS = 0.2;
-	METALLIC = 0.7;
+	if (reflections) {
+		SPECULAR = 0.8;
+		ROUGHNESS = 0.0;
+		METALLIC = 1.0;
+	}else {
+		SPECULAR = 0.1;
+		ROUGHNESS = 0.8;
+		METALLIC = 0.2;
+	}
 	TRANSMISSION = color.rgb * 0.25;
 }
