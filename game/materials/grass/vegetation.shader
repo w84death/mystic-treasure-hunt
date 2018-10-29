@@ -1,5 +1,5 @@
 shader_type spatial;
-
+render_mode diffuse_burley;
 
 uniform float amplitude = 0.2;
 uniform vec2 speed = vec2(2.0, 1.5);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://system/code/exit_on_esc.gd" type="Script" id=1]
 [ext_resource path="res://system/system.tscn" type="PackedScene" id=2]
@@ -8,13 +8,14 @@
 [ext_resource path="res://system/theme.tres" type="Theme" id=6]
 [ext_resource path="res://game/hud/aim.png" type="Texture" id=7]
 [ext_resource path="res://system/code/fps.gd" type="Script" id=8]
-[ext_resource path="res://game/maps/test/heigtmap.png" type="Texture" id=9]
-[ext_resource path="res://game/scenes/palm_test.tscn" type="PackedScene" id=10]
-[ext_resource path="res://game/models/palm.tres" type="ArrayMesh" id=11]
-[ext_resource path="res://system/fonts/heade_thin.tres" type="DynamicFont" id=12]
-[ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=13]
-[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=14]
-[ext_resource path="res://system/corners.tscn" type="PackedScene" id=15]
+[ext_resource path="res://game/maps/aarmeda/heigtmap.png" type="Texture" id=9]
+[ext_resource path="res://game/maps/aarmeda/terrain.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/scenes/creature.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/scenes/baloon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://system/fonts/heade_thin.tres" type="DynamicFont" id=13]
+[ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=14]
+[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=15]
+[ext_resource path="res://system/corners.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Animation" id=1]
 
@@ -53,9 +54,8 @@ radial_segments = 16
 rings = 16
 is_hemisphere = false
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 
-resource_name = "fade-out"
 length = 2.0
 loop = false
 step = 0.1
@@ -84,7 +84,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 
 length = 2.0
 loop = false
@@ -114,7 +114,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 
 length = 2.0
 loop = false
@@ -151,11 +151,16 @@ _sections_unfolded = [ "Script" ]
 [node name="system" parent="." instance=ExtResource( 2 )]
 
 [node name="SUN" parent="system" index="0"]
-transform = Transform( 0.989699, -0.140667, -0.0266109, 0.0565688, 0.213501, 0.975304, -0.131511, -0.966763, 0.219259, 0, 6.42785, 0 )
-light_energy = 0.9
+transform = Transform( 0.806238, -0.562092, -0.18448, -2.72617e-08, -0.311837, 0.950136, -0.591591, -0.766035, -0.251415, 0, 6.42785, 0 )
+light_energy = 1.4
 light_cull_mask = -1
 shadow_enabled = true
-_sections_unfolded = [ "Light", "Shadow", "Transform" ]
+shadow_color = Color( 0.109804, 0.0588235, 0.0117647, 1 )
+shadow_reverse_cull_face = true
+directional_shadow_blend_splits = true
+directional_shadow_depth_range = 1
+directional_shadow_max_distance = 4096.0
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Transform" ]
 
 [node name="enviroment" parent="system" index="1"]
 _sections_unfolded = [ "environment" ]
@@ -170,7 +175,7 @@ anims/demo = SubResource( 1 )
 blend_times = [  ]
 
 [node name="PLAYER" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 659.228, 189.113, 389.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -593.25, 305.52, -54.56 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 2.0
@@ -183,11 +188,11 @@ mountains_size = 3.0
 water_height = 20.0
 map_size = Vector2( 2048, 2048 )
 move_fov_zoom = false
-camera_height_offset = 48.0
+camera_height_offset = 24.0
 
 [node name="Camera" type="Camera" parent="PLAYER"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -199,13 +204,13 @@ current = true
 fov = 75.0
 size = 1.0
 near = 0.05
-far = 2048.0
+far = 4096.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="motion_blur" parent="PLAYER/Camera" instance=ExtResource( 4 )]
 
 [node name="plasma" type="MeshInstance" parent="PLAYER"]
-transform = Transform( -0.0568831, 0.633878, 0.771338, -0.219352, 0.745776, -0.629049, -0.973986, -0.204977, 0.0966205, 0, 8, 0 )
+transform = Transform( -0.0568831, 0.633878, 0.771338, -0.219352, 0.745776, -0.629049, -0.973986, -0.204977, 0.0966205, 0, 0, 0 )
 visible = false
 layers = 1
 material_override = null
@@ -289,6 +294,7 @@ script = ExtResource( 8 )
 _sections_unfolded = [ "Custom Fonts", "Script", "custom_fonts/font" ]
 
 [node name="right" type="Control" parent="PLAYER/HUD"]
+visible = false
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -307,31 +313,28 @@ position = Vector2( -24, 12 )
 scale = Vector2( 0.025, 0.025 )
 texture = ExtResource( 9 )
 centered = false
-_sections_unfolded = [ "Offset", "Transform" ]
+_sections_unfolded = [ "Offset", "Transform", "texture" ]
 
-[node name="MAP" parent="." instance=ExtResource( 10 )]
+[node name="aarmeda" parent="." instance=ExtResource( 10 )]
 
-[node name="terrain" parent="MAP" index="0"]
-_sections_unfolded = [ "Geometry", "Material", "Script", "Transform", "material" ]
+[node name="grass_basic" parent="aarmeda" index="2"]
+_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
 
-[node name="water" parent="MAP" index="1"]
-transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, -2.11798, -9.68553, 4.34766 )
+[node name="creature" parent="aarmeda" instance=ExtResource( 11 )]
+transform = Transform( -0.679562, 0, -0.733618, 0, 1, 0, 0.733618, 0, -0.679562, -412.316, 294.489, -312.596 )
 
-[node name="grass_dark" parent="MAP" index="3"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
+[node name="creature2" parent="aarmeda" instance=ExtResource( 11 )]
+transform = Transform( 0.989374, 0, -0.145392, 0, 1, 0, 0.145392, 0, 0.989374, -1112.63, 96.3853, -973.336 )
 
-[node name="grass_flowers" parent="MAP" index="4"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
+[node name="creature3" parent="aarmeda" instance=ExtResource( 11 )]
+transform = Transform( 0.611527, 0, -0.791223, 0, 1, 0, 0.791223, 0, 0.611527, -929.03, 119.693, -1035.06 )
 
-[node name="grass_dead" parent="MAP" index="5"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
+[node name="creature4" parent="aarmeda" instance=ExtResource( 11 )]
+transform = Transform( -0.0233852, 0, -0.999726, 0, 1, 0, 0.999726, 0, -0.0233852, -920.527, 139.421, -815.409 )
 
-[node name="paprotas" parent="MAP" index="6"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Script", "Transform", "draw_pass_1", "process_material" ]
-
-[node name="palms" parent="MAP" index="7"]
-draw_pass_1 = ExtResource( 11 )
-_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1" ]
+[node name="baloon" parent="." instance=ExtResource( 12 )]
+transform = Transform( 24, 0, 0, 0, 24, 0, 0, 0, 24, -403, 353, -262 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="GUI" type="Control" parent="."]
 anchor_left = 0.0
@@ -390,7 +393,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 12 )
+custom_fonts/font = ExtResource( 13 )
 text = "MYSTHIC"
 percent_visible = 1.0
 lines_skipped = 0
@@ -412,7 +415,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 14 )
 text = "TREASURE HUNT"
 percent_visible = 1.0
 lines_skipped = 0
@@ -425,7 +428,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/fade-out = SubResource( 3 )
+anims/fade-out = SubResource( 5 )
 blend_times = [  ]
 
 [node name="bottom" type="Control" parent="GUI"]
@@ -459,7 +462,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 15 )
 text = "Version pre-alpha/10"
 align = 1
 valign = 1
@@ -468,7 +471,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts", "custom_fonts/font" ]
 
-[node name="corners" parent="GUI" instance=ExtResource( 15 )]
+[node name="corners" parent="GUI" instance=ExtResource( 16 )]
 
 [node name="overdraw" type="Control" parent="GUI"]
 anchor_left = 0.0
@@ -505,12 +508,12 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 0.5
-anims/fade-in = SubResource( 4 )
-anims/fade-out = SubResource( 5 )
+anims/fade-in = SubResource( 6 )
+anims/fade-out = SubResource( 7 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 
 [editable path="system"]
 
-[editable path="MAP"]
+[editable path="aarmeda"]

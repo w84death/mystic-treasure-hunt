@@ -1,7 +1,6 @@
-[gd_resource type="ArrayMesh" load_steps=3 format=2]
+[gd_resource type="ArrayMesh" load_steps=2 format=2]
 
 [ext_resource path="res://game/materials/grass/grass_dead.material" type="Material" id=1]
-[ext_resource path="res://game/materials/grass/grass_flowers_dark.material" type="Material" id=2]
 
 [resource]
 
@@ -40,7 +39,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 97539,
 "index_count": 72,
-"material": ExtResource( 2 ),
+"material": ExtResource( 1 ),
 "name": "default",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -53,7 +52,7 @@ surfaces/3 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 36,
-"material": ExtResource( 2 ),
+"material": ExtResource( 1 ),
 "name": "image",
 "primitive": 4,
 "skeleton_aabb": [  ],

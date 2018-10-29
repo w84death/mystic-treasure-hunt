@@ -17,7 +17,7 @@ uniform float TERRAIN_SURFACE_SCALE = 4.0;
 uniform float TERRAIN_HEIGHT_SCALE = 64.0;
 uniform float TERRAIN_WATER_LEVEL = 4.0;
 uniform float TERRAIN_MOINTAINS_LEVEL = 0.65;
-uniform float TERRAIN_MOINTAINS_TWIST_SCALE = 3.0;
+uniform float TERRAIN_MOINTAINS_SCALE = 3.0;
 
 // VEGETATION SETTINGS
 uniform float GRASS_ROWS = 64;
@@ -42,7 +42,7 @@ float get_height(vec2 pos) {
 	pos /= MAP_SIZE; // center
 	float h = texture(HEIGHT_MAP, pos).r; // read height from texture
 	if (h>TERRAIN_MOINTAINS_LEVEL) { // check if we hit the mountain level
-		h += (h-TERRAIN_MOINTAINS_LEVEL)*TERRAIN_MOINTAINS_TWIST_SCALE; // TWIST_SCALE up for mountain effect
+		h += (h-TERRAIN_MOINTAINS_LEVEL)*TERRAIN_MOINTAINS_SCALE; // TWIST_SCALE up for mountain effect
 	}
 	return TERRAIN_HEIGHT_SCALE * h; // adjust for the overall terrain TWIST_SCALE
 }

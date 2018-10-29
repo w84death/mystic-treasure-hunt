@@ -6,7 +6,6 @@ uniform vec3 angular_velocity; //rads
 uniform int iteration_count : hint_range(2, 50);
 uniform float intensity : hint_range(0, 1);
 
-
 void fragment()
 { 
 	float depth = texture(DEPTH_TEXTURE, SCREEN_UV).r;

@@ -17,6 +17,9 @@ uniform float water_level = 0.0;
 uniform float mountains_level = 0.6;
 uniform float mountains_size = 6.0;
 
+uniform bool zone_red = true;
+uniform bool zone_green = false;
+uniform bool zone_blue = false;
 
 float fake_random(vec2 p){
 	return fract(sin(dot(p.xy, vec2(12.9898,78.233))) * 43758.5453);
@@ -76,8 +79,16 @@ void vertex() {
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * heightmap_size;
 	feat_pos /= heightmap_size;
-	float terrain_mask = texture(features_map, feat_pos).r;
-	
+	float terrain_mask = 0.0;
+	if (zone_red) {
+		terrain_mask += texture(features_map, feat_pos).r;
+	}
+	if (zone_green) {
+		terrain_mask += texture(features_map, feat_pos).g;
+	}
+	if (zone_blue) {
+		terrain_mask += texture(features_map, feat_pos).b;
+	}
 	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
 	

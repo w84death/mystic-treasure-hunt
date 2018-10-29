@@ -28,13 +28,11 @@ var _angle_y = 0;
 
 var height_map;
 var move_to;
-var w = 0
 var axis_value;
 
 func _ready():
 	move_to = transform.origin
-	var minimap = $HUD/right/map
-	var tex = minimap.get_texture()
+	var tex = $HUD/right/map.get_texture()
 	height_map = tex.get_data()
 
 func _input(event):
@@ -87,7 +85,7 @@ func get_adjustet_height(pos):
 		
 	return terrain_height * h * terrain_scale + camera_height_offset;
 	
-func _physics_process(delta):
+func _physics_process():
 	for axis in range(JOY_AXIS_0, JOY_AXIS_MAX):
 		axis_value = Input.get_joy_axis(0, axis)
 		var axis_abs = abs(axis_value)
