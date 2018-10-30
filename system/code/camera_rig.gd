@@ -85,7 +85,7 @@ func get_adjustet_height(pos):
 		
 	return terrain_height * h * terrain_scale + camera_height_offset;
 	
-func _physics_process():
+func _physics_process(delta):
 	for axis in range(JOY_AXIS_0, JOY_AXIS_MAX):
 		axis_value = Input.get_joy_axis(0, axis)
 		var axis_abs = abs(axis_value)
@@ -140,4 +140,5 @@ func get_height(pos):
 		height_map.lock()
 		px = height_map.get_pixel(pos.x, pos.y)
 		height_map.unlock()
+		#print(px)
 	return px

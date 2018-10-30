@@ -54,7 +54,7 @@ radial_segments = 16
 rings = 16
 is_hemisphere = false
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 length = 2.0
 loop = false
@@ -84,7 +84,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 
 length = 2.0
 loop = false
@@ -114,7 +114,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 
 length = 2.0
 loop = false
@@ -178,14 +178,14 @@ blend_times = [  ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -593.25, 305.52, -54.56 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Script", "Transform" ]
-rotate_speed = 2.0
-move_speed_lr = 1.0
-move_speed_fb = 2.0
+rotate_speed = 1.0
+move_speed_lr = 0.5
+move_speed_fb = 1.5
 terrain_height = 64
 terrain_scale = 4.0
 mountains_level = 0.65
 mountains_size = 3.0
-water_height = 20.0
+water_height = 19.2
 map_size = Vector2( 2048, 2048 )
 move_fov_zoom = false
 camera_height_offset = 24.0
@@ -428,7 +428,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/fade-out = SubResource( 5 )
+anims/fade-out = SubResource( 3 )
 blend_times = [  ]
 
 [node name="bottom" type="Control" parent="GUI"]
@@ -508,8 +508,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 0.5
-anims/fade-in = SubResource( 6 )
-anims/fade-out = SubResource( 7 )
+anims/fade-in = SubResource( 4 )
+anims/fade-out = SubResource( 5 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 

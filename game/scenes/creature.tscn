@@ -169,7 +169,7 @@ _sections_unfolded = [ "Albedo", "Metallic" ]
 [sub_resource type="Animation" id=8]
 
 resource_name = "idle"
-length = 4.0
+length = 12.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
@@ -179,7 +179,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.3, 0.5, 0.6, 1.61676, 1.81676, 1.91676, 3.2, 3.4, 3.5 ),
+"times": PoolRealArray( 0.3, 0.5, 0.6, 4.31676, 4.51676, 4.61676, 8.3, 8.5, 8.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 5, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 5, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 5, 0 ), Vector3( 0, 0, 0 ) ]
@@ -191,7 +191,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8, 1.2, 1.7, 2.1, 2.9, 3.6 ),
+"times": PoolRealArray( 0, 0.8, 3.9, 4.4, 4.8, 8, 8.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 90, 0, 0 ), Vector3( 90, 0, 0 ), Vector3( 90, -14.5066, 0 ), Vector3( 86.8751, 1.05596e-06, 1.07296 ), Vector3( 89.2242, -175.611, -178.927 ), Vector3( 89.224, -172.612, -178.927 ), Vector3( 87.6009, 2.38373, 10.8416 ) ]
@@ -331,7 +331,7 @@ _sections_unfolded = [ "Transform", "material" ]
 
 [node name="anim_creature" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
-autoplay = "idle"
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
