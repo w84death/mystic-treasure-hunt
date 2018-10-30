@@ -12,13 +12,6 @@ export var map_size = Vector2(1024, 1024);
 export var move_fov_zoom = false;
 export var camera_height_offset = 12.0;
 const DEADZONE = 0.05;
-const CAMERA_MIN_FOV = 60;
-const CAMERA_MAX_FOV = 75;
-const CAMERA_ACCELERATION_FOV = 2;
-const CAMERA_DEACCELERATION_FOV = 4;
-
-var camera_fov = CAMERA_MIN_FOV;
-var camera_set_fov = CAMERA_MIN_FOV;
 
 var angle_x = 0;
 var angle_y = 0;
@@ -66,16 +59,6 @@ func _process(delta):
 		if move_to.y < water_height:
 			move_to.y = water_height
 		transform.origin += (move_to - transform.origin) * delta * 10.0
-	
-	if move_fov_zoom:
-		if camera_set_fov > get_node("cam").get_fov() and get_node("cam").get_fov() < CAMERA_MAX_FOV:
-			get_node("cam").set_fov(get_node("cam").get_fov()+CAMERA_ACCELERATION_FOV);
-			
-		if camera_set_fov < get_node("cam").get_fov() and get_node("cam").get_fov() > CAMERA_MIN_FOV:
-			get_node("cam").set_fov(get_node("cam").get_fov()-CAMERA_ACCELERATION_FOV);
-			
-		if abs(camera_set_fov - camera_fov) < 2:
-			camera_set_fov = CAMERA_MIN_FOV;
 		
 func get_adjustet_height(pos):
 	var h = get_height(pos).r;
@@ -122,13 +105,11 @@ func _physics_process(delta):
 			# MOVE FRONT - BACK
 			if axis == JOY_ANALOG_LY:
 				if axis_value < 0:
-					camera_set_fov = CAMERA_MIN_FOV + abs(axis_value) * (CAMERA_MAX_FOV-CAMERA_MIN_FOV);
 					var front_back = transform.basis.z
 					front_back.y = 0.0
 					front_back = front_back.normalized()
 					move_to -= front_back * move_speed_fb * abs(axis_value);
 				else:
-					camera_set_fov = CAMERA_MIN_FOV;
 					var front_back = transform.basis.z
 					front_back.y = 0.0
 					front_back = front_back.normalized()
@@ -140,5 +121,4 @@ func get_height(pos):
 		height_map.lock()
 		px = height_map.get_pixel(pos.x, pos.y)
 		height_map.unlock()
-		#print(px)
 	return px

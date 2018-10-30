@@ -191,7 +191,6 @@ move_fov_zoom = false
 camera_height_offset = 24.0
 
 [node name="Camera" type="Camera" parent="PLAYER"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0 )
 keep_aspect = 1
 cull_mask = 1048575
@@ -208,6 +207,7 @@ far = 4096.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="motion_blur" parent="PLAYER/Camera" instance=ExtResource( 4 )]
+_sections_unfolded = [ "Geometry", "LOD", "Transform", "Visibility", "material", "mesh" ]
 
 [node name="plasma" type="MeshInstance" parent="PLAYER"]
 transform = Transform( -0.0568831, 0.633878, 0.771338, -0.219352, 0.745776, -0.629049, -0.973986, -0.204977, 0.0966205, 0, 0, 0 )
@@ -327,10 +327,16 @@ transform = Transform( -0.679562, 0, -0.733618, 0, 1, 0, 0.733618, 0, -0.679562,
 transform = Transform( 0.989374, 0, -0.145392, 0, 1, 0, 0.145392, 0, 0.989374, -1112.63, 96.3853, -973.336 )
 
 [node name="creature3" parent="aarmeda" instance=ExtResource( 11 )]
-transform = Transform( 0.611527, 0, -0.791223, 0, 1, 0, 0.791223, 0, 0.611527, -929.03, 119.693, -1035.06 )
+transform = Transform( -0.999086, 0, 0.0427258, 0, 1, 0, -0.0427258, 0, -0.999086, -867.659, 94.1198, -1226.57 )
+
+[node name="creature5" parent="aarmeda" instance=ExtResource( 11 )]
+transform = Transform( 0.81896, 0, -0.57385, 0, 1, 0, 0.57385, 0, 0.81896, -1199.3, 94.883, -1559.9 )
+
+[node name="creature6" parent="aarmeda" instance=ExtResource( 11 )]
+transform = Transform( -0.101485, 0, -0.994837, 0, 1, 0, 0.994837, 0, -0.101485, -952.821, 96.3449, -1484.85 )
 
 [node name="creature4" parent="aarmeda" instance=ExtResource( 11 )]
-transform = Transform( -0.0233852, 0, -0.999726, 0, 1, 0, 0.999726, 0, -0.0233852, -920.527, 139.421, -815.409 )
+transform = Transform( -0.181483, 0, -0.983393, 0, 1, 0, 0.983393, 0, -0.181483, -902.307, 144.452, -806.056 )
 
 [node name="baloon" parent="." instance=ExtResource( 12 )]
 transform = Transform( 24, 0, 0, 0, 24, 0, 0, 0, 24, -403, 353, -262 )

@@ -148,8 +148,8 @@ common/physics_fps=75
 
 [rendering]
 
-quality/reflections/texture_array_reflections=false
-quality/reflections/high_quality_ggx=false
+threads/thread_model=2
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
+quality/filters/msaa=2
 quality/depth/hdr=false
