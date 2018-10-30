@@ -13,7 +13,7 @@
 [ext_resource path="res://game/materials/grass/grass_dead_particle.material" type="Material" id=11]
 [ext_resource path="res://game/models/grass_dead.tres" type="ArrayMesh" id=12]
 [ext_resource path="res://game/materials/paprotas/paprotas_big_particle.material" type="Material" id=13]
-[ext_resource path="res://game/models/paprota_big_light.tres" type="ArrayMesh" id=14]
+[ext_resource path="res://game/models/liptus.tres" type="ArrayMesh" id=14]
 [ext_resource path="res://game/materials/palms/palms_particle.material" type="Material" id=15]
 [ext_resource path="res://game/models/palm1.tres" type="ArrayMesh" id=16]
 [ext_resource path="res://game/materials/butterflies/insects.material" type="Material" id=17]
@@ -223,7 +223,7 @@ explosiveness = 1.0
 randomness = 0.0
 fixed_fps = 0
 fract_delta = true
-visibility_aabb = AABB( -512, 0, -512, 256, 20, 256 )
+visibility_aabb = AABB( -1174.47, 0, -1700.29, 1580.93, 20, 2632.58 )
 local_coords = false
 draw_order = 0
 process_material = ExtResource( 13 )
