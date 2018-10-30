@@ -316,6 +316,7 @@ centered = false
 _sections_unfolded = [ "Offset", "Transform", "texture" ]
 
 [node name="aarmeda" parent="." instance=ExtResource( 10 )]
+editor/display_folded = true
 
 [node name="grass_basic" parent="aarmeda" index="2"]
 _sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
