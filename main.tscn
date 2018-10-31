@@ -324,6 +324,11 @@ _sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Sc
 _sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material" ]
 spacing = 32.0
 
+[node name="butterflies" parent="aarmeda" index="8"]
+amount = 64
+rows = 8
+spacing = 32.0
+
 [node name="creature" parent="aarmeda" instance=ExtResource( 11 )]
 transform = Transform( -0.679562, 0, -0.733618, 0, 1, 0, 0.733618, 0, -0.679562, -412.316, 294.489, -312.596 )
 
