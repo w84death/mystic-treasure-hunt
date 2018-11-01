@@ -68,6 +68,14 @@ At last we have a name, right?
 
 ## Changelog
 
+### alpha/10
+
+![alpha10](web-stuff/alpha10.png)
+
+- [updated] thanks to Mau Ryc we got new models. Two of them already imported to the game
+- [update] sky
+- [update] shadows
+
 ### alpha/08
 
 ![alpha08](web-stuff/alpha08.png)
