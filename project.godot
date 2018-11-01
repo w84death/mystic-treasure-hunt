@@ -18,6 +18,7 @@ _global_script_class_icons={
 config/name="Mystic Treasure Hunt"
 run/main_scene="res://main.tscn"
 boot_splash/image="res://system/images/splash.png"
+boot_splash/bg_color=Color( 0.27451, 0.27451, 0.27451, 1 )
 config/icon="res://system/images/icon.png"
 
 [debug]

@@ -146,7 +146,6 @@ tracks/1/keys = {
 
 [node name="game" type="Node"]
 script = ExtResource( 1 )
-_sections_unfolded = [ "Script" ]
 
 [node name="system" parent="." instance=ExtResource( 2 )]
 
@@ -160,10 +159,6 @@ shadow_reverse_cull_face = true
 directional_shadow_blend_splits = true
 directional_shadow_depth_range = 1
 directional_shadow_max_distance = 4096.0
-_sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Transform" ]
-
-[node name="enviroment" parent="system" index="1"]
-_sections_unfolded = [ "environment" ]
 
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
@@ -177,7 +172,6 @@ blend_times = [  ]
 [node name="PLAYER" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -593.25, 305.52, -54.56 )
 script = ExtResource( 3 )
-_sections_unfolded = [ "Script", "Transform" ]
 rotate_speed = 1.0
 move_speed_lr = 0.5
 move_speed_fb = 1.5
@@ -204,10 +198,8 @@ fov = 75.0
 size = 1.0
 near = 0.05
 far = 4096.0
-_sections_unfolded = [ "Transform" ]
 
 [node name="motion_blur" parent="PLAYER/Camera" instance=ExtResource( 4 )]
-_sections_unfolded = [ "Geometry", "LOD", "Transform", "Visibility", "material", "mesh" ]
 
 [node name="plasma" type="MeshInstance" parent="PLAYER"]
 transform = Transform( -0.0568831, 0.633878, 0.771338, -0.219352, 0.745776, -0.629049, -0.973986, -0.204977, 0.0966205, 0, 0, 0 )
@@ -224,7 +216,6 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = ExtResource( 5 )
-_sections_unfolded = [ "Material", "Matrix", "Transform", "material" ]
 
 [node name="HUD" type="Control" parent="PLAYER"]
 anchor_left = 0.0
@@ -238,7 +229,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 6 )
-_sections_unfolded = [ "Theme", "theme" ]
 
 [node name="center" type="Control" parent="PLAYER/HUD"]
 anchor_left = 0.5
@@ -254,7 +244,6 @@ size_flags_vertical = 1
 
 [node name="aim" type="Sprite" parent="PLAYER/HUD/center"]
 texture = ExtResource( 7 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="left" type="Control" parent="PLAYER/HUD"]
 anchor_left = 0.0
@@ -291,7 +280,6 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 8 )
-_sections_unfolded = [ "Custom Fonts", "Script", "custom_fonts/font" ]
 
 [node name="right" type="Control" parent="PLAYER/HUD"]
 visible = false
@@ -313,15 +301,11 @@ position = Vector2( -24, 12 )
 scale = Vector2( 0.025, 0.025 )
 texture = ExtResource( 9 )
 centered = false
-_sections_unfolded = [ "Offset", "Transform", "texture" ]
 
 [node name="aarmeda" parent="." instance=ExtResource( 10 )]
-
-[node name="grass_basic" parent="aarmeda" index="2"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material", "script" ]
+editor/display_folded = true
 
 [node name="paprotas" parent="aarmeda" index="6"]
-_sections_unfolded = [ "Draw Passes", "Geometry", "LOD", "Process Material", "Script", "Transform", "draw_pass_1", "process_material" ]
 spacing = 32.0
 
 [node name="butterflies" parent="aarmeda" index="8"]
@@ -349,7 +333,6 @@ transform = Transform( -0.181483, 0, -0.983393, 0, 1, 0, 0.983393, 0, -0.181483,
 
 [node name="baloon" parent="." instance=ExtResource( 12 )]
 transform = Transform( 24, 0, 0, 0, 24, 0, 0, 0, 24, -403, 353, -262 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="GUI" type="Control" parent="."]
 anchor_left = 0.0
@@ -363,7 +346,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 6 )
-_sections_unfolded = [ "Rect", "theme" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -391,7 +373,6 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="mysthic" type="Label" parent="GUI/middle/logo"]
 anchor_left = 0.0
@@ -399,9 +380,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -151.0
-margin_top = -30.0
+margin_top = -90.0
 margin_right = -26.0
-margin_bottom = 17.0
+margin_bottom = -43.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -413,7 +394,6 @@ text = "MYSTHIC"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Custom Colors", "Custom Fonts", "custom_fonts/font" ]
 
 [node name="treasure_hunt" type="Label" parent="GUI/middle/logo"]
 anchor_left = 0.0
@@ -421,9 +401,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -40.0
-margin_top = -30.0
+margin_top = -90.0
 margin_right = 168.0
-margin_bottom = 9.0
+margin_bottom = -51.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -435,7 +415,51 @@ text = "TREASURE HUNT"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Custom Fonts", "custom_fonts/font" ]
+
+[node name="creds" type="Label" parent="GUI/middle/logo"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -164.0
+margin_top = 70.0
+margin_right = -39.0
+margin_bottom = 151.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 13 )
+text = "Shaders:
+Models:"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="names" type="Label" parent="GUI/middle/logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = 70.0
+margin_right = 216.0
+margin_bottom = 151.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 14 )
+text = "Krzysztof Jankowski
+Mau Ryc"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="logo-anim" type="AnimationPlayer" parent="GUI/middle/logo"]
 root_node = NodePath("..")
@@ -459,7 +483,6 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
 
 [node name="version" type="Label" parent="GUI/bottom"]
 anchor_left = 0.5
@@ -484,7 +507,6 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Custom Colors", "Custom Constants", "Custom Fonts", "custom_fonts", "custom_fonts/font" ]
 
 [node name="corners" parent="GUI" instance=ExtResource( 16 )]
 
@@ -515,7 +537,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
-_sections_unfolded = [ "Visibility", "custom_styles/panel" ]
 
 [node name="fade-anim" type="AnimationPlayer" parent="GUI/overdraw/fade"]
 root_node = NodePath("..")
@@ -526,7 +547,6 @@ playback_speed = 0.5
 anims/fade-in = SubResource( 4 )
 anims/fade-out = SubResource( 5 )
 blend_times = [  ]
-_sections_unfolded = [ "Playback Options" ]
 
 
 [editable path="system"]
