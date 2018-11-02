@@ -158,7 +158,7 @@ shadow_color = Color( 0.109804, 0.0588235, 0.0117647, 1 )
 shadow_reverse_cull_face = true
 directional_shadow_blend_splits = true
 directional_shadow_depth_range = 1
-directional_shadow_max_distance = 4096.0
+directional_shadow_max_distance = 8192.0
 
 [node name="animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("..")
