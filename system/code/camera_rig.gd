@@ -23,27 +23,80 @@ var height_map;
 var move_to;
 var axis_value;
 
+var current_dir = 0;
+var directions = [
+	Vector3(0,0,-128),
+	Vector3(128,0,0),
+	Vector3(0,0,128),
+	Vector3(-128,0,0),
+];
+
 func _ready():
 	move_to = transform.origin
 	var tex = $HUD/right/map.get_texture()
 	height_map = tex.get_data()
+	$GUI/HUD/right/compas.refresh(current_dir)
 
 func _input(event):
-	if Input.is_action_pressed("ui_left"):
-		angle_y += rotate_speed
-	if Input.is_action_pressed("ui_right"):
-		angle_y -= rotate_speed
-	if Input.is_action_pressed("ui_up"):
-		var front_back = transform.basis.z
-		front_back.y = 0.0
-		front_back = front_back.normalized()
-		move_to -= front_back * move_speed_fb;
-	if Input.is_action_pressed("ui_down"):
-		var front_back = transform.basis.z
-		front_back.y = 0.0
-		front_back = front_back.normalized()
-		move_to += front_back * move_speed_fb;
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().quit()
 
+	if Input.is_action_pressed("ui_left"):
+		rotate_left()
+	if Input.is_action_pressed("ui_right"):
+		rotate_right()
+	if Input.is_action_pressed("ui_up"):
+		move_forward()
+	if Input.is_action_pressed("ui_down"):
+		move_backward()
+
+func _on_turn_left_pressed():
+	rotate_left()
+
+func _on_front_pressed():
+	move_forward()
+
+
+func _on_turn_righ_pressed():
+	rotate_right()
+
+
+func _on_left_pressed():
+	pass # Replace with function body.
+
+
+func _on_back_pressed():
+	move_backward()
+
+func _on_right_pressed():
+	pass # Replace with function body.
+	
+func set_direction(dir):
+	current_dir += dir
+	
+	if current_dir > 3:
+		current_dir = 0
+		
+	if current_dir < 0:
+		current_dir = 3
+		
+	$GUI/HUD/right/compas.refresh(current_dir)
+		
+func rotate_left():
+	angle_y += 90
+	set_direction(-1)
+	
+func rotate_right():
+	angle_y -= 90
+	set_direction(1)
+	
+func move_forward():
+	move_to += directions[current_dir];
+
+func move_backward():
+	move_to -= directions[current_dir];
+	
+	
 func _process(delta):
 	if angle_x != _angle_x or angle_y != _angle_y:
 		_angle_x += (angle_x - _angle_x) * delta * 10.0;
@@ -122,3 +175,6 @@ func get_height(pos):
 		px = height_map.get_pixel(pos.x, pos.y)
 		height_map.unlock()
 	return px
+
+func _on_a_pressed():
+	pass # Replace with function body.

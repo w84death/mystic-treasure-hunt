@@ -1,10 +1,10 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://system/fonts/firasanscondensed-medium.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://system/fonts/DejaVuSans-Bold.ttf" type="DynamicFontData" id=1]
 
 [resource]
 
-size = 18
+size = 16
 outline_size = 0
 outline_color = Color( 0, 0, 0, 0.25098 )
 use_mipmaps = true
@@ -13,5 +13,4 @@ extra_spacing_top = -4
 extra_spacing_bottom = -4
 extra_spacing_char = -1
 font_data = ExtResource( 1 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings", "font_data" ]
 

@@ -3,22 +3,22 @@
 [sub_resource type="ProceduralSky" id=1]
 
 radiance_size = 4
-sky_top_color = Color( 0.145098, 0.6, 1, 1 )
-sky_horizon_color = Color( 0.890196, 0.862745, 0.560784, 1 )
+sky_top_color = Color( 0.980392, 0.941176, 0.768627, 1 )
+sky_horizon_color = Color( 0.854902, 0.937255, 0.905882, 1 )
 sky_curve = 0.11471
 sky_energy = 1.0
-ground_bottom_color = Color( 0.054902, 0.447059, 0.305882, 1 )
-ground_horizon_color = Color( 0.517647, 0.847059, 0.94902, 1 )
-ground_curve = 0.226274
+ground_bottom_color = Color( 0.141176, 0.403922, 0.372549, 1 )
+ground_horizon_color = Color( 0.282353, 0.745098, 0.870588, 1 )
+ground_curve = 0.196983
 ground_energy = 1.0
 sun_color = Color( 1, 1, 0.996078, 1 )
-sun_latitude = 23.39
+sun_latitude = 27.35
 sun_longitude = 0.0
 sun_angle_min = 1.0
 sun_angle_max = 100.0
 sun_curve = 0.05
 sun_energy = 16.0
-texture_size = 2
+texture_size = 3
 
 [resource]
 
@@ -32,7 +32,7 @@ ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 0.2
 ambient_light_sky_contribution = 0.45
 fog_enabled = true
-fog_color = Color( 0.392157, 0.458824, 0.294118, 1 )
+fog_color = Color( 0.376471, 0.698039, 0.631373, 1 )
 fog_sun_color = Color( 1, 1, 1, 1 )
 fog_sun_amount = 0.5
 fog_depth_enabled = true
@@ -70,7 +70,7 @@ ssao_color = Color( 0, 0, 0, 1 )
 ssao_quality = 1
 ssao_blur = 3
 ssao_edge_sharpness = 0.0
-dof_blur_far_enabled = true
+dof_blur_far_enabled = false
 dof_blur_far_distance = 1024.0
 dof_blur_far_transition = 8.0
 dof_blur_far_amount = 0.04

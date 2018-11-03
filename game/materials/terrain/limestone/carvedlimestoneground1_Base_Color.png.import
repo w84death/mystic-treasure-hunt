@@ -2,30 +2,31 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/carvedlimestoneground1_Base_Color.png-2f9ec73fe3682344b2bb7974229e1c70.stex"
+path.s3tc="res://.import/carvedlimestoneground1_Base_Color.png-2f9ec73fe3682344b2bb7974229e1c70.s3tc.stex"
+path.etc2="res://.import/carvedlimestoneground1_Base_Color.png-2f9ec73fe3682344b2bb7974229e1c70.etc2.stex"
 
 [deps]
 
 source_file="res://game/materials/terrain/limestone/carvedlimestoneground1_Base_Color.png"
-dest_files=[ "res://.import/carvedlimestoneground1_Base_Color.png-2f9ec73fe3682344b2bb7974229e1c70.stex" ]
+dest_files=[ "res://.import/carvedlimestoneground1_Base_Color.png-2f9ec73fe3682344b2bb7974229e1c70.s3tc.stex", "res://.import/carvedlimestoneground1_Base_Color.png-2f9ec73fe3682344b2bb7974229e1c70.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=true
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
