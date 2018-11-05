@@ -22,8 +22,8 @@ uniform float TERRAIN_MOINTAINS_SCALE = 3.0;
 // VEGETATION SETTINGS
 uniform float GRASS_ROWS = 64;
 uniform float GRASS_SPACING = 12.0;
-uniform float GRASS_TWIST_SCALE_MIN = 0.5;
-uniform float GRASS_TWIST_SCALE_MAX = 2.0;
+uniform float GRASS_SCALE_MIN = 0.5;
+uniform float GRASS_SCALE_MAX = 2.0;
 uniform bool ZONE_RED = false;
 uniform bool ZONE_GREEN = false;
 uniform bool ZONE_BLUE = false;
@@ -42,9 +42,9 @@ float get_height(vec2 pos) {
 	pos /= MAP_SIZE; // center
 	float h = texture(HEIGHT_MAP, pos).r; // read height from texture
 	if (h>TERRAIN_MOINTAINS_LEVEL) { // check if we hit the mountain level
-		h += (h-TERRAIN_MOINTAINS_LEVEL)*TERRAIN_MOINTAINS_SCALE; // TWIST_SCALE up for mountain effect
+		h += (h-TERRAIN_MOINTAINS_LEVEL)*TERRAIN_MOINTAINS_SCALE; // SCALE up for mountain effect
 	}
-	return TERRAIN_HEIGHT_SCALE * h; // adjust for the overall terrain TWIST_SCALE
+	return TERRAIN_HEIGHT_SCALE * h; // adjust for the overall terrain SCALE
 }
 
 // RANDOM NUMBER GENERATORS
@@ -56,16 +56,16 @@ vec2 faker(vec2 p){
 }
 
 // THREE DIMENSIONAL MATRIX MANIPULATION
-mat4 enterTheMatrix(vec3 pos, vec3 axis, float angle, float TWIST_SCALE){
+mat4 enterTheMatrix(vec3 pos, vec3 axis, float angle, float SCALE){
     axis = normalize(axis);
     float s = sin(angle);
     float c = cos(angle);
     float oc = 1.0 - c;
 
-	// converts matrix for position, angle (for each axix) and TWIST_SCALE
-    return mat4(vec4((oc * axis.x * axis.x + c)* TWIST_SCALE,		oc * axis.x * axis.y - axis.z * s,	oc * axis.z * axis.x + axis.y * s,	0.0),
-                vec4(oc * axis.x * axis.y + axis.z * s,		(oc * axis.y * axis.y + c) * TWIST_SCALE,	oc * axis.y * axis.z - axis.x * s,	0.0),
-                vec4(oc * axis.z * axis.x - axis.y * s,		oc * axis.y * axis.z + axis.x * s,	(oc * axis.z * axis.z + c) * TWIST_SCALE,	0.0),
+	// converts matrix for position, angle (for each axix) and SCALE
+    return mat4(vec4((oc * axis.x * axis.x + c)* SCALE,		oc * axis.x * axis.y - axis.z * s,	oc * axis.z * axis.x + axis.y * s,	0.0),
+                vec4(oc * axis.x * axis.y + axis.z * s,		(oc * axis.y * axis.y + c) * SCALE,	oc * axis.y * axis.z - axis.x * s,	0.0),
+                vec4(oc * axis.z * axis.x - axis.y * s,		oc * axis.y * axis.z + axis.x * s,	(oc * axis.z * axis.z + c) * SCALE,	0.0),
                 vec4(pos.x,									pos.y,								pos.z,								1.0));
 }
 
@@ -83,7 +83,7 @@ void vertex() {
 	pos.z -= GRASS_ROWS * 0.5; // center
 	pos *= GRASS_SPACING; // apply grass spacing
 
-	// center on our particle location but within our spacing and TWIST_SCALE
+	// center on our particle location but within our spacing and SCALE
 	pos.x += (EMISSION_TRANSFORM[3][0] - mod(EMISSION_TRANSFORM[3][0], GRASS_SPACING*TERRAIN_SURFACE_SCALE))/TERRAIN_SURFACE_SCALE;
 	pos.z += (EMISSION_TRANSFORM[3][2] - mod(EMISSION_TRANSFORM[3][2], GRASS_SPACING*TERRAIN_SURFACE_SCALE))/TERRAIN_SURFACE_SCALE;
 
@@ -124,14 +124,14 @@ void vertex() {
 	}
 
 	// calculate random scaling but within min/max
-	float TWIST_SCALE_mod = clamp(noise.x * GRASS_TWIST_SCALE_MAX, GRASS_TWIST_SCALE_MIN, GRASS_TWIST_SCALE_MAX);
+	float SCALE_mod = noise.x * GRASS_SCALE_MAX;
 
 	// do the final transformation
 	TRANSFORM = enterTheMatrix(
 		vec3(pos.x * TERRAIN_SURFACE_SCALE, pos.y * TERRAIN_SURFACE_SCALE, pos.z * TERRAIN_SURFACE_SCALE), // set position
 		vec3(0.0, 1.0, 0.0), // lock Y axis
 		clamp(noise.y * 320.0, 0.0, 320.0), // rotate 0-360 (over Y)
-		TWIST_SCALE_mod); // TWIST_SCALE
+		SCALE_mod); // SCALE
 }
 
 // -----------------------------------------------------------------------------

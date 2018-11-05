@@ -56,20 +56,17 @@ func _on_turn_left_pressed():
 func _on_front_pressed():
 	move_forward()
 
-
 func _on_turn_righ_pressed():
 	rotate_right()
 
-
 func _on_left_pressed():
-	pass # Replace with function body.
-
+	pass
 
 func _on_back_pressed():
 	move_backward()
 
 func _on_right_pressed():
-	pass # Replace with function body.
+	pass
 	
 func set_direction(dir):
 	current_dir += dir
@@ -177,4 +174,10 @@ func get_height(pos):
 	return px
 
 func _on_a_pressed():
-	pass # Replace with function body.
+	pass
+
+func _on_x_pressed():
+	if $GUI/HUD/center/map.visible:
+		$GUI/HUD/center/map.hide()
+	else:
+		$GUI/HUD/center/map.show()

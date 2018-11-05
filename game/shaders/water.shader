@@ -34,22 +34,22 @@ vec2 faker(vec2 p){
 void vertex(){
 	float noise = faker(VERTEX.xz).x;
 	VERTEX.y = water_height + height(VERTEX.xz, TIME, noise);
-	TANGENT = normalize( vec3(0.0, height(VERTEX.xz + vec2(0.0, 0.2), TIME, noise) - height(VERTEX.xz + vec2(0.0, -0.2), TIME, noise), 0.4));
-	BINORMAL = normalize( vec3(0.4, height(VERTEX.xz + vec2(0.2, 0.0), TIME, noise) - height(VERTEX.xz + vec2(-0.2, 0.0), TIME, noise), 0.0));
+	TANGENT = normalize( vec3(0.0, height(VERTEX.xz + vec2(0.0, 0.2), TIME, noise) - height(VERTEX.xz + vec2(0.0, -0.2), TIME, noise), 0.3));
+	BINORMAL = normalize( vec3(0.3, height(VERTEX.xz + vec2(0.2, 0.0), TIME, noise) - height(VERTEX.xz + vec2(-0.2, 0.0), TIME, noise), 0.0));
 	NORMAL = cross(TANGENT, BINORMAL);
 }
 
 void fragment(){
 	vec2 uv2 = UV * -1.0;
-	float height = texture(height_map, uv2.xy).r;
-	float gfx = smoothstep(0.0, water_shore, height);
+	//float height = texture(height_map, uv2.xy).r;
+	//float gfx = smoothstep(0.0, water_shore, height);
 	vec3 w_color = water_color;
-	w_color += vec3(gfx, gfx, gfx) * water_shore_contrast;
+	//w_color += vec3(gfx, gfx, gfx) * water_shore_contrast;
 	
-	ROUGHNESS = 0.3;
-	METALLIC = 1.0 - gfx;
-	SPECULAR = 1.0 - gfx;
-	ALPHA = clamp(water_alpha - gfx * 4.0, 0.0, 1.0);
+	ROUGHNESS = 0.1;
+	METALLIC = 0.0;
+	SPECULAR = 1.0;
+	ALPHA = water_alpha;
 	ALBEDO = clamp(w_color, 0.0, 1.0);
-	//EMISSION = water_color * 0.4;
+	EMISSION = water_color * 0.4;
 }
