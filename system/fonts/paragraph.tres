@@ -1,16 +1,15 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://system/fonts/DejaVuSans-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://system/fonts/CompassPro.ttf" type="DynamicFontData" id=1]
 
 [resource]
 
 size = 16
-outline_size = 0
-outline_color = Color( 0, 0, 0, 0.25098 )
+outline_size = 1
+outline_color = Color( 0, 0, 0, 0.501961 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = -4
 extra_spacing_bottom = -4
-extra_spacing_char = -1
 font_data = ExtResource( 1 )
 

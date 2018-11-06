@@ -1,13 +1,14 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://system/fonts/DejaVuSerifCondensed-Italic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://system/fonts/CompassPro.ttf" type="DynamicFontData" id=1]
 
 [resource]
 
-size = 32
-outline_size = 0
+size = 38
+outline_size = 2
 outline_color = Color( 0, 0, 0, 0.25098 )
 use_mipmaps = true
 use_filter = true
+extra_spacing_char = 2
 font_data = ExtResource( 1 )
 

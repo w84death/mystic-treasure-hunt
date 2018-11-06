@@ -4,9 +4,10 @@ export var terrain_height = 64
 export var terrain_scale = 4.0
 export var rows = 256
 export var spacing = 4.0
+var size = rows * spacing
 
 func update_aabb():
-	var size = rows * spacing
+	
 	visibility_aabb = AABB(
 		Vector3(-0.5 * size, 0.0, -0.5 * size), #x,y,z
 		Vector3(size, terrain_height * terrain_scale, size)) #w,up,h;
@@ -21,4 +22,5 @@ func _process(delta):
 
 	var pos = camera.global_transform.origin
 	pos.y = 0.0
+
 	global_transform.origin = pos

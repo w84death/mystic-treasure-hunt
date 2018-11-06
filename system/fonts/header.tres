@@ -1,18 +1,16 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://system/fonts/Philosopher-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://system/fonts/CompassPro.ttf" type="DynamicFontData" id=1]
 
 [resource]
 
-size = 96
-outline_size = 1
+size = 48
+outline_size = 2
 outline_color = Color( 0, 0, 0, 0.25098 )
 use_mipmaps = true
 use_filter = true
-extra_spacing_top = -32
+extra_spacing_top = -8
 extra_spacing_bottom = -8
-extra_spacing_char = -4
 extra_spacing_space = -4
 font_data = ExtResource( 1 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 

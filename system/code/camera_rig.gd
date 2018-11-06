@@ -35,20 +35,45 @@ func _ready():
 	move_to = transform.origin
 	var tex = $HUD/right/map.get_texture()
 	height_map = tex.get_data()
-	$GUI/HUD/right/compas.refresh(current_dir)
+	$GUI/HUD/right/compass.refresh(current_dir)
+
+func _process(delta):
+	if angle_x != _angle_x or angle_y != _angle_y:
+		_angle_x += (angle_x - _angle_x) * delta * 10.0;
+		_angle_y += (angle_y - _angle_y) * delta * 10.0;
+
+		var basis = Basis(Vector3(0.0, 1.0, 0.0), deg2rad(_angle_y))
+		basis *= Basis(Vector3(1.0, 0.0, 0.0), deg2rad(_angle_x))
+		transform.basis = basis
+		
+	if move_to != transform.origin:
+		var pos = Vector2(int(map_size.x*.5+transform.origin.x/terrain_scale), int(map_size.y*.5+transform.origin.z/terrain_scale));
+		move_to.y = get_adjustet_height(pos)
+		if move_to.y < water_height:
+			move_to.y = water_height
+		transform.origin += (move_to - transform.origin) * delta * 10.0
+
+
 
 func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().quit()
 
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("game_rotate_left"):
 		rotate_left()
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("game_rotate_right"):
 		rotate_right()
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("game_up"):
 		move_forward()
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("game_down"):
 		move_backward()
+	if Input.is_action_pressed("game_left"):
+		move_left()
+	if Input.is_action_pressed("game_right"):
+		move_right()
+	
+	if Input.is_action_pressed("game_x"):
+		toggle_map()
 
 func _on_turn_left_pressed():
 	rotate_left()
@@ -67,6 +92,19 @@ func _on_back_pressed():
 
 func _on_right_pressed():
 	pass
+
+func _on_a_pressed():
+	pass
+
+func _on_x_pressed():
+	toggle_map()
+	
+func toggle_map():
+	if $GUI/HUD/center/map.visible:
+		$GUI/HUD/center/map.hide()
+	else:
+		$GUI/HUD/center/map.show()
+	
 	
 func set_direction(dir):
 	current_dir += dir
@@ -77,7 +115,7 @@ func set_direction(dir):
 	if current_dir < 0:
 		current_dir = 3
 		
-	$GUI/HUD/right/compas.refresh(current_dir)
+	$GUI/HUD/right/compass.refresh(current_dir)
 		
 func rotate_left():
 	angle_y += 90
@@ -89,27 +127,22 @@ func rotate_right():
 	
 func move_forward():
 	move_to += directions[current_dir];
+	$"GUI/HUD/hud-anim".play("jump")
 
 func move_backward():
 	move_to -= directions[current_dir];
-	
-	
-func _process(delta):
-	if angle_x != _angle_x or angle_y != _angle_y:
-		_angle_x += (angle_x - _angle_x) * delta * 10.0;
-		_angle_y += (angle_y - _angle_y) * delta * 10.0;
+	$"GUI/HUD/hud-anim".play("jump")
 
-		var basis = Basis(Vector3(0.0, 1.0, 0.0), deg2rad(_angle_y))
-		basis *= Basis(Vector3(1.0, 0.0, 0.0), deg2rad(_angle_x))
-		transform.basis = basis
-		
-	if move_to != transform.origin:
-		var pos = Vector2(int(map_size.x*.5+transform.origin.x/terrain_scale), int(map_size.y*.5+transform.origin.z/terrain_scale));
-		move_to.y = get_adjustet_height(pos)
-		if move_to.y < water_height:
-			move_to.y = water_height
-		transform.origin += (move_to - transform.origin) * delta * 10.0
-		
+func move_left():
+	pass
+	
+func move_right():
+	pass
+
+
+
+
+
 func get_adjustet_height(pos):
 	var h = get_height(pos).r;
 	
@@ -117,54 +150,7 @@ func get_adjustet_height(pos):
 		h += (h-mountains_level)*mountains_size;
 		
 	return terrain_height * h * terrain_scale + camera_height_offset;
-	
-func _physics_process(delta):
-	for axis in range(JOY_AXIS_0, JOY_AXIS_MAX):
-		axis_value = Input.get_joy_axis(0, axis)
-		var axis_abs = abs(axis_value)
-		if axis_abs > DEADZONE:
-			# ROTATE LEFT - RIGHT
-			if axis == JOY_ANALOG_RX:
-				if axis_value > 0:
-					angle_y -= rotate_speed * axis_abs
-				else:
-					angle_y += rotate_speed * axis_abs
-					
-			# ROTATE ..THE OTEHR WAY :P
-			if axis == JOY_ANALOG_RY:
-				if axis_value > 0:
-					if angle_x > -25:
-						angle_x -= rotate_speed * axis_abs
-				else:
-					if angle_x < 25:
-						angle_x += rotate_speed * axis_abs
 
-			# MOVE LEFT - RIGHT
-			if axis == JOY_ANALOG_LX:
-				if axis_value < 0:
-					var left_right = transform.basis.x
-					left_right.y = 0.0
-					left_right = left_right.normalized()
-					move_to -= left_right * move_speed_lr * axis_abs;
-				else:
-					var left_right = transform.basis.x
-					left_right.y = 0.0
-					left_right = left_right.normalized()
-					move_to += left_right * move_speed_lr * axis_abs;
-
-			# MOVE FRONT - BACK
-			if axis == JOY_ANALOG_LY:
-				if axis_value < 0:
-					var front_back = transform.basis.z
-					front_back.y = 0.0
-					front_back = front_back.normalized()
-					move_to -= front_back * move_speed_fb * abs(axis_value);
-				else:
-					var front_back = transform.basis.z
-					front_back.y = 0.0
-					front_back = front_back.normalized()
-					move_to += front_back * move_speed_fb * abs(axis_value);
-			
 func get_height(pos):
 	var px = Color(0,0,0);
 	if pos.x >= 0 && pos.y >= 0 && pos.x < map_size.x && pos.y < map_size.y:
@@ -173,11 +159,4 @@ func get_height(pos):
 		height_map.unlock()
 	return px
 
-func _on_a_pressed():
-	pass
 
-func _on_x_pressed():
-	if $GUI/HUD/center/map.visible:
-		$GUI/HUD/center/map.hide()
-	else:
-		$GUI/HUD/center/map.show()

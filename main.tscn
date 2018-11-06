@@ -14,12 +14,14 @@
 [ext_resource path="res://game/hud/aim.png" type="Texture" id=12]
 [ext_resource path="res://system/code/fps.gd" type="Script" id=13]
 [ext_resource path="res://game/maps/aarmeda/heigtmap.png" type="Texture" id=14]
-[ext_resource path="res://system/fonts/heade_thin.tres" type="DynamicFont" id=15]
-[ext_resource path="res://system/fonts/heade_bold.tres" type="DynamicFont" id=16]
-[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=17]
-[ext_resource path="res://system/corners.tscn" type="PackedScene" id=18]
+[ext_resource path="res://system/fonts/header.tres" type="DynamicFont" id=15]
+[ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=16]
+[ext_resource path="res://system/corners.tscn" type="PackedScene" id=17]
+[ext_resource path="res://game/gui/textures/panel_48x48x9.png" type="Texture" id=18]
 [ext_resource path="res://game/code/compass.gd" type="Script" id=19]
-[ext_resource path="res://game/maps/aarmeda/pixelmap.png" type="Texture" id=20]
+[ext_resource path="res://game/gui/textures/compass_base.png" type="Texture" id=20]
+[ext_resource path="res://system/fonts/icons.tres" type="DynamicFont" id=21]
+[ext_resource path="res://game/maps/aarmeda/pixelmap.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=1]
 
@@ -148,123 +150,48 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="StyleBoxFlat" id=6]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.647059, 0.929412, 0.407843, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 48
-corner_radius_top_right = 48
-corner_radius_bottom_right = 48
-corner_radius_bottom_left = 48
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=7]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.937255, 0.6, 0.756863, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 48
-corner_radius_top_right = 48
-corner_radius_bottom_right = 48
-corner_radius_bottom_left = 48
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=8]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.419608, 0.678431, 0.956863, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 48
-corner_radius_top_right = 48
-corner_radius_bottom_right = 48
-corner_radius_bottom_left = 48
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
-[sub_resource type="StyleBoxFlat" id=9]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-bg_color = Color( 0.945098, 0.74902, 0.439216, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 48
-corner_radius_top_right = 48
-corner_radius_bottom_right = 48
-corner_radius_bottom_left = 48
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-
 [sub_resource type="CanvasItemMaterial" id=10]
+
+render_priority = 0
+blend_mode = 2
+light_mode = 0
+
+[sub_resource type="CanvasItemMaterial" id=12]
 
 render_priority = 0
 blend_mode = 1
 light_mode = 0
+
+[sub_resource type="Animation" id=11]
+
+resource_name = "jump"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -4 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bottom/movement:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -96, -76 ), Vector2( -96, -80 ), Vector2( -96, -76 ) ]
+}
 
 [node name="game" type="Node"]
 script = ExtResource( 1 )
@@ -274,10 +201,9 @@ script = ExtResource( 1 )
 [node name="SUN" parent="system" index="0"]
 transform = Transform( 0.806238, -0.562092, -0.18448, -2.72617e-08, -0.311837, 0.950136, -0.591591, -0.766035, -0.251415, 0, 6.42785, 0 )
 light_color = Color( 1, 0.945098, 0.701961, 1 )
-light_energy = 0.75
+light_energy = 1.0
 light_cull_mask = -1
 shadow_enabled = true
-shadow_color = Color( 0.109804, 0.0588235, 0.0117647, 1 )
 shadow_reverse_cull_face = true
 directional_shadow_blend_splits = true
 directional_shadow_depth_range = 1
@@ -295,7 +221,7 @@ blend_times = [  ]
 [node name="aarmeda" parent="." instance=ExtResource( 3 )]
 
 [node name="water" parent="aarmeda" index="1"]
-transform = Transform( 16, 0, 0, 0, 1, 0, 0, 0, 16, 22.035, 15.3999, -0.196198 )
+transform = Transform( 8, 0, 0, 0, 1, 0, 0, 0, 8, 22.035, 15.3999, -0.196198 )
 
 [node name="grass_basic" parent="aarmeda" index="2"]
 spacing = 14.0
@@ -413,6 +339,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = -2.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -455,22 +383,39 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -8.0
-margin_top = -8.0
-margin_right = 57.0
-margin_bottom = 15.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "FPS/60"
+text = "Frames per second: 060"
 valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 13 )
+
+[node name="names" type="Label" parent="PLAYER/HUD/left"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_top = 30.0
+margin_right = 240.0
+margin_bottom = 69.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Shaders: Krzysztof Jankowski
+Models: Mau Ryc
+Fonts: Eeve Somepx"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="right" type="Control" parent="PLAYER/HUD"]
 visible = false
@@ -510,7 +455,6 @@ __meta__ = {
 }
 
 [node name="middle" type="Control" parent="PLAYER/GUI"]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -534,89 +478,27 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="mysthic" type="Label" parent="PLAYER/GUI/middle/logo"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -190.0
-margin_top = -89.0
-margin_right = -45.0
-margin_bottom = -42.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 15 )
-text = "MYSTHIC"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
 [node name="treasure_hunt" type="Label" parent="PLAYER/GUI/middle/logo"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -40.0
-margin_top = -90.0
-margin_right = 168.0
-margin_bottom = -51.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 16 )
-text = "TREASURE HUNT"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="creds" type="Label" parent="PLAYER/GUI/middle/logo"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -169.0
-margin_top = 70.0
-margin_right = -39.0
-margin_bottom = 151.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 15 )
-text = "Shaders:
-Models:"
-align = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="names" type="Label" parent="PLAYER/GUI/middle/logo"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -37.0
-margin_top = 70.0
-margin_right = 216.0
-margin_bottom = 151.0
+margin_left = -86.0
+margin_top = -117.0
+margin_right = 85.0
+margin_bottom = -24.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 16 )
-text = "Krzysztof Jankowski
-Mau Ryc"
+custom_fonts/font = ExtResource( 15 )
+text = "Mystic
+Treasure
+Hunt"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -630,8 +512,29 @@ playback_speed = 1.0
 anims/fade-out = SubResource( 3 )
 blend_times = [  ]
 
+[node name="wip" type="Label" parent="PLAYER/GUI/middle/logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -141.0
+margin_top = 37.0
+margin_right = 141.0
+margin_bottom = 62.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Work in progress.
+Check out GitHub for latest version."
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="ver" type="Control" parent="PLAYER/GUI"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -658,14 +561,14 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 16 )
 text = "Version pre-alpha/11"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="corners" parent="PLAYER/GUI" instance=ExtResource( 18 )]
+[node name="corners" parent="PLAYER/GUI" instance=ExtResource( 17 )]
 
 [node name="overdraw" type="Control" parent="PLAYER/GUI"]
 editor/display_folded = true
@@ -695,6 +598,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.27451, 0.27451, 0.27451, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="fade-anim" type="AnimationPlayer" parent="PLAYER/GUI/overdraw/fade"]
 root_node = NodePath("..")
@@ -711,6 +617,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 2.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -735,15 +642,60 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="movement" type="Panel" parent="PLAYER/GUI/HUD/bottom"]
+[node name="movement" type="NinePatchRect" parent="PLAYER/GUI/HUD/bottom"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -96.0
-margin_top = -64.0
+margin_top = -76.0
 margin_right = 96.0
-margin_bottom = 64.0
+margin_bottom = 66.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 144, 144 )
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="labels2" type="HBoxContainer" parent="PLAYER/GUI/HUD/bottom/movement"]
+editor/display_folded = true
+modulate = Color( 0.937255, 0.870588, 0.517647, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 13.0
+margin_right = -9.0
+margin_bottom = -105.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 4
+alignment = 1
+
+[node name="box" type="Container" parent="PLAYER/GUI/HUD/bottom/movement/labels2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 12.0
+margin_right = 60.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -751,22 +703,110 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PLAYER/GUI/HUD/bottom/movement"]
+[node name="a" type="Label" parent="PLAYER/GUI/HUD/bottom/movement/labels2/box"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Q"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="box2" type="Container" parent="PLAYER/GUI/HUD/bottom/movement/labels2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 64.0
+margin_right = 112.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 24 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="b" type="Label" parent="PLAYER/GUI/HUD/bottom/movement/labels2/box2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="box3" type="Container" parent="PLAYER/GUI/HUD/bottom/movement/labels2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 116.0
+margin_right = 164.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 24 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="x" type="Label" parent="PLAYER/GUI/HUD/bottom/movement/labels2/box3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PLAYER/GUI/HUD/bottom/movement"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 24.0
+margin_bottom = -6.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/separation = 16
+custom_constants/separation = 0
 alignment = 1
 
 [node name="top" type="HBoxContainer" parent="PLAYER/GUI/HUD/bottom/movement/VBoxContainer"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -780,7 +820,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/separation = 16
+custom_constants/separation = 4
 alignment = 1
 
 [node name="turn_left" type="Button" parent="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/top"]
@@ -788,8 +828,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 8.0
-margin_right = 56.0
+margin_left = 20.0
+margin_right = 68.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -803,8 +843,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "↶"
+text = "< Turn"
 flat = false
+clip_text = true
 align = 1
 
 [node name="front" type="Button" parent="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/top"]
@@ -827,7 +868,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "↑"
+text = "Front"
 flat = false
 align = 1
 
@@ -836,8 +877,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 136.0
-margin_right = 184.0
+margin_left = 124.0
+margin_right = 172.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -851,26 +892,26 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "↷"
+text = "Turn >"
 flat = false
+clip_text = true
 align = 1
 
 [node name="bottom" type="HBoxContainer" parent="PLAYER/GUI/HUD/bottom/movement/VBoxContainer"]
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 72.0
+margin_top = 56.0
 margin_right = 192.0
-margin_bottom = 120.0
+margin_bottom = 104.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/separation = 16
+custom_constants/separation = 4
 alignment = 1
 
 [node name="left" type="Button" parent="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/bottom"]
@@ -878,8 +919,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 8.0
-margin_right = 56.0
+margin_left = 20.0
+margin_right = 68.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -893,8 +934,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "←"
+text = "Left"
 flat = false
+clip_text = true
 align = 1
 
 [node name="back" type="Button" parent="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/bottom"]
@@ -917,8 +959,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "↓"
+text = "Back"
 flat = false
+clip_text = true
 align = 1
 
 [node name="right" type="Button" parent="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/bottom"]
@@ -926,8 +969,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 136.0
-margin_right = 184.0
+margin_left = 124.0
+margin_right = 172.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -941,201 +984,211 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "→"
+text = "Right"
 flat = false
 align = 1
 
-[node name="_movement" type="Label" parent="PLAYER/GUI/HUD/bottom/movement"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = -20.0
-margin_right = 107.0
-margin_bottom = -9.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "MOVEMENT"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="actions" type="Panel" parent="PLAYER/GUI/HUD/bottom"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 132.0
-margin_top = -32.0
-margin_right = 388.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 256, 64 )
-rect_pivot_offset = Vector2( -164.753, 34.6956 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="_actions" type="Label" parent="PLAYER/GUI/HUD/bottom/actions"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = -20.0
-margin_right = 84.0
-margin_bottom = -6.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "ACTIONS"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="buttons" type="HBoxContainer" parent="PLAYER/GUI/HUD/bottom/actions"]
+[node name="labels3" type="HBoxContainer" parent="PLAYER/GUI/HUD/bottom/movement"]
+editor/display_folded = true
+modulate = Color( 0.937255, 0.870588, 0.517647, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
+margin_left = 7.0
+margin_top = 118.0
+margin_right = -9.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/separation = 16
+custom_constants/separation = 4
 alignment = 1
 
-[node name="a" type="Button" parent="PLAYER/GUI/HUD/bottom/actions/buttons"]
+[node name="box" type="Container" parent="PLAYER/GUI/HUD/bottom/movement/labels3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 48.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+margin_left = 12.0
+margin_right = 60.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/normal = SubResource( 6 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "A"
-flat = false
-align = 1
 
-[node name="b" type="Button" parent="PLAYER/GUI/HUD/bottom/actions/buttons"]
+[node name="a" type="Label" parent="PLAYER/GUI/HUD/bottom/movement/labels3/box"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "A"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="box2" type="Container" parent="PLAYER/GUI/HUD/bottom/movement/labels3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 64.0
 margin_right = 112.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/normal = SubResource( 7 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "B"
-flat = false
-align = 1
 
-[node name="x" type="Button" parent="PLAYER/GUI/HUD/bottom/actions/buttons"]
+[node name="b" type="Label" parent="PLAYER/GUI/HUD/bottom/movement/labels3/box2"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="box3" type="Container" parent="PLAYER/GUI/HUD/bottom/movement/labels3"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 128.0
-margin_right = 176.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+margin_left = 116.0
+margin_right = 164.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/normal = SubResource( 8 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "X"
-flat = false
-align = 1
 
-[node name="y" type="Button" parent="PLAYER/GUI/HUD/bottom/actions/buttons"]
+[node name="x" type="Label" parent="PLAYER/GUI/HUD/bottom/movement/labels3/box3"]
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 192.0
-margin_right = 240.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "D"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="_movement" type="Label" parent="PLAYER/GUI/HUD/bottom/movement"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 11.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Movement"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="actions" type="NinePatchRect" parent="PLAYER/GUI/HUD/bottom"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 105.0
+margin_top = -48.0
+margin_right = 347.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/normal = SubResource( 9 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Y"
-flat = false
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 144, 144 )
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="_actions" type="Label" parent="PLAYER/GUI/HUD/bottom/actions"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 11.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Actions"
 align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="labels" type="HBoxContainer" parent="PLAYER/GUI/HUD/bottom/actions"]
 editor/display_folded = true
+modulate = Color( 0.937255, 0.870588, 0.517647, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = 70.0
+margin_top = 11.0
 margin_right = -8.0
-margin_bottom = 30.0
+margin_bottom = -61.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/separation = 16
+custom_constants/separation = 6
 alignment = 1
 
 [node name="box" type="Container" parent="PLAYER/GUI/HUD/bottom/actions/labels"]
@@ -1143,7 +1196,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 48.0
+margin_left = 8.0
+margin_right = 56.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 48, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -1164,7 +1218,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "USE"
+text = "A"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -1176,8 +1230,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 64.0
-margin_right = 112.0
+margin_left = 62.0
+margin_right = 110.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 48, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -1198,8 +1252,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "TAKE
-PUT"
+text = "B"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -1211,8 +1264,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 128.0
-margin_right = 176.0
+margin_left = 116.0
+margin_right = 164.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 48, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -1233,7 +1286,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "MAP"
+text = "X"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -1245,8 +1298,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 192.0
-margin_right = 240.0
+margin_left = 170.0
+margin_right = 218.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 48, 24 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -1267,46 +1320,165 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "LOOK"
+text = "Y"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="inventory" type="Panel" parent="PLAYER/GUI/HUD/bottom"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -388.0
-margin_top = -32.0
-margin_right = -132.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 256, 64 )
+[node name="buttons" type="HBoxContainer" parent="PLAYER/GUI/HUD/bottom/actions"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 30.0
+margin_bottom = -18.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_constants/separation = 6
+alignment = 1
 
-[node name="_inventory" type="Label" parent="PLAYER/GUI/HUD/bottom/inventory"]
+[node name="a" type="Button" parent="PLAYER/GUI/HUD/bottom/actions/buttons"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = -20.0
-margin_right = 106.0
-margin_bottom = -6.0
+margin_left = 16.0
+margin_right = 64.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Use"
+flat = false
+align = 1
+
+[node name="b" type="Button" parent="PLAYER/GUI/HUD/bottom/actions/buttons"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_right = 118.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Take"
+flat = false
+align = 1
+
+[node name="x" type="Button" parent="PLAYER/GUI/HUD/bottom/actions/buttons"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 124.0
+margin_right = 172.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Map"
+flat = false
+align = 1
+
+[node name="y" type="Button" parent="PLAYER/GUI/HUD/bottom/actions/buttons"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 178.0
+margin_right = 226.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Look"
+flat = false
+align = 1
+
+[node name="inventory" type="NinePatchRect" parent="PLAYER/GUI/HUD/bottom"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -299.0
+margin_top = -49.0
+margin_right = -107.0
+margin_bottom = 47.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 144, 144 )
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="_inventory" type="Label" parent="PLAYER/GUI/HUD/bottom/inventory"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_bottom = 11.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "INVENTORY"
+text = "Inventory"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -1316,13 +1488,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "EMPTY"
+text = "Your pack is empty."
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -1344,39 +1518,45 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="stats" type="Panel" parent="PLAYER/GUI/HUD/left"]
+[node name="stats" type="NinePatchRect" parent="PLAYER/GUI/HUD/left"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -48.0
-margin_top = -16.0
-margin_right = 112.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 160, 96 )
+margin_top = -48.0
+margin_right = 48.0
+margin_bottom = 48.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 144, 144 )
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="_stats" type="Label" parent="PLAYER/GUI/HUD/left/stats"]
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
+anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = -20.0
-margin_right = 71.0
-margin_bottom = -8.0
+margin_bottom = 11.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "STATS"
+text = "Stats"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -1387,7 +1567,7 @@ anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = 8.0
+margin_top = 16.0
 margin_right = -8.0
 margin_bottom = -8.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -1396,7 +1576,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/separation = 16
+custom_constants/separation = 8
 alignment = 1
 
 [node name="moves" type="Label" parent="PLAYER/GUI/HUD/left/stats/statistics"]
@@ -1404,16 +1584,16 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 7.0
-margin_right = 144.0
-margin_bottom = 18.0
+margin_top = 17.0
+margin_right = 80.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "MOVES    ➤ 010"
+text = "Moves  010"
 align = 2
 valign = 1
 percent_visible = 1.0
@@ -1425,16 +1605,16 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 34.0
-margin_right = 144.0
-margin_bottom = 45.0
+margin_top = 32.0
+margin_right = 80.0
+margin_bottom = 39.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "TOTEMS    ◬ 000"
+text = "Totems  000"
 align = 2
 valign = 1
 percent_visible = 1.0
@@ -1446,16 +1626,16 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 61.0
-margin_right = 144.0
-margin_bottom = 72.0
+margin_top = 47.0
+margin_right = 80.0
+margin_bottom = 54.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "MAP %    ▣ 032"
+text = "Map %  032"
 align = 2
 valign = 1
 percent_visible = 1.0
@@ -1477,49 +1657,64 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="compas" type="Panel" parent="PLAYER/GUI/HUD/right"]
+[node name="compass" type="NinePatchRect" parent="PLAYER/GUI/HUD/right"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -48.0
-margin_top = -16.0
-margin_right = 48.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 96, 96 )
+margin_left = -38.0
+margin_top = -48.0
+margin_right = 58.0
+margin_bottom = 48.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 144, 144 )
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 script = ExtResource( 19 )
 
-[node name="_compas" type="Label" parent="PLAYER/GUI/HUD/right/compas"]
+[node name="_compass" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
+anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = -20.0
-margin_right = 71.0
-margin_bottom = -8.0
+margin_bottom = 11.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "COMPAS"
+text = "Compass"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="current" type="Label" parent="PLAYER/GUI/HUD/right/compas"]
+[node name="base" type="Sprite" parent="PLAYER/GUI/HUD/right/compass"]
+position = Vector2( 48.5469, 51.9724 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 20 )
+
+[node name="current" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 5.0
+margin_right = 1.0
+margin_bottom = 5.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -1533,81 +1728,85 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="n" type="Label" parent="PLAYER/GUI/HUD/right/compas"]
+[node name="n" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.0
 margin_left = -6.0
-margin_top = -35.0
+margin_top = 12.0
 margin_right = 6.0
-margin_bottom = -24.0
+margin_bottom = 31.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 21 )
 text = "▲"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="e" type="Label" parent="PLAYER/GUI/HUD/right/compas"]
-anchor_left = 0.5
+[node name="e" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 24.0
-margin_top = -8.0
-margin_right = 36.0
-margin_bottom = 3.0
+margin_left = -24.0
+margin_top = -6.0
+margin_right = -10.0
+margin_bottom = 13.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 21 )
 text = "▷"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="s" type="Label" parent="PLAYER/GUI/HUD/right/compas"]
+[node name="s" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -6.0
-margin_top = 22.0
-margin_right = 6.0
-margin_bottom = 33.0
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = -27.0
+margin_right = 7.0
+margin_bottom = -8.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 21 )
 text = "▽"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="w" type="Label" parent="PLAYER/GUI/HUD/right/compas"]
-anchor_left = 0.5
+[node name="w" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
+anchor_left = 0.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.0
 anchor_bottom = 0.5
-margin_left = -36.0
-margin_top = -8.0
-margin_right = -24.0
-margin_bottom = 3.0
+margin_left = 14.0
+margin_top = -6.0
+margin_right = 26.0
+margin_bottom = 13.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 21 )
 text = "◁"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1625,52 +1824,200 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="map" type="Panel" parent="PLAYER/GUI/HUD/center"]
+[node name="map" type="NinePatchRect" parent="PLAYER/GUI/HUD/center"]
 editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -256.0
-margin_top = -326.0
-margin_right = 256.0
-margin_bottom = 186.0
-rect_min_size = Vector2( 512, 512 )
+margin_left = -150.0
+margin_top = -200.0
+margin_right = 150.0
+margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 144, 144 )
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="_map" type="Label" parent="PLAYER/GUI/HUD/center/map"]
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 0.0
+anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = -20.0
-margin_right = 48.0
-margin_bottom = -9.0
+margin_bottom = 13.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "MAP"
+text = "Map of the Mystic Island"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="pixelmap" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
-modulate = Color( 0.462278, 0.480469, 0.296539, 1 )
-self_modulate = Color( 1, 0.996078, 0.996078, 1 )
+[node name="pixelmap2" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
+modulate = Color( 1, 1, 1, 0.168627 )
 material = SubResource( 10 )
-position = Vector2( 256, 256 )
-scale = Vector2( 8, 8 )
-texture = ExtResource( 20 )
+position = Vector2( 23, 23 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 22 )
+centered = false
+
+[node name="pixelmap" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
+modulate = Color( 0.0196078, 0.105882, 0.00784314, 1 )
+self_modulate = Color( 1, 0.996078, 0.996078, 1 )
+material = SubResource( 12 )
+position = Vector2( 24, 24 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 22 )
+centered = false
+
+[node name="Label" type="Label" parent="PLAYER/GUI/HUD/center/map"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 93.0
+margin_top = 281.0
+margin_right = 200.0
+margin_bottom = 288.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "You are here - X"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label2" type="Label" parent="PLAYER/GUI/HUD/center/map"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 151.0
+margin_top = 151.0
+margin_right = 158.0
+margin_bottom = 158.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "X"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label3" type="Label" parent="PLAYER/GUI/HUD/center/map"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 84.0
+margin_top = 93.0
+margin_right = 125.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Village"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label4" type="Label" parent="PLAYER/GUI/HUD/center/map"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 175.0
+margin_top = 35.0
+margin_right = 262.0
+margin_bottom = 42.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Mighty Forest"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label6" type="Label" parent="PLAYER/GUI/HUD/center/map"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 190.0
+margin_top = 146.0
+margin_right = 238.0
+margin_bottom = 163.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Little
+Piramid"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label5" type="Label" parent="PLAYER/GUI/HUD/center/map"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 29.0
+margin_top = 175.0
+margin_right = 90.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Lost 
+Mountains"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="hud-anim" type="AnimationPlayer" parent="PLAYER/GUI/HUD"]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/jump = SubResource( 11 )
+blend_times = [  ]
 
 [connection signal="pressed" from="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/top/turn_left" to="PLAYER" method="_on_turn_left_pressed"]
 [connection signal="pressed" from="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/top/front" to="PLAYER" method="_on_front_pressed"]
