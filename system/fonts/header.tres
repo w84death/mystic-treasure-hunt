@@ -4,13 +4,14 @@
 
 [resource]
 
-size = 48
+size = 30
 outline_size = 2
-outline_color = Color( 0, 0, 0, 0.25098 )
+outline_color = Color( 0, 0, 0, 0.501961 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = -8
-extra_spacing_bottom = -8
+extra_spacing_bottom = -6
+extra_spacing_char = -1
 extra_spacing_space = -4
 font_data = ExtResource( 1 )
 
