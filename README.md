@@ -28,39 +28,15 @@ And lastly, based on the feedback and ideas final game will be made, closing las
 
 ### Milestone A: Tech
 
-#### Done
-
-- bigger terrain with mountains
-- grass, bush, palms
-- PBR for all assets
-- movement with fov change (kinda bugged, turned off by default)
-
-#### To-do (priority ordered)
-
-- one terrain settings (heightmap/size) + script that propagates this to all shaders
-- birds
-- clouds
-- easy changing maps
-- grass  shader reacts to movement
-- good map to discover
-- waterfall shader
-- buildings materials
-- locomotion (probably one-railer)
-- portals
-- collecting letters (TREASURE) hidden on islands
-- lots of "stars" to collect
-- ...
+- map
+- movement
+- triggers
+- score
 
 ### Milestone B: Prototype
 
-#### Done
-
 - intro idea, screenplay, test shoots
 - rough idea for the game
-
-#### To-do
-
-- a lot...
 
 ### Milestone C: The Game
 
@@ -70,9 +46,14 @@ At last we have a name, right?
 
 ### alpha/11
 
+![alpha11](web-stuff/alpha11.png)
+
 - [updated] DVD-video resolution: 720x576
 - [new] grid-based movement
 - [updated] theme for GUI
+- [new] working map
+- [new] working compass
+- [new] movement buttons enabled only on valid moves
 
 ### alpha/10
 
