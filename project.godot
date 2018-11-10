@@ -29,6 +29,7 @@ settings/fps/force_fps=60
 
 window/size/width=720
 window/size/height=576
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -196,7 +197,7 @@ quality/shadow_atlas/quadrant_0_subdiv=3
 quality/shadow_atlas/quadrant_1_subdiv=4
 quality/shadow_atlas/quadrant_2_subdiv=5
 quality/shadow_atlas/quadrant_3_subdiv=6
-quality/shadows/filter_mode=2
+quality/shadows/filter_mode=0
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
 quality/reflections/atlas_size=4096
