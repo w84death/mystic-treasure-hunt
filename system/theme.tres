@@ -1,86 +1,36 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [ext_resource path="res://system/fonts/paragraph.tres" type="DynamicFont" id=1]
-[ext_resource path="res://game/gui/textures/button4_48x48.png" type="Texture" id=2]
-[ext_resource path="res://game/gui/textures/button2_48x48.png" type="Texture" id=3]
-[ext_resource path="res://game/gui/textures/button1_48x48.png" type="Texture" id=4]
-[ext_resource path="res://game/gui/textures/button3_48x48.png" type="Texture" id=5]
+[ext_resource path="res://game/gui/textures/button5_48x48.png" type="Texture" id=2]
+[ext_resource path="res://game/gui/textures/button4_48x48.png" type="Texture" id=3]
+[ext_resource path="res://game/gui/textures/button2_48x48.png" type="Texture" id=4]
+[ext_resource path="res://game/gui/textures/button1_48x48.png" type="Texture" id=5]
+[ext_resource path="res://game/gui/textures/button3_48x48.png" type="Texture" id=6]
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=5]
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 48, 48 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="StyleBoxTexture" id=3]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 48, 48 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=1]
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 48, 48 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 48, 48 )
 
 [sub_resource type="StyleBoxTexture" id=4]
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 48, 48 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
 
 [resource]
 
@@ -91,10 +41,10 @@ Button/colors/font_color_hover = Color( 0.862745, 0.862745, 0.862745, 1 )
 Button/colors/font_color_pressed = Color( 0.972549, 1, 0.0666667, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = ExtResource( 1 )
-Button/styles/disabled = null
-Button/styles/focus = SubResource( 2 )
-Button/styles/hover = SubResource( 3 )
-Button/styles/normal = SubResource( 1 )
+Button/styles/disabled = SubResource( 5 )
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
 Button/styles/pressed = SubResource( 4 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )

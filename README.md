@@ -68,6 +68,12 @@ At last we have a name, right?
 
 ## Changelog
 
+### alpha/11
+
+- [updated] DVD-video resolution: 720x576
+- [new] grid-based movement
+- [updated] theme for GUI
+
 ### alpha/10
 
 ![alpha10](web-stuff/alpha10.png)

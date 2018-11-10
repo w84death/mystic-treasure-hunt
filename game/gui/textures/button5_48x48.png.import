@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button_48x48_tilemap.png-78904d374d763bf77532fd2392f38839.stex"
+path="res://.import/button5_48x48.png-8a3f74c38bbf6f5a367abc60d1e2d8a8.stex"
 
 [deps]
 
-source_file="res://game/gui/textures/button_48x48_tilemap.png"
-dest_files=[ "res://.import/button_48x48_tilemap.png-78904d374d763bf77532fd2392f38839.stex" ]
+source_file="res://game/gui/textures/button5_48x48.png"
+dest_files=[ "res://.import/button5_48x48.png-8a3f74c38bbf6f5a367abc60d1e2d8a8.stex" ]
 
 [params]
 
