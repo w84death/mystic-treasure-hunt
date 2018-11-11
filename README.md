@@ -1,7 +1,5 @@
-# Mystic Treasure Hunt
-Arcade adventure game for PC. Targeted for Arcade Machine with big screen for [our booth at expos](http://p1x.in/events).
-
-
+# About Mystic Treasure Hunt
+Mystic Treasure Hunt is a first-person action role-playing game with tile-based movement and turn based game mechanics.
 
 ![title screenshot](web-stuff/title_screen.png)
 
@@ -10,11 +8,10 @@ Game is made using **Godot Engine 3.1-dev**. To run the project form source code
 
 ## Technology
 Custom made shaders for:
-- terrain generated from heightmap
-- terrain supports 4 PBR materials
-- grass, bushes, palms procedurally generated from featuresmap
-- butterflies, (planned) birds
-- water, [blog post about water shader](http://krzysztofjankowski.com/blog/water-shader-in-godotengine-3.html)
+- terrain generated from height-map,
+- grass, bushes, palms procedurally generated from features-map, [article about grass shader](https://bits.krzysztofjankowski.com/how-i-grow-with-grass-shader/),
+- butterflies,
+- water, [article about water shader](http://krzysztofjankowski.com/blog/water-shader-in-godotengine-3.html).
 
 ## Roadmap
 
@@ -22,25 +19,11 @@ The big picture on the project. It's divided into three milestones. A, B and C.
 
 Firstly to get all the tech done. So it can be used to make an game. Also it will be a good base for other games. Most of the work was made during the [The Islands of Shaders project](https://github.com/w84death/the-islands-of-shaders). But there's room for improvements.
 
-Prototype one of them fits in to the second milestone. It ends at Poznan Game Arena where it will be showcased. 
+Prototype one of them fits in to the second milestone. 
 
 And lastly, based on the feedback and ideas final game will be made, closing last milestone.
 
-### Milestone A: Tech
-
-- map
-- movement
-- triggers
-- score
-
-### Milestone B: Prototype
-
-- intro idea, screenplay, test shoots
-- rough idea for the game
-
-### Milestone C: The Game
-
-At last we have a name, right?
+The game is right now between milestone A and B. There is some game play but it's still not enough for a prototype. Also there is a slightly idea what the game should looks like for the milestone C.
 
 ## Changelog
 
@@ -54,6 +37,7 @@ At last we have a name, right?
 - [new] working map
 - [new] working compass
 - [new] movement buttons enabled only on valid moves
+- [updated] a simple map with maze for testing
 
 ### alpha/10
 
@@ -147,37 +131,5 @@ Project is empty but all the main files are moved. New directories created.
 
 
 
-## Ideas
+## Credits
 
-Until Milestone A will be finished I need to have at last some height level idea. Here I'll be writing all ideas and probably sentence something from them.
-
-### Soul Quest
-
-Player starts in the heavens. As a soul he lands on an island in a mission to find as many artifacts as possible in a restricted timespan. This has a problem of being one player game.
-
- ### Piradice II
-
-My first successful game was Piradice. And now looking at this awesome tech for rendering islands it feels like the time for a sequel. Probably first thing I do after this arcade game will be created. So more like 2019.
-
-### Pac-man style
-
-There are bad actors on the map. They will chase the player if close by. Player searches for artifacts. There are shrooms in the forest terrain that eaten gives player power to catch enemies. They will retreat.
-
-### Dijkstra
-
-On the island there are distributed T, R, E, A, S, U, R and E letters to collect. Also lot of stars to collect. Stars are just for pleasure and helps aim the map (shows paths). Player main goal is to collect all letters and also in the correct order.  And in the shortest possible time.
-
-hint: word treasure is not the best one as it have doubled R and E letters.
-
-### Brainstorming
-
-What the ~arcade game for expo~ needs to have:
-
-- two player mode - option for one player (ex. sports games)
-- one button - all 4 should work as one (no dead buttons)
-- understandable without instruction - WYSIWYG no hidden parts, inventory etc 
-- colorful content - players and main items must be different than background; bg should be colorful but avoid those main colors
-- competitive in nature - fight against or it can be also to get most points together 
-- leader board - print flyer score certifivate for each player
-- feel of progression - levels instead of points
-- leader board 2 - each level gives a code for future continue; that way each player "owns" his status by knowing the code for particular level. 

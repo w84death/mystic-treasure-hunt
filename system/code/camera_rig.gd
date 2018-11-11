@@ -220,7 +220,4 @@ func refresh_buttons():
 	$GUI/HUD/bottom/movement/VBoxContainer/bottom/right.disabled = not get_pixel_move(current_position + pixel_dir[right_dir]);
 	$GUI/HUD/bottom/movement/VBoxContainer/bottom/back.disabled = not get_pixel_move(current_position - pixel_dir[current_dir]);
 	$GUI/HUD/bottom/movement/VBoxContainer/bottom/left.disabled = not get_pixel_move(current_position + pixel_dir[left_dir]);
-	refresh_map()
-	
-func refresh_map():
-	$GUI/HUD/center/map/ref/here.set_position(current_position*4 - Vector2(2,2))
+	$GUI/HUD/center/map.refresh_map(current_position, current_dir)

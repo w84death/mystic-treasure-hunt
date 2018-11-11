@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://system/code/exit_on_esc.gd" type="Script" id=1]
 [ext_resource path="res://system/corners.tscn" type="PackedScene" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://game/code/compass.gd" type="Script" id=18]
 [ext_resource path="res://game/gui/textures/compass_base.png" type="Texture" id=19]
 [ext_resource path="res://system/fonts/icons.tres" type="DynamicFont" id=20]
+[ext_resource path="res://game/code/map.gd" type="Script" id=21]
+[ext_resource path="res://game/gui/textures/map_poi_here.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=1]
 
@@ -38,15 +40,18 @@ tracks/0/keys = {
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
-blend_mode = 2
+blend_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id=3]
 
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
 blend_mode = 1
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
-resource_name = "jump"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -800,6 +805,7 @@ patch_margin_right = 48
 patch_margin_bottom = 48
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
+script = ExtResource( 21 )
 
 [node name="_map" type="Label" parent="PLAYER/GUI/HUD/center/map"]
 anchor_right = 1.0
@@ -808,80 +814,99 @@ text = "Map of the Mystic Island"
 align = 1
 valign = 1
 
-[node name="pixelmap2" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
-modulate = Color( 1, 1, 1, 0.168627 )
+[node name="heightmap" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
+modulate = Color( 0.686275, 0.694118, 0.45098, 1 )
 material = SubResource( 2 )
+position = Vector2( 24, 24 )
+scale = Vector2( 0.125, 0.125 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="pixelmap_black" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
+modulate = Color( 1, 1, 1, 0.231373 )
+material = SubResource( 3 )
 position = Vector2( 23, 23 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 15 )
 centered = false
 
-[node name="pixelmap" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
-modulate = Color( 0.0196078, 0.105882, 0.00784314, 1 )
+[node name="pixelmap_white" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
+modulate = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 self_modulate = Color( 1, 0.996078, 0.996078, 1 )
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( 24, 24 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 15 )
 centered = false
 
-[node name="ref" type="Container" parent="PLAYER/GUI/HUD/center/map"]
-margin_left = 24.0
-margin_top = 24.0
-margin_right = 280.0
-margin_bottom = 280.0
+[node name="poi" type="Container" parent="PLAYER/GUI/HUD/center/map"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 281.0
+margin_bottom = 281.0
 rect_min_size = Vector2( 256, 256 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="here" type="Label" parent="PLAYER/GUI/HUD/center/map/ref"]
-margin_left = 126.0
-margin_top = 126.0
-margin_right = 133.0
-margin_bottom = 133.0
-text = "X"
-align = 1
-valign = 1
+[node name="here" type="Sprite" parent="PLAYER/GUI/HUD/center/map/poi"]
+position = Vector2( 128, 128 )
+texture = ExtResource( 22 )
 
-[node name="Label" type="Label" parent="PLAYER/GUI/HUD/center/map"]
-margin_left = 93.0
-margin_top = 281.0
-margin_right = 200.0
-margin_bottom = 288.0
-text = "You are here - X"
+[node name="names" type="Control" parent="PLAYER/GUI/HUD/center/map"]
+modulate = Color( 0.486275, 0.541176, 0.47451, 1 )
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 281.0
+margin_bottom = 281.0
+rect_min_size = Vector2( 256, 256 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Label3" type="Label" parent="PLAYER/GUI/HUD/center/map"]
-margin_left = 84.0
-margin_top = 93.0
-margin_right = 125.0
-margin_bottom = 100.0
+[node name="Label3" type="Label" parent="PLAYER/GUI/HUD/center/map/names"]
+margin_left = 49.0
+margin_top = 66.0
+margin_right = 90.0
+margin_bottom = 73.0
 text = "Village"
 
-[node name="Label4" type="Label" parent="PLAYER/GUI/HUD/center/map"]
-margin_left = 175.0
-margin_top = 35.0
-margin_right = 262.0
-margin_bottom = 42.0
+[node name="Label4" type="Label" parent="PLAYER/GUI/HUD/center/map/names"]
+margin_left = 150.0
+margin_top = 10.0
+margin_right = 237.0
+margin_bottom = 17.0
 text = "Mighty Forest"
 
-[node name="Label6" type="Label" parent="PLAYER/GUI/HUD/center/map"]
-margin_left = 190.0
-margin_top = 146.0
-margin_right = 238.0
-margin_bottom = 163.0
+[node name="Label7" type="Label" parent="PLAYER/GUI/HUD/center/map/names"]
+margin_left = 87.0
+margin_top = 201.0
+margin_right = 123.0
+margin_bottom = 208.0
+text = "Docks"
+
+[node name="Label6" type="Label" parent="PLAYER/GUI/HUD/center/map/names"]
+margin_left = 243.0
+margin_top = 103.0
+margin_right = 293.0
+margin_bottom = 120.0
+rect_rotation = 90.0
 text = "Little
-Piramid"
+Pyramid"
 align = 1
 
-[node name="Label5" type="Label" parent="PLAYER/GUI/HUD/center/map"]
-margin_left = 29.0
-margin_top = 175.0
-margin_right = 90.0
-margin_bottom = 192.0
+[node name="Label5" type="Label" parent="PLAYER/GUI/HUD/center/map/names"]
+margin_left = -8.0
+margin_top = 183.0
+margin_right = 53.0
+margin_bottom = 200.0
+rect_rotation = -90.0
 text = "Lost 
 Mountains"
 align = 1
 
 [node name="hud-anim" type="AnimationPlayer" parent="PLAYER/GUI/HUD"]
-anims/jump = SubResource( 4 )
+anims/jump = SubResource( 5 )
 
 [connection signal="pressed" from="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/top/turn_left" to="PLAYER" method="_on_turn_left_pressed"]
 [connection signal="pressed" from="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/top/front" to="PLAYER" method="_on_front_pressed"]
