@@ -86,6 +86,8 @@ func _input(event):
 	
 	if Input.is_action_pressed("game_x"):
 		toggle_map()
+		
+	
 
 func _on_turn_left_pressed():
 	rotate_left()
@@ -174,8 +176,6 @@ func move_right():
 		current_position += pixel_dir[right_dir]
 		$"GUI/HUD/hud-anim".play("jump")
 		refresh_buttons()
-
-
 
 
 func get_adjustet_height(pos):

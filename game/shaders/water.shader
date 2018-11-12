@@ -51,5 +51,4 @@ void fragment(){
 	SPECULAR = 1.0;
 	ALPHA = water_alpha;
 	ALBEDO = clamp(w_color, 0.0, 1.0);
-	EMISSION = water_color * 0.4;
 }

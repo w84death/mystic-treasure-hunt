@@ -46,13 +46,10 @@ script = ExtResource( 2 )
 [node name="system" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
 
-[node name="SUN" parent="system" index="0"]
-light_cull_mask = -1
-
 [node name="aarmeda" parent="." instance=ExtResource( 4 )]
 
 [node name="main_camera" type="Camera" parent="."]
-transform = Transform( -0.0851213, 0.40383, 0.910865, 0, 0.914183, -0.405301, -0.996371, -0.0344998, -0.0778165, 1817.39, 59.246, -1375.91 )
+transform = Transform( -0.0337308, 0.387938, 0.921068, 0, 0.921592, -0.388159, -0.999431, -0.0130929, -0.0310861, 1741.37, 111.866, -1240.23 )
 current = true
 fov = 75.0
 far = 2048.0
