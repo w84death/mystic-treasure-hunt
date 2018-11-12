@@ -1,6 +1,7 @@
-[gd_resource type="DynamicFont" load_steps=2 format=2]
+[gd_resource type="DynamicFont" load_steps=3 format=2]
 
-[ext_resource path="res://system/fonts/CompassPro.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://system/fonts/DejaVuSansCondensed.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://system/fonts/CompassPro.ttf" type="DynamicFontData" id=2]
 
 [resource]
 
@@ -13,5 +14,6 @@ extra_spacing_top = -8
 extra_spacing_bottom = -6
 extra_spacing_char = -1
 extra_spacing_space = -4
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
+fallback/0 = ExtResource( 1 )
 
