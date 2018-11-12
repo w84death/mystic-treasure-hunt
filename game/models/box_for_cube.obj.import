@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/box_for_cube.obj-3049e9462d776da7cf93e699ea884c8f.mesh"
+
+[deps]
+
+files=[ "res://.import/box_for_cube.obj-3049e9462d776da7cf93e699ea884c8f.mesh" ]
+
+source_file="res://game/models/box_for_cube.obj"
+dest_files=[ "res://.import/box_for_cube.obj-3049e9462d776da7cf93e699ea884c8f.mesh", "res://.import/box_for_cube.obj-3049e9462d776da7cf93e699ea884c8f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
