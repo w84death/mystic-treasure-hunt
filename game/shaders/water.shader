@@ -43,9 +43,8 @@ void fragment(){
 	depth = exp(-depth * beer_factor);
 	
 	ROUGHNESS = 0.3;
-	METALLIC = 0.1;
+	METALLIC = 0.5;
 	SPECULAR = 1.0;
 	ALPHA = clamp(1.0-depth, 0.0, 1.0);
-	
-	ALBEDO = mix(water_color, water_color2, clamp(depth, 0.0, 1.0));
+	ALBEDO = mix(water_color, water_color2, clamp(wave_height, 0.0, 1.0));
 }
