@@ -49,7 +49,7 @@ editor/display_folded = true
 [node name="aarmeda" parent="." instance=ExtResource( 4 )]
 
 [node name="main_camera" type="Camera" parent="."]
-transform = Transform( -0.0337308, 0.387938, 0.921068, 0, 0.921592, -0.388159, -0.999431, -0.0130929, -0.0310861, 1741.37, 111.866, -1240.23 )
+transform = Transform( -0.190004, 0.187501, 0.963712, 0, 0.981593, -0.19098, -0.981783, -0.036287, -0.186507, 1851.23, 246.806, -1177.62 )
 current = true
 fov = 75.0
 far = 2048.0

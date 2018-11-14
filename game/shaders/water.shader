@@ -11,7 +11,6 @@ uniform vec3 water_color = vec3(0.1,0.4,0.8);
 uniform vec3 water_color2 = vec3(0.5,0.5,0.5);
 
 uniform float beer_factor = 2.0;
-
 varying float wave_height;
 
 float height(vec2 pos, float time, float noise){
@@ -30,8 +29,8 @@ void vertex(){
 	float noise = faker(VERTEX.xz).x;
 	wave_height = height(VERTEX.xz, TIME, noise);
 	VERTEX.y = water_height + wave_height;
-	TANGENT = normalize( vec3(0.0, height(VERTEX.xz + vec2(0.0, 0.2), TIME, noise) - height(VERTEX.xz + vec2(0.0, -0.2), TIME, noise), 0.3));
-	BINORMAL = normalize( vec3(0.3, height(VERTEX.xz + vec2(0.2, 0.0), TIME, noise) - height(VERTEX.xz + vec2(-0.2, 0.0), TIME, noise), 0.0));
+	TANGENT = normalize( vec3(0.0, height(VERTEX.xz + vec2(0.0, 0.4), TIME, noise) - height(VERTEX.xz + vec2(0.0, -0.4), TIME, noise), 0.6));
+	BINORMAL = normalize( vec3(0.6, height(VERTEX.xz + vec2(0.4, 0.0), TIME, noise) - height(VERTEX.xz + vec2(-0.4, 0.0), TIME, noise), 0.0));
 	NORMAL = cross(TANGENT, BINORMAL);
 }
 
@@ -42,8 +41,8 @@ void fragment(){
 	depth = depth + VERTEX.z;
 	depth = exp(-depth * beer_factor);
 	
-	ROUGHNESS = 0.3;
-	METALLIC = 0.5;
+	ROUGHNESS = clamp(1.0 - wave_height*5.0, 0.1, 0.8);
+	METALLIC = 0.8;
 	SPECULAR = 1.0;
 	ALPHA = clamp(1.0-depth, 0.0, 1.0);
 	ALBEDO = mix(water_color, water_color2, clamp(wave_height, 0.0, 1.0));
