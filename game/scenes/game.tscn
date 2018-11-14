@@ -134,7 +134,6 @@ transform = Transform( 0.806238, -0.562092, -0.18448, -2.72617e-08, -0.311837, 0
 light_color = Color( 0.913725, 0.905882, 0.87451, 1 )
 light_energy = 1.0
 shadow_reverse_cull_face = true
-directional_shadow_depth_range = 1
 
 [node name="animations" type="AnimationPlayer" parent="."]
 autoplay = "demo"
@@ -176,7 +175,6 @@ script = ExtResource( 8 )
 
 [node name="light" type="OmniLight" parent="aarmeda/totem"]
 transform = Transform( 0.333333, 0, -5.32907e-15, 0, 0.333333, 0, 5.32907e-15, 0, 0.333333, 0.214809, 29.5925, 14.6637 )
-visible = false
 light_energy = 8.0
 omni_range = 54.0157
 

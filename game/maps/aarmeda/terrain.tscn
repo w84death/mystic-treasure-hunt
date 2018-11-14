@@ -30,7 +30,7 @@ subdivide_depth = 512
 
 size = Vector2( 2048, 2048 )
 subdivide_width = 256
-subdivide_depth = 156
+subdivide_depth = 256
 
 [node name="aarmeda" type="Spatial"]
 

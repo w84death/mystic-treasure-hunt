@@ -1,26 +1,21 @@
-/* WATER SHADER 3.3 "Back to the roots" */
+
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+//render_mode blend_mix, depth_draw_opaque, cull_back,diffuse_burley,specular_schlick_ggx;
 
 uniform vec2 amplitude = vec2(0.5, 0.3);
 uniform vec2 frequency = vec2(.2, .2);
 uniform vec2 time_factor = vec2(2.0, 2.0);
-uniform bool waves_by_height = false;
+
 uniform float water_height = 2.5;
 uniform vec3 water_color = vec3(0.1,0.4,0.8);
-uniform float water_alpha = 0.2;
-uniform float water_shore = 0.37;
-uniform float water_shore_contrast = 6.0;
+uniform vec3 water_color2 = vec3(0.5,0.5,0.5);
 
-uniform sampler2D height_map;
+uniform float beer_factor = 2.0;
+
+varying float wave_height;
 
 float height(vec2 pos, float time, float noise){
-	float t_height = texture(height_map, pos.xy).r;
-	float th = 1.0;
-	if (waves_by_height) {
-		th = t_height*.2;
-	}
-	return (amplitude.x * th * sin(pos.x * frequency.x * noise + time * time_factor.x)) + (amplitude.y * th * sin(pos.y * frequency.y * noise + time * time_factor.y));
+	return (amplitude.x  * sin(pos.x * frequency.x * noise + time * time_factor.x)) + (amplitude.y * sin(pos.y * frequency.y * noise + time * time_factor.y));
 }
 
 float fake_random(vec2 p){
@@ -33,22 +28,24 @@ vec2 faker(vec2 p){
 
 void vertex(){
 	float noise = faker(VERTEX.xz).x;
-	VERTEX.y = water_height + height(VERTEX.xz, TIME, noise);
+	wave_height = height(VERTEX.xz, TIME, noise);
+	VERTEX.y = water_height + wave_height;
 	TANGENT = normalize( vec3(0.0, height(VERTEX.xz + vec2(0.0, 0.2), TIME, noise) - height(VERTEX.xz + vec2(0.0, -0.2), TIME, noise), 0.3));
 	BINORMAL = normalize( vec3(0.3, height(VERTEX.xz + vec2(0.2, 0.0), TIME, noise) - height(VERTEX.xz + vec2(-0.2, 0.0), TIME, noise), 0.0));
 	NORMAL = cross(TANGENT, BINORMAL);
 }
 
 void fragment(){
-	vec2 uv2 = UV * -1.0;
-	//float height = texture(height_map, uv2.xy).r;
-	//float gfx = smoothstep(0.0, water_shore, height);
-	vec3 w_color = water_color;
-	//w_color += vec3(gfx, gfx, gfx) * water_shore_contrast;
+	float depth = texture(DEPTH_TEXTURE, SCREEN_UV).r;
+	depth = depth * 2.0 - 1.0;
+	depth = PROJECTION_MATRIX[3][2] / (depth + PROJECTION_MATRIX[2][2]);
+	depth = depth + VERTEX.z;
+	depth = exp(-depth * beer_factor);
 	
-	ROUGHNESS = 0.1;
-	METALLIC = 0.0;
+	ROUGHNESS = 0.3;
+	METALLIC = 0.1;
 	SPECULAR = 1.0;
-	ALPHA = water_alpha;
-	ALBEDO = clamp(w_color, 0.0, 1.0);
+	ALPHA = clamp(1.0-depth, 0.0, 1.0);
+	
+	ALBEDO = mix(water_color, water_color2, clamp(depth, 0.0, 1.0));
 }
