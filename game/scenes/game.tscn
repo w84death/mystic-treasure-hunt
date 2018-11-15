@@ -140,6 +140,7 @@ autoplay = "demo"
 anims/demo = SubResource( 1 )
 
 [node name="aarmeda" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 
 [node name="water" parent="aarmeda" index="1"]
 transform = Transform( 6, 0, 0, 0, 1, 0, 0, 0, 6, 22.035, 15.3999, -0.196198 )

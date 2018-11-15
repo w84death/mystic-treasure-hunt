@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://game/maps/small/terrain.material" type="Material" id=1]
+[ext_resource path="res://system/code/terrain.gd" type="Script" id=2]
+[ext_resource path="res://game/shaders/water.shader" type="Shader" id=3]
+[ext_resource path="res://game/maps/small/grass_basic_particle.material" type="Material" id=4]
+[ext_resource path="res://game/models/grass_basic.tres" type="ArrayMesh" id=5]
+[ext_resource path="res://system/code/particle_follow_camera_rig.gd" type="Script" id=6]
+[ext_resource path="res://game/maps/small/palms_particle.material" type="Material" id=7]
+[ext_resource path="res://game/models/palm1.tres" type="ArrayMesh" id=8]
+
+[sub_resource type="PlaneMesh" id=1]
+
+size = Vector2( 2048, 2048 )
+subdivide_width = 512
+subdivide_depth = 512
+
+[sub_resource type="PlaneMesh" id=2]
+
+size = Vector2( 2048, 2048 )
+subdivide_width = 256
+subdivide_depth = 256
+
+[sub_resource type="ShaderMaterial" id=3]
+
+shader = ExtResource( 3 )
+shader_param/amplitude = Vector2( 2, 2 )
+shader_param/frequency = Vector2( 1, 0.8 )
+shader_param/time_factor = Vector2( 4, 4 )
+shader_param/water_height = 24.0
+shader_param/water_color = Vector3( 0.11, 0.79, 1 )
+shader_param/water_color2 = Vector3( 1, 1, 1 )
+shader_param/beer_factor = 0.02
+
+[node name="small" type="Spatial"]
+
+[node name="terrain" type="MeshInstance" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="water" type="MeshInstance" parent="."]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 22.035, 15.3999, -0.196198 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="grass_basic" type="Particles" parent="."]
+amount = 256
+explosiveness = 1.0
+visibility_aabb = AABB( -2906.23, 0, -1996.94, 5044.45, 20, 3225.88 )
+local_coords = false
+process_material = ExtResource( 4 )
+draw_pass_1 = ExtResource( 5 )
+script = ExtResource( 6 )
+rows = 16
+spacing = 32.0
+
+[node name="palms" type="Particles" parent="."]
+amount = 256
+explosiveness = 1.0
+visibility_aabb = AABB( -2383.18, -72.2026, -4055.25, 3998.37, 206.204, 7342.5 )
+local_coords = false
+process_material = ExtResource( 7 )
+draw_pass_1 = ExtResource( 8 )
+script = ExtResource( 6 )
+rows = 16
+spacing = 32.0
+
