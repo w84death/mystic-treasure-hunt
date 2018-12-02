@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://game/models/source/reference_box.dae" type="PackedScene" id=1]
 [ext_resource path="res://game/maps/aarmeda/terrain.material" type="Material" id=2]
@@ -18,14 +18,13 @@
 [ext_resource path="res://game/materials/grass/grass_flowers_particle.material" type="Material" id=16]
 [ext_resource path="res://game/models/meshes/grass2.mesh" type="ArrayMesh" id=17]
 [ext_resource path="res://game/materials/grass/rocks_small_particle.material" type="Material" id=18]
-[ext_resource path="res://game/materials/grass/rocks_big_particle.material" type="Material" id=19]
-[ext_resource path="res://game/models/meshes/rock.mesh" type="ArrayMesh" id=20]
-[ext_resource path="res://game/materials/grass/grass_dead_particle.material" type="Material" id=21]
-[ext_resource path="res://game/materials/grass/grass_dark_particle.material" type="Material" id=22]
-[ext_resource path="res://game/materials/grass/grass1.material" type="Material" id=23]
-[ext_resource path="res://game/materials/butterflies/insects.material" type="Material" id=24]
-[ext_resource path="res://game/materials/butterflies/insects_particles.material" type="Material" id=25]
-[ext_resource path="res://game/models/butterfly.obj" type="ArrayMesh" id=26]
+[ext_resource path="res://game/models/meshes/rock2.mesh" type="ArrayMesh" id=19]
+[ext_resource path="res://game/materials/grass/rocks_big_particle.material" type="Material" id=20]
+[ext_resource path="res://game/models/meshes/rock.mesh" type="ArrayMesh" id=21]
+[ext_resource path="res://game/materials/butterflies/insects_particles.material" type="Material" id=22]
+[ext_resource path="res://game/models/butterfly.obj" type="ArrayMesh" id=23]
+[ext_resource path="res://game/materials/grass/grass_dark_particle.material" type="Material" id=24]
+[ext_resource path="res://game/materials/grass/grass1.material" type="Material" id=25]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -48,7 +47,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 138,
-"material": ExtResource( 23 ),
+"material": ExtResource( 25 ),
 "name": "Plane",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -142,35 +141,35 @@ spacing = 16.0
 
 [node name="rocks_small" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75281, 0 )
-visible = false
 amount = 1024
 explosiveness = 1.0
-visibility_aabb = AABB( -256, 0, -256, 512, 64, 512 )
+visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
 local_coords = false
 process_material = ExtResource( 18 )
+draw_pass_1 = ExtResource( 19 )
 script = ExtResource( 7 )
 spacing = 32.0
 
 [node name="rocks_big" type="Particles" parent="."]
+transform = Transform( 1, -0.000173234, -0.000115734, 0.000173234, 1, -1.28089e-05, 0.000115734, 1.28089e-05, 1, 0, 0, 0 )
 amount = 1024
 explosiveness = 1.0
 visibility_aabb = AABB( -256, 0, -256, 512, 64, 512 )
 local_coords = false
-process_material = ExtResource( 19 )
-draw_pass_1 = ExtResource( 20 )
+process_material = ExtResource( 20 )
+draw_pass_1 = ExtResource( 21 )
 script = ExtResource( 7 )
 spacing = 32.0
 
-[node name="grass_snakk" type="Particles" parent="."]
-visible = false
-amount = 4096
-explosiveness = 1.0
-visibility_aabb = AABB( -256, 0, -256, 512, 64, 512 )
+[node name="butterflies" type="Particles" parent="."]
+amount = 576
+visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
 local_coords = false
-process_material = ExtResource( 21 )
+process_material = ExtResource( 22 )
+draw_pass_1 = ExtResource( 23 )
 script = ExtResource( 7 )
-rows = 64
-spacing = 6.0
+rows = 24
+spacing = 16.0
 
 [node name="grass_dark" type="Particles" parent="."]
 visible = false
@@ -178,21 +177,9 @@ amount = 4096
 explosiveness = 1.0
 visibility_aabb = AABB( -256, 0, -256, 512, 64, 512 )
 local_coords = false
-process_material = ExtResource( 22 )
+process_material = ExtResource( 24 )
 draw_pass_1 = SubResource( 3 )
 script = ExtResource( 7 )
 rows = 64
 spacing = 12.0
-
-[node name="butterflies" type="Particles" parent="."]
-visible = false
-material_override = ExtResource( 24 )
-amount = 576
-visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
-local_coords = false
-process_material = ExtResource( 25 )
-draw_pass_1 = ExtResource( 26 )
-script = ExtResource( 7 )
-rows = 24
-spacing = 16.0
 

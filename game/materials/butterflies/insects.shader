@@ -19,11 +19,6 @@ void vertex() {
 	vec3 worldpos = (WORLD_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	VERTEX.x += amplitude * sin(worldpos.x * scale.x * 0.75 + TIME * speed.x) * cos(worldpos.z * scale.x + TIME * speed.x * 0.25);
 	VERTEX.z += amplitude * sin(worldpos.x * scale.y + TIME * speed.y * 0.35) * cos(worldpos.z * scale.y * 0.80 + TIME * speed.y);
-	
-	vec4 color = vec4(fake_random(VERTEX.xz), fake_random(VERTEX.xz), fake_random(VERTEX.xz), 1.0);
-	VERTEX.x += color.x * 1.0;
-	VERTEX.z += color.y * 0.4;
-	VERTEX.y += color.x * 0.7;
 }
 
 void fragment() {

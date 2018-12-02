@@ -24,6 +24,7 @@ uniform float GRASS_ROWS = 64;
 uniform float GRASS_SPACING = 12.0;
 uniform float GRASS_SCALE_MIN = 0.5;
 uniform float GRASS_SCALE_MAX = 2.0;
+uniform bool CHECK_SLOPE = false;
 uniform bool ZONE_RED = false;
 uniform bool ZONE_GREEN = false;
 uniform bool ZONE_BLUE = false;
@@ -112,6 +113,19 @@ void vertex() {
 	// remove particle if
 	if (terrain_mask < 0.75 || pos.y < TERRAIN_WATER_LEVEL) { // don't fit any terrain mask or is underwater
 		pos.y = -100000.0;
+	}
+	
+	//CHECK_SLOPE
+	if (CHECK_SLOPE){
+				// check if on flat land or clif
+		float y2 = get_height(pos.xz + vec2(1.0, 0.0));
+		float y3 = get_height(pos.xz + vec2(0.0, 1.0)); // get near positions
+		
+		if (abs(y2 - pos.y) > 0.5) { // it's on clif
+			pos.y = -10000.0;
+		} else if (abs(y3 - pos.y) > 0.5) { // it's on clif
+			pos.y = -10000.0;
+		}
 	}
 	
 	// calculate random scaling but within min/max
