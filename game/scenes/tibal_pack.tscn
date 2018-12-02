@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/models/source/Whole_Objects_together.dae" type="PackedScene" id=1]
+[ext_resource path="res://game/materials/palms/palm_bark.material" type="Material" id=2]
+[ext_resource path="res://system/system.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+flags_transparent = true
+
+[node name="tibal_pack" index="0" instance=ExtResource( 1 )]
+
+[node name="Plant2" parent="." index="14"]
+transform = Transform( 0.999337, -0.0216496, 0.0292594, 0.0154951, 0.980438, 0.196219, -0.0329351, -0.195636, 0.980123, 1.87542, 0, 0 )
+
+[node name="Palm" parent="." index="18"]
+material/0 = ExtResource( 2 )
+material/1 = SubResource( 1 )
+
+[node name="system" parent="." index="21" instance=ExtResource( 3 )]
+

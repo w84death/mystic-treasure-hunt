@@ -1,17 +1,16 @@
 extends Position3D
 
-export var rotate_speed = 1.0;
-export var move_speed_lr = 0.5;
-export var move_speed_fb = 1.5;
+export var rotate_speed = 8.0;
+export var move_speed = 8.0;
 export var terrain_height = 64;
-export var terrain_scale = 4.0;
-export var mountains_level = 0.22;
+export var terrain_scale = 0.125;
+export var mountains_level = 0.44;
 export var mountains_size = 3.0;
-export var water_height = 64*.3;
-export var map_size = Vector2(1024, 1024);
+export var water_height = 0.1;
+export var map_size = Vector2(2048, 2048);
 export var pixel_map_size = Vector2(64, 64);
-export var move_fov_zoom = false;
-export var camera_height_offset = 12.0;
+export var camera_offset_height = 2.0;
+export var camera_angle_scale = 24.0;
 const DEADZONE = 0.05;
 
 var angle_x = 0;
@@ -23,15 +22,14 @@ var _angle_y = 0;
 var height_map;
 var pixel_map;
 var move_to;
-var axis_value;
 
-export var current_position = Vector2(0,0);
+export var current_position = Vector2(32,32);
 var current_dir = 0;
 var directions = [
-	Vector3(0,0,-128),
-	Vector3(128,0,0),
-	Vector3(0,0,128),
-	Vector3(-128,0,0),
+	Vector3(0,0,-4),
+	Vector3(4,0,0),
+	Vector3(0,0,4),
+	Vector3(-4,0,0),
 ];
 var pixel_dir = [
 	Vector2(0,-1),
@@ -42,17 +40,17 @@ var pixel_dir = [
 
 func _ready():
 	move_to = transform.origin
-	var tex = $HUD/right/map.get_texture()
+	var tex = $"GUI/HUD/right/mini-map/map".get_texture()
 	height_map = tex.get_data()
-	var tex2 = $HUD/right/pixel_map.get_texture()
+	var tex2 = $"GUI/HUD/right/mini-map/pixel_map".get_texture()
 	pixel_map = tex2.get_data()
 	$GUI/HUD/right/compass.refresh(current_dir)
 	refresh_buttons()
 
 func _process(delta):
 	if angle_x != _angle_x or angle_y != _angle_y:
-		_angle_x += (angle_x - _angle_x) * delta * 10.0;
-		_angle_y += (angle_y - _angle_y) * delta * 10.0;
+		_angle_x += (angle_x - _angle_x) * delta * rotate_speed;
+		_angle_y += (angle_y - _angle_y) * delta * rotate_speed;
 
 		var basis = Basis(Vector3(0.0, 1.0, 0.0), deg2rad(_angle_y))
 		basis *= Basis(Vector3(1.0, 0.0, 0.0), deg2rad(_angle_x))
@@ -60,10 +58,11 @@ func _process(delta):
 		
 	if move_to != transform.origin:
 		var pos = Vector2(int(map_size.x*.5+transform.origin.x/terrain_scale), int(map_size.y*.5+transform.origin.z/terrain_scale));
+
 		move_to.y = get_adjustet_height(pos)
 		if move_to.y < water_height:
 			move_to.y = water_height
-		transform.origin += (move_to - transform.origin) * delta * 10.0
+		transform.origin += (move_to - transform.origin) * delta * move_speed
 
 
 
@@ -135,11 +134,13 @@ func rotate_left():
 	angle_y += 90
 	set_direction(-1)
 	refresh_buttons()
+	adjust_camera_angle()
 	
 func rotate_right():
 	angle_y -= 90
 	set_direction(1)
 	refresh_buttons()
+	adjust_camera_angle()
 	
 func move_forward():
 	if get_pixel_move(current_position+pixel_dir[current_dir]):
@@ -147,6 +148,7 @@ func move_forward():
 		current_position += pixel_dir[current_dir]
 		$"GUI/HUD/hud-anim".play("jump")
 		refresh_buttons()
+		adjust_camera_angle()
 
 func move_backward():
 	if get_pixel_move(current_position - pixel_dir[current_dir]):
@@ -154,6 +156,7 @@ func move_backward():
 		current_position -= pixel_dir[current_dir]
 		$"GUI/HUD/hud-anim".play("jump")
 		refresh_buttons()
+		adjust_camera_angle()
 
 func move_left():
 	var left_dir = current_dir-1;
@@ -165,6 +168,7 @@ func move_left():
 		current_position += pixel_dir[left_dir]
 		$"GUI/HUD/hud-anim".play("jump")
 		refresh_buttons()
+		adjust_camera_angle()
 	
 func move_right():
 	var right_dir = current_dir+1;
@@ -176,15 +180,26 @@ func move_right():
 		current_position += pixel_dir[right_dir]
 		$"GUI/HUD/hud-anim".play("jump")
 		refresh_buttons()
+		adjust_camera_angle()
 
-
+func adjust_camera_angle():
+	var pos = Vector2(
+				int(map_size.x*.5+transform.origin.x/terrain_scale), 
+				int(map_size.y*.5+transform.origin.z/terrain_scale));
+	var current_tile_height = get_adjustet_height(pos)
+	var ahead_tile_height = get_adjustet_height(
+				pos + Vector2(directions[current_dir].x,
+				directions[current_dir].z))
+	var slope = ahead_tile_height - current_tile_height;
+	angle_x = slope * camera_angle_scale;
+	
 func get_adjustet_height(pos):
 	var h = get_height(pos).r;
 	
 	if (h > mountains_level):
-		h += (h-mountains_level)*mountains_size;
-		
-	return terrain_height * h * terrain_scale + camera_height_offset;
+		h += (h-mountains_level) * mountains_size;
+
+	return terrain_height * h * terrain_scale + camera_offset_height;
 
 func get_height(pos):
 	var px = Color(0,0,0);
@@ -207,7 +222,6 @@ func get_pixel_move(pos):
 		return true
 	else:
 		return false
-		
 		
 func refresh_buttons():
 	var left_dir = current_dir-1;

@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode diffuse_burley;
+//render_mode diffuse_burley;
 
 uniform vec2 map_size = vec2(1024.0, 1024.0);
 uniform float max_height = 18.0;
@@ -38,22 +38,20 @@ void vertex() {
 }
 
 void fragment() {
-	vec2 uv2 = UV;
-	uv2 *= vec2(-1.0,-1.0); // mirrored
-	
+	vec4 fmap = texture(features_map, UV);
 	// get zones
-	float zone_0 = clamp(1.0 - texture(features_map, uv2).r - texture(features_map, uv2).g - texture(features_map, uv2).b, 0.0, 1.0);
-	float zone_r = texture(features_map, uv2).r;
-	float zone_g = texture(features_map, uv2).g;
-	float zone_b = texture(features_map, uv2).b;
+	float zone_0 = clamp(1.0 - fmap.r - fmap.g - fmap.b, 0.0, 1.0);
+	float zone_r = fmap.r;
+	float zone_g = fmap.g;
+	float zone_b = fmap.b;
 	
-	vec3 albedo_0 = texture(black_albedo, uv2 * uv_scale).rgb * zone_0;
-	vec3 albedo_r = texture(red_albedo, uv2 * uv_scale).rgb * zone_r;
-	vec3 albedo_g = texture(green_albedo, uv2 * uv_scale).rgb * zone_g;
-	vec3 albedo_b = texture(blue_albedo, uv2 * uv_scale).rgb * zone_b;
+	vec3 albedo_0 = texture(black_albedo, UV * uv_scale).rgb * zone_0;
+	vec3 albedo_r = texture(red_albedo, UV * uv_scale).rgb * zone_r;
+	vec3 albedo_g = texture(green_albedo, UV * uv_scale).rgb * zone_g;
+	vec3 albedo_b = texture(blue_albedo, UV * uv_scale).rgb * zone_b;
 	
 	ALBEDO = albedo_0 + albedo_r + albedo_g + albedo_b;
-	SPECULAR = 0.1;
-	ROUGHNESS = 0.8;
-	METALLIC = 0.1;
+	SPECULAR = 0.0;
+	ROUGHNESS = 0.9;
+	METALLIC = 0.8;
 }

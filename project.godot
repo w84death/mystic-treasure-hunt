@@ -29,7 +29,6 @@ settings/fps/force_fps=60
 
 window/size/width=960
 window/size/height=540
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -191,14 +190,7 @@ common/physics_fps=75
 [rendering]
 
 threads/thread_model=2
-quality/directional_shadow/size=8192
-quality/shadow_atlas/size=8192
-quality/shadow_atlas/quadrant_0_subdiv=3
-quality/shadow_atlas/quadrant_1_subdiv=4
-quality/shadow_atlas/quadrant_2_subdiv=5
-quality/shadow_atlas/quadrant_3_subdiv=6
-quality/shadows/filter_mode=2
 quality/voxel_cone_tracing/high_quality=false
 environment/default_clear_color=Color( 0.27451, 0.27451, 0.27451, 1 )
-quality/reflections/atlas_size=4096
+quality/filters/msaa=2
 quality/depth/hdr=false

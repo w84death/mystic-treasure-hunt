@@ -1,8 +1,8 @@
 extends Particles
 
 export var terrain_height = 64
-export var terrain_scale = 4.0
-export var rows = 256
+export var terrain_scale = 0.125
+export var rows = 32
 export var spacing = 4.0
 var size = rows * spacing
 

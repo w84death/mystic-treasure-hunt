@@ -25,7 +25,36 @@ And lastly, based on the feedback and ideas final game will be made, closing las
 
 The game is right now between milestone A and B. There is some game play but it's still not enough for a prototype. Also there is a slightly idea what the game should looks like for the milestone C.
 
+# Specifications
+
+### Map file
+
+Each single terrain file is made of:
+
+- heightmap 2048x2048 px (gray only, 0-255)
+- featuresmap 2048x2048 px (RGB)
+- pixelmap 64x64 px (1bit - white or black)
+
+Terrain is made of 64x64 tiles, each 32x32px (in above textures). Player can move one tile at a time. This makes one tile 2x2m in "real life" reference. This gives us 128 by 128 meters or 0.015km^2 for each individual terrain files.
+
+### Models
+
+Each model is scaled using this formula:
+
+- scale 1.0 is 1m
+
+
+
 ## Changelog
+
+### alpha/12
+
+- [update] map specification
+- [update] normalization of all models to scale properly
+- [new] all models exported from blender (by Mau Ryc)
+- [update] water shader use camera depth instead of heightmap
+- [update] proper map scaling
+- [new]  camera angle based on tile ahead (e.g. look up climbing mountain, look down while stepping down)
 
 ### alpha/11
 

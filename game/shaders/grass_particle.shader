@@ -10,7 +10,7 @@ shader_type particles;
 // SETTINGS --------------------------------------------------------------------
 
 // SET RANDOM FLOAT FOR EACH VEGETATION TYPE
-uniform float RANDOM_SEED = 0.1234;
+uniform float SEED = 0.1234;
 
 // TERRAIN SETTINGS
 uniform float TERRAIN_SURFACE_SCALE = 4.0;
@@ -27,6 +27,7 @@ uniform float GRASS_SCALE_MAX = 2.0;
 uniform bool ZONE_RED = false;
 uniform bool ZONE_GREEN = false;
 uniform bool ZONE_BLUE = false;
+uniform bool ZONE_BLACK = false;
 
 // MAPS
 uniform sampler2D HEIGHT_MAP;
@@ -52,7 +53,7 @@ float fake_random(vec2 p){
 	return fract(sin(dot(p.xy, vec2(12.9898,78.233))) * 43758.5453);
 }
 vec2 faker(vec2 p){
-	return vec2(fake_random(p),fake_random(p*RANDOM_SEED));
+	return vec2(fake_random(p),fake_random(p*SEED));
 }
 
 // THREE DIMENSIONAL MATRIX MANIPULATION
@@ -94,44 +95,34 @@ void vertex() {
 	pos.z += (noise.y * 4.0 ) * GRASS_SPACING; // apply noise and spacing
 	pos.y = get_height(pos.xz); // apply height
 
-	// check if on flat land or clif
-	float y2 = get_height(pos.xz + vec2(1.0, 0.0));
-	float y3 = get_height(pos.xz + vec2(0.0, 1.0)); // get near positions
-
 	vec2 feat_pos = pos.xz;
 	feat_pos -= 0.5 * MAP_SIZE;
 	feat_pos /= MAP_SIZE; // center
 
 	// prepare terrain mask for each zone
 	float terrain_mask = 0.0;
-	if (ZONE_RED) {
-		terrain_mask += texture(FEATURES_MAP, feat_pos).r;
-	}
-	if (ZONE_GREEN) {
-		terrain_mask += texture(FEATURES_MAP, feat_pos).g;
-	}
-	if (ZONE_BLUE) {
-		terrain_mask += texture(FEATURES_MAP, feat_pos).b;
-	}
+	vec4 fmap = texture(FEATURES_MAP, feat_pos);
+	
+	if (ZONE_BLACK) terrain_mask += 1.0 - fmap.r - fmap.g - fmap.b;
+	if (ZONE_RED) terrain_mask += fmap.r;
+	if (ZONE_GREEN) terrain_mask += fmap.g;
+	if (ZONE_BLUE) terrain_mask += fmap.b;
+	
 
 	// remove particle if
-	if (terrain_mask < 0.65 || pos.y < TERRAIN_WATER_LEVEL) { // don't fit any terrain mask or is underwater
-		pos.y = -10000.0;
-	} else if (abs(y2 - pos.y) > 0.5) { // it's on clif
-		pos.y = -10000.0;
-	} else if (abs(y3 - pos.y) > 0.5) { // it's on clif
-		pos.y = -10000.0;
+	if (terrain_mask < 0.75 || pos.y < TERRAIN_WATER_LEVEL) { // don't fit any terrain mask or is underwater
+		pos.y = -100000.0;
 	}
-
+	
 	// calculate random scaling but within min/max
-	float SCALE_mod = noise.x * GRASS_SCALE_MAX;
+	float scale = clamp(noise.x * GRASS_SCALE_MAX, 0.1, GRASS_SCALE_MAX);
 
 	// do the final transformation
 	TRANSFORM = enterTheMatrix(
 		vec3(pos.x * TERRAIN_SURFACE_SCALE, pos.y * TERRAIN_SURFACE_SCALE, pos.z * TERRAIN_SURFACE_SCALE), // set position
 		vec3(0.0, 1.0, 0.0), // lock Y axis
 		clamp(noise.y * 320.0, 0.0, 320.0), // rotate 0-360 (over Y)
-		SCALE_mod); // SCALE
+		scale); // SCALE
 }
 
 // -----------------------------------------------------------------------------

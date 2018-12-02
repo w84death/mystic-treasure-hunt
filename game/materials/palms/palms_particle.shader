@@ -93,11 +93,11 @@ void vertex() {
 	float y3 = get_height(pos.xz + vec2(0.0, 1.0));
 	
 	if (terrain_mask < 0.6 || pos.y < water_level) {
-		pos.y = -10000.0;
+		pos.y = -100000.0;
 	} else if (abs(y2 - pos.y) > 0.5) {
-		pos.y = -10000.0;
+		pos.y = -100000.0;
 	} else if (abs(y3 - pos.y) > 0.5) {
-		pos.y = -10000.0;
+		pos.y = -100000.0;
 	}
 	
 	float scale_mod = clamp(noise.x * size_scale_max, size_scale_min, size_scale_max);

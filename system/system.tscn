@@ -9,11 +9,11 @@
 
 [node name="SUN" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 6.42785, 0 )
-light_energy = 0.5
+light_color = Color( 1, 1, 0.952941, 1 )
+light_energy = 4.0
 shadow_enabled = true
 directional_shadow_mode = 1
-directional_shadow_depth_range = 1
-directional_shadow_max_distance = 8192.0
+directional_shadow_max_distance = 64.0
 
 [node name="enviroment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )

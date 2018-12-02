@@ -1,12 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/models/grass2_low.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://game/materials/grass/vegetation.shader" type="Shader" id=2]
+[ext_resource path="res://game/shaders/vegetation.shader" type="Shader" id=2]
 [ext_resource path="res://game/materials/grass/grass3/Albedo.png" type="Texture" id=3]
 [ext_resource path="res://game/materials/grass/grass3/AmbientOcclusionMap.png" type="Texture" id=4]
 [ext_resource path="res://game/materials/grass/grass3/NormalMap.png" type="Texture" id=5]
 [ext_resource path="res://game/materials/grass/grass3/DisplacementMap.png" type="Texture" id=6]
 [ext_resource path="res://game/materials/grass/grass3/SpecularMap.png" type="Texture" id=7]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 

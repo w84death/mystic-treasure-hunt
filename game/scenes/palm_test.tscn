@@ -14,12 +14,13 @@
 [ext_resource path="res://game/models/grass_dead.tres" type="ArrayMesh" id=12]
 [ext_resource path="res://game/materials/paprotas/paprotas_big_particle.material" type="Material" id=13]
 [ext_resource path="res://game/models/paprota_big_light.tres" type="ArrayMesh" id=14]
-[ext_resource path="res://game/materials/palms/palms_particle.material" type="Material" id=15]
+[ext_resource path="res://game/materials/palms/palms_2_particle.material" type="Material" id=15]
 [ext_resource path="res://game/materials/palms/bark/palm_bark.material" type="Material" id=16]
 [ext_resource path="res://game/materials/palms/palm_leafs.material" type="Material" id=17]
 [ext_resource path="res://game/materials/butterflies/insects.material" type="Material" id=18]
 [ext_resource path="res://game/materials/butterflies/insects_particles.material" type="Material" id=19]
 [ext_resource path="res://game/models/butterfly.obj" type="ArrayMesh" id=20]
+
 
 [sub_resource type="PlaneMesh" id=1]
 
