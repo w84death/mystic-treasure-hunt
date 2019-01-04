@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/environments/sunny_enviroment.tres" type="Environment" id=1]
+[ext_resource path="res://game/sound/joungle_back1.ogg" type="AudioStream" id=2]
+[ext_resource path="res://system/code/loop_sample.gd" type="Script" id=3]
+[ext_resource path="res://game/sound/soundscape1.ogg" type="AudioStream" id=4]
+
+[node name="weather_sunny" type="Node"]
+
+[node name="SUN" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 6.42785, 0 )
+light_color = Color( 1, 1, 0.952941, 1 )
+light_energy = 4.0
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_max_distance = 64.0
+
+[node name="enviroment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+
+[node name="sound_sea" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -6.0
+autoplay = true
+script = ExtResource( 3 )
+
+[node name="sound_crickets" type="AudioStreamPlayer" parent="."]
+volume_db = 3.0
+pitch_scale = 1.001
+autoplay = true
+script = ExtResource( 3 )
+
+[node name="sound_soundscape" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+autoplay = true
+script = ExtResource( 3 )
+
+[connection signal="finished" from="sound_sea" to="sound_sea" method="_on_sound_finished"]
+[connection signal="finished" from="sound_crickets" to="sound_crickets" method="_on_sound_finished"]
+[connection signal="finished" from="sound_soundscape" to="sound_soundscape" method="_on_sound_finished"]

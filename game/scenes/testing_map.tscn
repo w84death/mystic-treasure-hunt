@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://system/system.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/environments/sunny.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/maps/small/terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/models/grass_dark.tres" type="ArrayMesh" id=3]
+
+
 
 [node name="testing_map" type="Spatial"]
 

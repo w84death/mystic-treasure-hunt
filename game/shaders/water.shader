@@ -41,9 +41,10 @@ void fragment(){
 	depth = depth + VERTEX.z;
 	depth = exp(-depth * beer_factor);
 	
-	ROUGHNESS = clamp(1.0 - wave_height*5.0, 0.1, 0.8);
-	METALLIC = 0.8;
-	SPECULAR = 1.0;
+	ROUGHNESS = clamp(1.0 - wave_height*0.2, 0.1, 0.8);
+	EMISSION = water_color;
+	METALLIC = 0.6;
+	SPECULAR = 0.0;
 	ALPHA = clamp(1.0-depth, 0.0, 1.0);
 	ALBEDO = mix(water_color, water_color2, clamp(wave_height, 0.0, 1.0));
 }

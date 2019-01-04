@@ -6,7 +6,9 @@
 [ext_resource path="res://game/models/grass_flowers.tres" type="ArrayMesh" id=4]
 [ext_resource path="res://game/models/paprota_big_light.tres" type="ArrayMesh" id=5]
 [ext_resource path="res://game/models/palm.tres" type="ArrayMesh" id=6]
-[ext_resource path="res://system/system.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/environments/sunny.tscn" type="PackedScene" id=7]
+
+
 
 [node name="Spatial" type="Spatial"]
 

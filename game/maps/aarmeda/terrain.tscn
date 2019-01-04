@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://game/models/source/reference_box.dae" type="PackedScene" id=1]
 [ext_resource path="res://game/maps/aarmeda/terrain.material" type="Material" id=2]
@@ -22,9 +22,10 @@
 [ext_resource path="res://game/materials/grass/rocks_big_particle.material" type="Material" id=20]
 [ext_resource path="res://game/models/meshes/rock.mesh" type="ArrayMesh" id=21]
 [ext_resource path="res://game/materials/butterflies/insects_particles.material" type="Material" id=22]
-[ext_resource path="res://game/models/butterfly.obj" type="ArrayMesh" id=23]
+[ext_resource path="res://game/models/meshes/firefly.mesh" type="ArrayMesh" id=23]
 [ext_resource path="res://game/materials/grass/grass_dark_particle.material" type="Material" id=24]
 [ext_resource path="res://game/materials/grass/grass1.material" type="Material" id=25]
+[ext_resource path="res://game/models/meshes/swiatowid.mesh" type="ArrayMesh" id=26]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -161,7 +162,7 @@ draw_pass_1 = ExtResource( 21 )
 script = ExtResource( 7 )
 spacing = 32.0
 
-[node name="butterflies" type="Particles" parent="."]
+[node name="fireflys" type="Particles" parent="."]
 amount = 576
 visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
 local_coords = false
@@ -182,4 +183,9 @@ draw_pass_1 = SubResource( 3 )
 script = ExtResource( 7 )
 rows = 64
 spacing = 12.0
+
+[node name="swiatowid" type="MeshInstance" parent="."]
+transform = Transform( 0.926204, 0, -0.377024, 0, 1, 0, 0.377024, 0, 0.926204, 5.02379, 10.4216, 7.98565 )
+mesh = ExtResource( 26 )
+material/0 = null
 

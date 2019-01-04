@@ -52,6 +52,6 @@ void fragment() {
 	
 	ALBEDO = albedo_0 + albedo_r + albedo_g + albedo_b;
 	SPECULAR = 0.0;
-	ROUGHNESS = 0.9;
-	METALLIC = 0.8;
+	ROUGHNESS = 0.8;
+	METALLIC = 0.9;
 }

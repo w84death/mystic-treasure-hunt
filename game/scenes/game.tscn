@@ -1,26 +1,29 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://system/code/exit_on_esc.gd" type="Script" id=1]
 [ext_resource path="res://system/corners.tscn" type="PackedScene" id=2]
-[ext_resource path="res://system/system.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/environments/rain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/maps/aarmeda/terrain.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/scenes/baloon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/models/meshes/turtle.mesh" type="ArrayMesh" id=6]
 [ext_resource path="res://game/models/meshes/frog.mesh" type="ArrayMesh" id=7]
-[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=8]
-[ext_resource path="res://system/motion_blur/motion_blur.tscn" type="PackedScene" id=9]
-[ext_resource path="res://system/theme.tres" type="Theme" id=10]
-[ext_resource path="res://system/code/fps.gd" type="Script" id=11]
-[ext_resource path="res://game/hud/aim.png" type="Texture" id=12]
-[ext_resource path="res://game/scenes/welcome.tscn" type="PackedScene" id=13]
-[ext_resource path="res://game/gui/textures/panel_48x48x9.png" type="Texture" id=14]
-[ext_resource path="res://game/maps/aarmeda/heigtmap.png" type="Texture" id=15]
-[ext_resource path="res://game/maps/aarmeda/pixelmap.png" type="Texture" id=16]
-[ext_resource path="res://game/code/compass.gd" type="Script" id=17]
-[ext_resource path="res://game/gui/textures/compass_base.png" type="Texture" id=18]
-[ext_resource path="res://system/fonts/icons.tres" type="DynamicFont" id=19]
-[ext_resource path="res://game/code/map.gd" type="Script" id=20]
-[ext_resource path="res://game/gui/textures/map_poi_here.png" type="Texture" id=21]
+[ext_resource path="res://game/models/source/elephant.dae" type="PackedScene" id=8]
+[ext_resource path="res://game/materials/creatures/brown.material" type="Material" id=9]
+[ext_resource path="res://game/materials/creatures/eye.material" type="Material" id=10]
+[ext_resource path="res://system/code/camera_rig.gd" type="Script" id=11]
+[ext_resource path="res://system/motion_blur/motion_blur.tscn" type="PackedScene" id=12]
+[ext_resource path="res://system/theme.tres" type="Theme" id=13]
+[ext_resource path="res://system/code/fps.gd" type="Script" id=14]
+[ext_resource path="res://game/hud/aim.png" type="Texture" id=15]
+[ext_resource path="res://game/scenes/welcome.tscn" type="PackedScene" id=16]
+[ext_resource path="res://game/gui/textures/panel_48x48x9.png" type="Texture" id=17]
+[ext_resource path="res://game/maps/aarmeda/heigtmap.png" type="Texture" id=18]
+[ext_resource path="res://game/maps/aarmeda/pixelmap.png" type="Texture" id=19]
+[ext_resource path="res://game/code/compass.gd" type="Script" id=20]
+[ext_resource path="res://game/gui/textures/compass_base.png" type="Texture" id=21]
+[ext_resource path="res://system/fonts/icons.tres" type="DynamicFont" id=22]
+[ext_resource path="res://game/code/map.gd" type="Script" id=23]
+[ext_resource path="res://game/gui/textures/map_poi_here.png" type="Texture" id=24]
 
 [sub_resource type="Animation" id=1]
 
@@ -37,27 +40,34 @@ tracks/0/keys = {
 "times": PoolRealArray( 2 )
 }
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=2]
 
-blend_mode = 1
+albedo_color = Color( 0.0392157, 0.415686, 0.113725, 1 )
+metallic = 0.7
+metallic_specular = 0.0
+roughness = 0.28
 
 [sub_resource type="CanvasItemMaterial" id=3]
 
-blend_mode = 2
+blend_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id=4]
 
-blend_mode = 1
+blend_mode = 2
 
 [sub_resource type="CanvasItemMaterial" id=5]
 
-blend_mode = 2
+blend_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id=6]
 
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id=7]
+
 blend_mode = 1
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 0.5
 tracks/0/type = "value"
@@ -90,33 +100,41 @@ script = ExtResource( 1 )
 
 [node name="corners" parent="." instance=ExtResource( 2 )]
 
+[node name="environments" type="Spatial" parent="."]
+
+[node name="weather_rain" parent="environments" instance=ExtResource( 3 )]
+
+[node name="SUN" parent="environments/weather_rain" index="0"]
+light_color = Color( 0.952941, 0.968627, 1, 1 )
+light_energy = 2.0
+
+[node name="rain" parent="environments/weather_rain" index="5"]
+preprocess = 1.0
+explosiveness = 0.09
+randomness = 0.41
+visibility_aabb = AABB( -128, 0, -128, 256, 0, 256 )
+
 [node name="camera_b" type="Camera" parent="."]
-transform = Transform( 0.585068, -0.21221, 0.782728, 0.0146962, 0.967773, 0.251394, -0.810851, -0.135579, 0.569332, 10.2055, 9.11029, 23.9409 )
+transform = Transform( 1, 0, 0, 0, 0.27312, 0.96198, 0, -0.96198, 0.27312, -2.87, 51.51, 14.52 )
 fov = 75.0
-far = 64.0
-
-[node name="system" parent="." instance=ExtResource( 3 )]
-
-[node name="SUN" parent="system" index="0"]
-transform = Transform( 0.806238, -0.562092, -0.18448, -2.72617e-08, -0.311837, 0.950136, -0.591591, -0.766036, -0.251415, 0, 6.42785, 0 )
-light_energy = 3.0
-shadow_color = Color( 0, 0.309804, 0.372549, 1 )
-shadow_reverse_cull_face = true
+far = 256.0
 
 [node name="animations" type="AnimationPlayer" parent="."]
 autoplay = "demo"
 anims/demo = SubResource( 1 )
 
 [node name="aarmeda" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 
 [node name="reference" parent="aarmeda" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 8, 24 )
 
 [node name="baloon" parent="aarmeda" instance=ExtResource( 5 )]
-transform = Transform( -0.780812, 0, -0.624766, 0, 1, 0, 0.624766, 0, -0.780812, -7.02916, -6.12683, -41.7459 )
+transform = Transform( -0.0663611, 0, -0.997796, 0, 1, 0, 0.997796, 0, -0.0663611, -20.4908, -5.87225, -63.6036 )
 
 [node name="turtle" type="MeshInstance" parent="aarmeda"]
 transform = Transform( 0.998766, -0.0490062, 0.00811293, 0.0472187, 0.987371, 0.151224, -0.0154214, -0.150654, 0.988466, -22.5851, 2.20348, -18.5146 )
+visible = false
 mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
@@ -124,6 +142,7 @@ material/2 = null
 
 [node name="turtle3" type="MeshInstance" parent="aarmeda"]
 transform = Transform( -0.345056, -0.0225585, -0.721407, 0.160813, 0.777106, -0.101219, 0.703616, -0.188672, -0.330647, 8.99623, 3.21242, -21.4034 )
+visible = false
 mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
@@ -131,6 +150,7 @@ material/2 = null
 
 [node name="turtle4" type="MeshInstance" parent="aarmeda"]
 transform = Transform( -0.488063, 0.0025408, 0.108574, -0.0146179, 0.493778, -0.0772655, -0.107615, -0.0785951, -0.481915, 5.19523, 3.70114, -14.7172 )
+visible = false
 mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
@@ -138,6 +158,7 @@ material/2 = null
 
 [node name="turtle2" type="MeshInstance" parent="aarmeda"]
 transform = Transform( 0.594712, -0.285519, 0.751529, 0.00158428, 0.935224, 0.354054, -0.803937, -0.20937, 0.556641, -1.67463, 3.21598, 15.8755 )
+visible = false
 mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
@@ -149,26 +170,94 @@ mesh = ExtResource( 7 )
 material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="aarmeda"]
-transform = Transform( -0.480608, 0, 0.137898, 0, 0.5, 0, -0.137898, 0, -0.480608, 2.53474, 3.20002, 0.208894 )
+transform = Transform( -0.240304, 0, 0.068949, 0, 0.25, 0, -0.068949, 0, -0.240304, 2.6347, 3.22637, 0.263236 )
 mesh = ExtResource( 7 )
-material/0 = null
+material/0 = SubResource( 2 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="aarmeda"]
+transform = Transform( -0.184697, 0, -0.168485, 0, 0.25, 0, 0.168485, 0, -0.184697, -1.35802, 3.54611, 2.3505 )
+mesh = ExtResource( 7 )
+material/0 = SubResource( 2 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="aarmeda"]
+transform = Transform( 0.00164349, 0, 0.249995, 0, 0.25, 0, -0.249995, 0, 0.00164349, 4.1388, 3.23954, 0.696097 )
+mesh = ExtResource( 7 )
+material/0 = SubResource( 2 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="aarmeda"]
+transform = Transform( -0.16021, 0.0272072, 0.18998, 0, 0.247475, -0.0354411, -0.191918, -0.0227122, -0.158592, 3.90812, 3.39469, 0.808199 )
+mesh = ExtResource( 7 )
+material/0 = SubResource( 2 )
+
+[node name="Scene Root" parent="aarmeda" instance=ExtResource( 8 )]
+editor/display_folded = true
+transform = Transform( 0.789405, -0.025553, -0.613341, 0.032353, 0.999476, 9.64194e-10, 0.61302, -0.0198434, 0.789818, 6.42, 3.12756, -13.876 )
+visible = false
+
+[node name="leg1-0" parent="aarmeda/Scene Root" index="3"]
+material/0 = ExtResource( 9 )
+
+[node name="body-0" parent="aarmeda/Scene Root" index="4"]
+material/0 = ExtResource( 9 )
+
+[node name="ear_left-0" parent="aarmeda/Scene Root" index="5"]
+material/0 = ExtResource( 9 )
+
+[node name="Scene Root2" parent="aarmeda" instance=ExtResource( 8 )]
+transform = Transform( 1.65123, 0, 1.12847, 0, 2, 0, -1.12847, 0, 1.65123, -11.0534, 0.736383, 47.0388 )
+
+[node name="leg4-0" parent="aarmeda/Scene Root2" index="0"]
+material/0 = ExtResource( 9 )
+
+[node name="leg3-0" parent="aarmeda/Scene Root2" index="1"]
+material/0 = ExtResource( 9 )
+
+[node name="leg2-0" parent="aarmeda/Scene Root2" index="2"]
+material/0 = ExtResource( 9 )
+
+[node name="leg1-0" parent="aarmeda/Scene Root2" index="3"]
+material/0 = ExtResource( 9 )
+
+[node name="body-0" parent="aarmeda/Scene Root2" index="4"]
+material/0 = ExtResource( 9 )
+
+[node name="ear_left-0" parent="aarmeda/Scene Root2" index="5"]
+material/0 = ExtResource( 9 )
+
+[node name="tail-0" parent="aarmeda/Scene Root2" index="6"]
+material/0 = ExtResource( 9 )
+
+[node name="ear_right-0" parent="aarmeda/Scene Root2" index="7"]
+material/0 = ExtResource( 9 )
+
+[node name="traba-0" parent="aarmeda/Scene Root2" index="8"]
+material/0 = ExtResource( 9 )
+
+[node name="head-0" parent="aarmeda/Scene Root2" index="9"]
+material/0 = ExtResource( 9 )
+
+[node name="kiel_l-0" parent="aarmeda/Scene Root2" index="10"]
+material/0 = ExtResource( 10 )
+
+[node name="kiel_l_copy12-0" parent="aarmeda/Scene Root2" index="11"]
+material/0 = ExtResource( 10 )
 
 [node name="PLAYER" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 2 )
-script = ExtResource( 8 )
+script = ExtResource( 11 )
 
 [node name="camera_a" type="Camera" parent="PLAYER"]
 current = true
 fov = 75.0
 far = 64.0
 
-[node name="motion_blur" parent="PLAYER/camera_a" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206907, 0.120664, -1.89567 )
+[node name="motion_blur" parent="PLAYER/camera_a" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0400996, 0.194178, -1.9403 )
 
 [node name="HUD" type="Control" parent="PLAYER"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 10 )
+theme = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -182,7 +271,7 @@ margin_bottom = 16.0
 text = "Frames per second: 060"
 align = 1
 valign = 2
-script = ExtResource( 11 )
+script = ExtResource( 14 )
 
 [node name="center" type="Control" parent="PLAYER/HUD"]
 anchor_left = 0.5
@@ -191,7 +280,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 
 [node name="aim" type="Sprite" parent="PLAYER/HUD/center"]
-texture = ExtResource( 12 )
+texture = ExtResource( 15 )
 
 [node name="right" type="Control" parent="PLAYER/HUD"]
 anchor_left = 1.0
@@ -204,7 +293,7 @@ margin_bottom = 60.0
 [node name="GUI" type="Control" parent="PLAYER"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 10 )
+theme = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -221,7 +310,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 
-[node name="welcome" parent="PLAYER/GUI/middle/welcome" instance=ExtResource( 13 )]
+[node name="welcome" parent="PLAYER/GUI/middle/welcome" instance=ExtResource( 16 )]
 margin_top = -48.0
 margin_bottom = 48.0
 
@@ -266,7 +355,7 @@ margin_left = -96.0
 margin_top = -76.0
 margin_right = 96.0
 margin_bottom = 66.0
-texture = ExtResource( 14 )
+texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 144, 144 )
 patch_margin_left = 48
 patch_margin_top = 48
@@ -464,7 +553,7 @@ margin_left = 105.0
 margin_top = -48.0
 margin_right = 347.0
 margin_bottom = 48.0
-texture = ExtResource( 14 )
+texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 144, 144 )
 patch_margin_left = 48
 patch_margin_top = 48
@@ -589,7 +678,7 @@ margin_left = -299.0
 margin_top = -49.0
 margin_right = -107.0
 margin_bottom = 47.0
-texture = ExtResource( 14 )
+texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 144, 144 )
 patch_margin_left = 48
 patch_margin_top = 48
@@ -630,7 +719,7 @@ margin_left = -48.0
 margin_top = -48.0
 margin_right = 48.0
 margin_bottom = 48.0
-texture = ExtResource( 14 )
+texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 144, 144 )
 patch_margin_left = 48
 patch_margin_top = 48
@@ -698,7 +787,7 @@ margin_left = -148.0
 margin_top = -48.0
 margin_right = -52.0
 margin_bottom = 48.0
-texture = ExtResource( 14 )
+texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 144, 144 )
 patch_margin_left = 48
 patch_margin_top = 48
@@ -708,17 +797,17 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
 [node name="map" type="Sprite" parent="PLAYER/GUI/HUD/right/mini-map"]
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( 17.5859, 21.357 )
 scale = Vector2( 0.03, 0.03 )
-texture = ExtResource( 15 )
+texture = ExtResource( 18 )
 centered = false
 
 [node name="pixel_map" type="Sprite" parent="PLAYER/GUI/HUD/right/mini-map"]
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( 17.5861, 21.357 )
 scale = Vector2( 0.960013, 0.96 )
-texture = ExtResource( 16 )
+texture = ExtResource( 19 )
 centered = false
 
 [node name="Label" type="Label" parent="PLAYER/GUI/HUD/right/mini-map"]
@@ -738,7 +827,7 @@ margin_left = -48.0
 margin_top = -48.0
 margin_right = 48.0
 margin_bottom = 48.0
-texture = ExtResource( 14 )
+texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 144, 144 )
 patch_margin_left = 48
 patch_margin_top = 48
@@ -746,7 +835,7 @@ patch_margin_right = 48
 patch_margin_bottom = 48
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
-script = ExtResource( 17 )
+script = ExtResource( 20 )
 
 [node name="_compass" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
 anchor_right = 1.0
@@ -758,7 +847,7 @@ valign = 1
 [node name="base" type="Sprite" parent="PLAYER/GUI/HUD/right/compass"]
 position = Vector2( 48.5469, 51.9724 )
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 18 )
+texture = ExtResource( 21 )
 
 [node name="current" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
 anchor_right = 1.0
@@ -778,7 +867,7 @@ margin_left = -6.0
 margin_top = 12.0
 margin_right = 6.0
 margin_bottom = 31.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 22 )
 text = "▲"
 
 [node name="e" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
@@ -790,7 +879,7 @@ margin_left = -24.0
 margin_top = -6.0
 margin_right = -10.0
 margin_bottom = 13.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 22 )
 text = "▷"
 
 [node name="s" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
@@ -802,7 +891,7 @@ margin_left = -5.0
 margin_top = -27.0
 margin_right = 7.0
 margin_bottom = -8.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 22 )
 text = "▽"
 
 [node name="w" type="Label" parent="PLAYER/GUI/HUD/right/compass"]
@@ -812,7 +901,7 @@ margin_left = 14.0
 margin_top = -6.0
 margin_right = 26.0
 margin_bottom = 13.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 22 )
 text = "◁"
 
 [node name="center" type="Control" parent="PLAYER/GUI/HUD"]
@@ -831,7 +920,7 @@ margin_left = -150.0
 margin_top = -200.0
 margin_right = 150.0
 margin_bottom = 100.0
-texture = ExtResource( 14 )
+texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 144, 144 )
 patch_margin_left = 48
 patch_margin_top = 48
@@ -839,7 +928,7 @@ patch_margin_right = 48
 patch_margin_bottom = 48
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
-script = ExtResource( 20 )
+script = ExtResource( 23 )
 
 [node name="_map" type="Label" parent="PLAYER/GUI/HUD/center/map"]
 anchor_right = 1.0
@@ -850,27 +939,27 @@ valign = 1
 
 [node name="heightmap" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
 modulate = Color( 0.686275, 0.694118, 0.45098, 1 )
-material = SubResource( 4 )
+material = SubResource( 5 )
 position = Vector2( 24, 24 )
 scale = Vector2( 0.125, 0.125 )
-texture = ExtResource( 15 )
+texture = ExtResource( 18 )
 centered = false
 
 [node name="pixelmap_black" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
 modulate = Color( 1, 1, 1, 0.231373 )
-material = SubResource( 5 )
+material = SubResource( 6 )
 position = Vector2( 23, 23 )
 scale = Vector2( 4, 4 )
-texture = ExtResource( 16 )
+texture = ExtResource( 19 )
 centered = false
 
 [node name="pixelmap_white" type="Sprite" parent="PLAYER/GUI/HUD/center/map"]
 modulate = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 self_modulate = Color( 1, 0.996078, 0.996078, 1 )
-material = SubResource( 6 )
+material = SubResource( 7 )
 position = Vector2( 24, 24 )
 scale = Vector2( 4, 4 )
-texture = ExtResource( 16 )
+texture = ExtResource( 19 )
 centered = false
 
 [node name="poi" type="Container" parent="PLAYER/GUI/HUD/center/map"]
@@ -885,7 +974,7 @@ __meta__ = {
 
 [node name="here" type="Sprite" parent="PLAYER/GUI/HUD/center/map/poi"]
 position = Vector2( 128, 128 )
-texture = ExtResource( 21 )
+texture = ExtResource( 24 )
 
 [node name="names" type="Control" parent="PLAYER/GUI/HUD/center/map"]
 modulate = Color( 0.486275, 0.541176, 0.47451, 1 )
@@ -940,7 +1029,7 @@ Mountains"
 align = 1
 
 [node name="hud-anim" type="AnimationPlayer" parent="PLAYER/GUI/HUD"]
-anims/jump = SubResource( 7 )
+anims/jump = SubResource( 8 )
 
 [connection signal="pressed" from="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/top/turn_left" to="PLAYER" method="_on_turn_left_pressed"]
 [connection signal="pressed" from="PLAYER/GUI/HUD/bottom/movement/VBoxContainer/top/front" to="PLAYER" method="_on_front_pressed"]
@@ -951,8 +1040,12 @@ anims/jump = SubResource( 7 )
 [connection signal="pressed" from="PLAYER/GUI/HUD/bottom/actions/buttons/a" to="PLAYER" method="_on_a_pressed"]
 [connection signal="pressed" from="PLAYER/GUI/HUD/bottom/actions/buttons/x" to="PLAYER" method="_on_x_pressed"]
 
-[editable path="system"]
+[editable path="environments/weather_rain"]
 
 [editable path="aarmeda"]
+
+[editable path="aarmeda/Scene Root"]
+
+[editable path="aarmeda/Scene Root2"]
 
 [editable path="PLAYER/GUI/middle/welcome/welcome"]
