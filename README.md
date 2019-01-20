@@ -49,12 +49,18 @@ Each model is scaled using this formula:
 
 ### alpha/12
 
+![alpha12](web-stuff/alpha12.png)
+
+- [new] day/night modes
+- [new] map swiching
+- [new] torch
 - [update] map specification
 - [update] normalization of all models to scale properly
 - [new] all models exported from blender (by Mau Ryc)
 - [update] water shader use camera depth instead of heightmap
 - [update] proper map scaling
 - [new]  camera angle based on tile ahead (e.g. look up climbing mountain, look down while stepping down)
+- [regresion] huge fps drop
 
 ### alpha/11
 
