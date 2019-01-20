@@ -1,0 +1,201 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://game/environments/rain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/models/source/reference_box.dae" type="PackedScene" id=2]
+[ext_resource path="res://game/maps/s0e1/terrain.material" type="Material" id=3]
+[ext_resource path="res://system/code/terrain.gd" type="Script" id=4]
+[ext_resource path="res://game/maps/s0e1/water.material" type="Material" id=5]
+[ext_resource path="res://game/materials/palms/palms_1_particle.material" type="Material" id=6]
+[ext_resource path="res://game/models/meshes/palm2.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://system/code/particle_follow_camera_rig.gd" type="Script" id=8]
+[ext_resource path="res://game/materials/palms/palms_2_particle.material" type="Material" id=9]
+[ext_resource path="res://game/models/meshes/palm1.mesh" type="ArrayMesh" id=10]
+[ext_resource path="res://game/materials/palms/palms_3_particle.material" type="Material" id=11]
+[ext_resource path="res://game/models/meshes/palm3.mesh" type="ArrayMesh" id=12]
+[ext_resource path="res://game/materials/bush/bush_particle.material" type="Material" id=13]
+[ext_resource path="res://game/models/meshes/bush.mesh" type="ArrayMesh" id=14]
+[ext_resource path="res://game/materials/grass/grass_basic_particle.material" type="Material" id=15]
+[ext_resource path="res://game/models/meshes/grass1.mesh" type="ArrayMesh" id=16]
+[ext_resource path="res://game/materials/grass/grass_flowers_particle.material" type="Material" id=17]
+[ext_resource path="res://game/models/meshes/grass2.mesh" type="ArrayMesh" id=18]
+[ext_resource path="res://game/materials/grass/rocks_small_particle.material" type="Material" id=19]
+[ext_resource path="res://game/models/meshes/rock2.mesh" type="ArrayMesh" id=20]
+[ext_resource path="res://game/materials/grass/rocks_big_particle.material" type="Material" id=21]
+[ext_resource path="res://game/models/meshes/rock.mesh" type="ArrayMesh" id=22]
+[ext_resource path="res://game/materials/butterflies/insects_particles.material" type="Material" id=23]
+[ext_resource path="res://game/models/meshes/firefly.mesh" type="ArrayMesh" id=24]
+[ext_resource path="res://game/materials/grass/grass_dark_particle.material" type="Material" id=25]
+[ext_resource path="res://game/materials/grass/grass1.material" type="Material" id=26]
+[ext_resource path="res://game/models/meshes/swiatowid.mesh" type="ArrayMesh" id=27]
+[ext_resource path="res://game/game_objects/torch.tscn" type="PackedScene" id=28]
+
+[sub_resource type="PlaneMesh" id=1]
+
+size = Vector2( 2048, 2048 )
+subdivide_width = 512
+subdivide_depth = 512
+
+[sub_resource type="PlaneMesh" id=2]
+
+size = Vector2( 2048, 2048 )
+subdivide_width = 512
+subdivide_depth = 512
+
+[sub_resource type="ArrayMesh" id=3]
+
+surfaces/0 = {
+"aabb": AABB( -18.2765, -3.02996, -21.9014, 44.9814, 20.49, 48.1951 ),
+"array_data": PoolByteArray( 179, 23, 66, 192, 48, 67, 145, 63, 65, 32, 221, 191, 58, 90, 190, 0, 186, 227, 155, 129, 171, 56, 5, 57, 90, 117, 251, 63, 72, 112, 18, 192, 130, 82, 11, 191, 68, 73, 179, 0, 183, 223, 159, 129, 67, 56, 200, 57, 101, 218, 32, 64, 80, 213, 172, 191, 126, 54, 86, 63, 70, 74, 181, 0, 184, 224, 157, 129, 9, 56, 177, 57, 122, 178, 251, 192, 226, 1, 228, 64, 20, 2, 26, 65, 23, 121, 227, 0, 192, 243, 148, 129, 23, 55, 229, 54, 91, 54, 146, 193, 194, 36, 12, 65, 172, 36, 90, 65, 12, 125, 239, 0, 193, 248, 147, 129, 139, 55, 138, 51, 107, 54, 79, 193, 0, 123, 222, 64, 128, 117, 147, 64, 21, 122, 230, 0, 193, 244, 147, 129, 130, 56, 91, 54, 117, 198, 51, 64, 24, 122, 204, 63, 200, 157, 130, 64, 63, 85, 188, 0, 186, 227, 155, 129, 27, 55, 79, 57, 37, 255, 99, 64, 168, 112, 12, 192, 191, 167, 134, 63, 73, 73, 183, 0, 186, 226, 155, 129, 235, 55, 221, 57, 198, 46, 163, 191, 132, 208, 150, 64, 208, 194, 210, 64, 40, 110, 208, 0, 190, 234, 151, 129, 247, 54, 132, 56, 150, 204, 247, 192, 192, 26, 137, 64, 247, 53, 57, 62, 35, 114, 214, 0, 191, 237, 149, 129, 182, 56, 47, 56, 166, 88, 173, 191, 212, 188, 107, 64, 176, 8, 213, 64, 205, 89, 183, 0, 141, 225, 42, 129, 118, 54, 237, 56, 231, 164, 171, 62, 136, 31, 203, 191, 190, 174, 92, 63, 217, 83, 169, 0, 136, 233, 32, 129, 227, 53, 249, 57, 58, 157, 188, 63, 232, 29, 194, 191, 123, 29, 210, 62, 199, 75, 172, 0, 143, 221, 45, 129, 143, 53, 1, 58, 254, 44, 246, 64, 244, 226, 27, 65, 112, 182, 114, 65, 236, 125, 1, 0, 138, 237, 41, 129, 151, 52, 136, 54, 211, 17, 16, 65, 78, 134, 198, 64, 144, 89, 210, 65, 3, 121, 38, 0, 137, 246, 43, 129, 91, 53, 222, 50, 245, 149, 12, 64, 242, 170, 10, 65, 48, 138, 152, 65, 241, 125, 13, 0, 138, 238, 42, 129, 95, 54, 5, 54, 234, 149, 171, 64, 234, 241, 135, 64, 207, 53, 15, 64, 195, 80, 180, 0, 145, 219, 48, 129, 92, 52, 59, 57, 253, 9, 14, 64, 144, 107, 194, 191, 9, 52, 126, 190, 187, 71, 178, 0, 150, 214, 54, 129, 80, 53, 15, 58, 114, 55, 215, 64, 40, 139, 3, 65, 136, 147, 239, 64, 212, 109, 210, 0, 140, 228, 42, 129, 61, 52, 82, 56, 44, 33, 9, 191, 226, 22, 232, 64, 56, 166, 71, 65, 218, 117, 227, 0, 140, 229, 42, 129, 142, 54, 252, 55, 74, 253, 226, 63, 204, 62, 126, 64, 240, 66, 182, 192, 76, 64, 77, 0, 99, 225, 184, 129, 25, 51, 29, 57, 202, 118, 143, 63, 112, 210, 65, 192, 66, 123, 124, 191, 42, 64, 101, 0, 119, 239, 217, 129, 122, 50, 68, 58, 98, 250, 186, 189, 208, 234, 65, 192, 133, 27, 243, 190, 91, 52, 70, 0, 87, 215, 174, 129, 195, 49, 76, 58, 131, 142, 17, 193, 38, 49, 95, 65, 144, 72, 25, 193, 44, 113, 34, 0, 104, 237, 187, 129, 180, 44, 181, 54, 7, 146, 62, 193, 51, 206, 128, 65, 18, 54, 175, 193, 21, 124, 16, 0, 107, 247, 189, 129, 138, 48, 184, 50, 94, 231, 136, 192, 38, 49, 95, 65, 152, 141, 123, 193, 38, 117, 30, 0, 105, 240, 187, 129, 96, 50, 247, 53, 195, 253, 95, 192, 204, 62, 126, 64, 95, 51, 131, 63, 100, 55, 54, 0, 75, 209, 165, 129, 100, 45, 134, 57, 217, 8, 154, 190, 112, 210, 65, 192, 190, 93, 83, 63, 114, 51, 18, 0, 43, 199, 152, 129, 35, 49, 99, 58, 214, 255, 197, 192, 239, 132, 26, 65, 113, 72, 44, 192, 71, 88, 56, 0, 97, 225, 181, 129, 232, 43, 137, 56, 49, 194, 106, 190, 239, 132, 26, 65, 240, 145, 36, 193, 63, 97, 49, 0, 100, 229, 183, 129, 243, 50, 19, 56, 114, 226, 214, 64, 36, 157, 167, 64, 127, 169, 34, 64, 147, 64, 251, 0, 237, 233, 123, 129, 234, 58, 89, 57, 205, 173, 98, 64, 32, 165, 213, 191, 159, 80, 41, 64, 147, 49, 216, 0, 208, 245, 117, 129, 50, 59, 101, 58, 154, 192, 133, 64, 224, 213, 213, 191, 191, 90, 191, 63, 140, 49, 7, 0, 251, 224, 122, 129, 3, 59, 104, 58, 54, 54, 146, 65, 228, 179, 105, 65, 64, 14, 234, 64, 201, 114, 252, 0, 223, 245, 121, 129, 254, 58, 53, 54, 163, 163, 213, 65, 47, 174, 139, 65, 96, 229, 48, 65, 215, 120, 1, 0, 223, 244, 121, 129, 40, 59, 240, 50, 17, 22, 135, 65, 30, 241, 116, 65, 176, 126, 46, 65, 215, 113, 218, 0, 210, 22, 116, 129, 141, 59, 49, 54, 30, 240, 189, 64, 86, 159, 170, 64, 33, 1, 229, 191, 148, 56, 33, 0, 15, 216, 119, 129, 80, 58, 136, 57, 205, 173, 98, 64, 32, 165, 213, 191, 123, 89, 175, 62, 155, 51, 56, 0, 38, 210, 111, 129, 215, 58, 123, 58, 30, 240, 189, 64, 86, 159, 170, 64, 8, 28, 216, 64, 156, 74, 234, 0, 220, 245, 121, 129, 133, 59, 63, 57, 101, 169, 54, 65, 168, 181, 43, 65, 8, 111, 143, 64, 173, 95, 3, 0, 236, 233, 123, 129, 241, 58, 71, 56, 197, 130, 37, 65, 231, 68, 48, 65, 112, 13, 18, 65, 187, 101, 226, 0, 210, 3, 118, 129, 155, 59, 47, 56, 197, 130, 37, 65, 231, 68, 48, 65, 112, 13, 18, 65, 187, 101, 226, 0, 215, 6, 119, 129, 151, 59, 57, 56, 101, 169, 54, 65, 168, 181, 43, 65, 8, 111, 143, 64, 173, 95, 3, 0, 231, 229, 121, 129, 236, 58, 76, 56, 17, 22, 135, 65, 30, 241, 116, 65, 207, 88, 70, 64, 189, 102, 32, 0, 241, 209, 116, 129, 109, 58, 207, 54, 197, 130, 37, 65, 231, 68, 48, 65, 2, 30, 6, 191, 163, 83, 22, 0, 244, 211, 117, 129, 69, 58, 154, 56, 197, 130, 37, 65, 231, 68, 48, 65, 2, 30, 6, 191, 163, 83, 22, 0, 255, 222, 122, 129, 66, 58, 129, 56, 213, 2, 4, 65, 212, 188, 107, 64, 66, 49, 73, 191, 223, 89, 83, 0, 91, 217, 79, 129, 30, 58, 247, 56, 101, 246, 29, 64, 136, 31, 203, 191, 190, 97, 114, 63, 205, 83, 80, 0, 85, 224, 88, 129, 239, 57, 9, 58, 26, 49, 188, 63, 232, 29, 194, 191, 247, 166, 114, 62, 217, 75, 94, 0, 92, 212, 74, 129, 198, 57, 21, 58, 217, 158, 39, 65, 244, 226, 27, 65, 12, 29, 80, 193, 12, 125, 16, 0, 91, 236, 85, 129, 5, 57, 207, 54, 148, 204, 152, 65, 78, 134, 198, 64, 164, 62, 161, 193, 30, 121, 233, 0, 93, 250, 85, 129, 64, 57, 79, 51, 89, 227, 133, 65, 242, 170, 10, 65, 12, 54, 40, 193, 19, 125, 5, 0, 91, 238, 85, 129, 226, 57, 32, 54, 212, 202, 99, 63, 234, 241, 135, 64, 96, 164, 128, 192, 225, 80, 92, 0, 94, 210, 71, 129, 26, 57, 96, 57, 244, 16, 3, 63, 144, 107, 194, 191, 74, 40, 253, 188, 228, 71, 100, 0, 96, 204, 64, 129, 168, 57, 38, 58, 62, 187, 145, 64, 40, 139, 3, 65, 152, 74, 0, 193, 241, 109, 62, 0, 90, 222, 81, 129, 244, 56, 121, 56, 95, 14, 75, 65, 226, 22, 232, 64, 168, 102, 148, 192, 253, 117, 48, 0, 90, 225, 83, 129, 18, 58, 8, 56 ),
+"array_index_data": PoolByteArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 0, 0, 2, 0, 6, 0, 6, 0, 2, 0, 7, 0, 8, 0, 9, 0, 0, 0, 3, 0, 5, 0, 9, 0, 9, 0, 8, 0, 3, 0, 0, 0, 6, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 12, 0, 17, 0, 18, 0, 19, 0, 10, 0, 13, 0, 15, 0, 19, 0, 19, 0, 18, 0, 13, 0, 12, 0, 16, 0, 10, 0, 10, 0, 16, 0, 18, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0, 20, 0, 22, 0, 26, 0, 26, 0, 22, 0, 27, 0, 28, 0, 29, 0, 20, 0, 23, 0, 25, 0, 29, 0, 29, 0, 28, 0, 23, 0, 20, 0, 26, 0, 28, 0, 30, 0, 31, 0, 32, 0, 33, 0, 34, 0, 35, 0, 36, 0, 32, 0, 37, 0, 30, 0, 32, 0, 36, 0, 30, 0, 38, 0, 31, 0, 39, 0, 38, 0, 30, 0, 39, 0, 40, 0, 38, 0, 33, 0, 41, 0, 42, 0, 33, 0, 35, 0, 41, 0, 33, 0, 43, 0, 34, 0, 42, 0, 44, 0, 43, 0, 30, 0, 36, 0, 45, 0, 39, 0, 30, 0, 45, 0, 33, 0, 42, 0, 43, 0, 46, 0, 47, 0, 48, 0, 49, 0, 50, 0, 51, 0, 52, 0, 48, 0, 53, 0, 54, 0, 55, 0, 46, 0, 49, 0, 51, 0, 55, 0, 55, 0, 54, 0, 49, 0, 48, 0, 52, 0, 46, 0, 46, 0, 52, 0, 54, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 138,
+"material": ExtResource( 26 ),
+"name": "Plane",
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 56
+}
+
+[node name="aarmeda" type="Spatial"]
+
+[node name="weather_rain" parent="." instance=ExtResource( 1 )]
+
+[node name="reference" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+visible = false
+
+[node name="terrain" type="MeshInstance" parent="."]
+transform = Transform( 0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="water" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, 0, 0 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="palms_1" type="Particles" parent="."]
+amount = 256
+explosiveness = 1.0
+visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
+local_coords = false
+process_material = ExtResource( 6 )
+draw_pass_1 = ExtResource( 7 )
+script = ExtResource( 8 )
+rows = 16
+spacing = 64.0
+
+[node name="palms_2" type="Particles" parent="."]
+amount = 256
+explosiveness = 1.0
+visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
+local_coords = false
+process_material = ExtResource( 9 )
+draw_pass_1 = ExtResource( 10 )
+script = ExtResource( 8 )
+rows = 16
+spacing = 64.0
+
+[node name="palms_3" type="Particles" parent="."]
+amount = 256
+explosiveness = 1.0
+visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
+local_coords = false
+process_material = ExtResource( 11 )
+draw_pass_1 = ExtResource( 12 )
+script = ExtResource( 8 )
+rows = 16
+spacing = 32.0
+
+[node name="bushes" type="Particles" parent="."]
+amount = 1024
+explosiveness = 1.0
+visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
+local_coords = false
+process_material = ExtResource( 13 )
+draw_pass_1 = ExtResource( 14 )
+script = ExtResource( 8 )
+spacing = 24.0
+
+[node name="grass_1" type="Particles" parent="."]
+amount = 4096
+explosiveness = 1.0
+visibility_aabb = AABB( -256, 0, -256, 512, 64, 512 )
+local_coords = false
+process_material = ExtResource( 15 )
+draw_pass_1 = ExtResource( 16 )
+script = ExtResource( 8 )
+rows = 64
+spacing = 12.0
+
+[node name="grass_2" type="Particles" parent="."]
+amount = 1024
+explosiveness = 1.0
+visibility_aabb = AABB( -256, 0, -256, 512, 64, 512 )
+local_coords = false
+process_material = ExtResource( 17 )
+draw_pass_1 = ExtResource( 18 )
+script = ExtResource( 8 )
+spacing = 16.0
+
+[node name="rocks_small" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75281, 0 )
+amount = 1024
+explosiveness = 1.0
+visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
+local_coords = false
+process_material = ExtResource( 19 )
+draw_pass_1 = ExtResource( 20 )
+script = ExtResource( 8 )
+spacing = 32.0
+
+[node name="rocks_big" type="Particles" parent="."]
+transform = Transform( 1, -0.000173234, -0.000115734, 0.000173234, 1, -1.28089e-05, 0.000115734, 1.28089e-05, 1, 0, 0, 0 )
+amount = 1024
+explosiveness = 1.0
+visibility_aabb = AABB( -256, 0, -256, 512, 64, 512 )
+local_coords = false
+process_material = ExtResource( 21 )
+draw_pass_1 = ExtResource( 22 )
+script = ExtResource( 8 )
+spacing = 32.0
+
+[node name="fireflys" type="Particles" parent="."]
+amount = 576
+visibility_aabb = AABB( -128, 0, -128, 256, 64, 256 )
+local_coords = false
+process_material = ExtResource( 23 )
+draw_pass_1 = ExtResource( 24 )
+script = ExtResource( 8 )
+rows = 24
+spacing = 16.0
+
+[node name="grass_dark" type="Particles" parent="."]
+visible = false
+amount = 4096
+explosiveness = 1.0
+visibility_aabb = AABB( -256, 0, -256, 512, 64, 512 )
+local_coords = false
+process_material = ExtResource( 25 )
+draw_pass_1 = SubResource( 3 )
+script = ExtResource( 8 )
+rows = 64
+spacing = 12.0
+
+[node name="swiatowid" type="MeshInstance" parent="."]
+transform = Transform( 0.926204, 0, -0.377024, 0, 1, 0, 0.377024, 0, 0.926204, 5.02379, 10.4216, 7.98565 )
+mesh = ExtResource( 27 )
+material/0 = null
+
+[node name="torch" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56017, 3.46092, 8.32043 )
+
+[node name="torch2" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22059, 3.11334, -22.1686 )
+

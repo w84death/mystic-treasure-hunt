@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://game/materials/fire/fire.material" type="Material" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=9]
+
+period = 49.4
+lacunarity = 2.77
+
+[sub_resource type="NoiseTexture" id=10]
+
+width = 256
+height = 256
+noise = SubResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=11]
+
+albedo_color = Color( 0.262745, 0.176471, 0.129412, 1 )
+albedo_texture = SubResource( 10 )
+metallic_specular = 0.0
+roughness = 0.0
+uv1_scale = Vector3( 4, 4, 4 )
+
+[sub_resource type="CylinderMesh" id=12]
+
+material = SubResource( 11 )
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.0
+radial_segments = 4
+
+[sub_resource type="Animation" id=13]
+
+resource_name = "shine!"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("OmniLight:light_energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7, 0.9, 1.3, 1.6, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 8.0, 12.0, 8.0, 4.0, 8.0, 9.0, 4.0, 9.0 ]
+}
+
+[sub_resource type="Gradient" id=15]
+
+offsets = PoolRealArray( 0, 0.144928, 0.257246, 0.387681, 1 )
+colors = PoolColorArray( 0.941284, 1, 0.421875, 1, 1, 0.539062, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=16]
+
+gradient = SubResource( 15 )
+
+[sub_resource type="Curve" id=17]
+
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=18]
+
+curve = SubResource( 17 )
+
+[sub_resource type="ParticlesMaterial" id=19]
+
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+angular_velocity = 0.424454
+linear_accel_random = 0.29
+radial_accel_random = 0.4
+scale_curve = SubResource( 18 )
+color_ramp = SubResource( 16 )
+
+[sub_resource type="SphereMesh" id=20]
+
+material = ExtResource( 1 )
+radius = 0.1
+height = 0.2
+radial_segments = 6
+rings = 6
+
+[node name="torch" type="MeshInstance"]
+transform = Transform( 0.997649, 0.0685281, 4.64567e-10, -0.068127, 0.991811, 0.108029, 0.00740305, -0.107776, 0.994148, 0.293937, -0.480365, -0.784168 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.492, 0 )
+light_color = Color( 1, 0.65098, 0.105882, 1 )
+light_energy = 8.35999
+shadow_enabled = true
+shadow_reverse_cull_face = true
+omni_range = 12.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "shine!"
+anims/shine! = SubResource( 13 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 0.999999, 2.79397e-09, -1.35187e-08, 1.22236e-09, 0.0871554, 0.996194, -5.12227e-09, -0.996194, 0.0871554, 0, 0.5, 0 )
+cast_shadow = 0
+lifetime = 0.63
+randomness = 0.09
+process_material = SubResource( 19 )
+draw_pass_1 = SubResource( 20 )
+

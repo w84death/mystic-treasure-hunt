@@ -28,6 +28,7 @@ void fragment() {
 	//ALPHA = 1.0;
 	//ALPHA_SCISSOR = 0.8;
 	
+	EMISSION = color.rgb * vec3(0.5,1.0, 0.5);
 	SPECULAR = 0.5;
 	ROUGHNESS = 1.0;
 	METALLIC = 0.8;

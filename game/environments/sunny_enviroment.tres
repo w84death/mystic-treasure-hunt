@@ -11,9 +11,9 @@ gradient = SubResource( 1 )
 
 [sub_resource type="ProceduralSky" id=3]
 
-sky_top_color = Color( 0.32549, 0.811765, 1, 1 )
-sky_horizon_color = Color( 0.87451, 1, 0.156863, 1 )
-sky_curve = 0.254558
+sky_top_color = Color( 0, 0.6, 0.956863, 1 )
+sky_horizon_color = Color( 1, 0.611765, 0.156863, 1 )
+sky_curve = 0.0931738
 ground_horizon_color = Color( 0.972549, 1, 0.768627, 1 )
 ground_curve = 6.75588
 
@@ -36,6 +36,9 @@ fog_height_curve = 1.74111
 tonemap_mode = 2
 tonemap_exposure = 0.9
 tonemap_white = 3.0
+auto_exposure_enabled = true
+auto_exposure_max_luma = 10.0
+auto_exposure_speed = 0.25
 ss_reflections_enabled = true
 ss_reflections_max_steps = 128
 ssao_enabled = true

@@ -1,5 +1,6 @@
 extends Position3D
 
+export var GAME_MODE = 0;
 export var rotate_speed = 8.0;
 export var move_speed = 8.0;
 export var terrain_height = 64;
@@ -69,22 +70,25 @@ func _process(delta):
 func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().quit()
+	if Input.is_key_pressed(KEY_C):
+		cinematic_mode()
 
-	if Input.is_action_pressed("game_rotate_left"):
-		rotate_left()
-	if Input.is_action_pressed("game_rotate_right"):
-		rotate_right()
-	if Input.is_action_pressed("game_up"):
-		move_forward()
-	if Input.is_action_pressed("game_down"):
-		move_backward()
-	if Input.is_action_pressed("game_left"):
-		move_left()
-	if Input.is_action_pressed("game_right"):
-		move_right()
-	
-	if Input.is_action_pressed("game_x"):
-		toggle_map()
+	if GAME_MODE > 0:
+		if Input.is_action_pressed("game_rotate_left"):
+			rotate_left()
+		if Input.is_action_pressed("game_rotate_right"):
+			rotate_right()
+		if Input.is_action_pressed("game_up"):
+			move_forward()
+		if Input.is_action_pressed("game_down"):
+			move_backward()
+		if Input.is_action_pressed("game_left"):
+			move_left()
+		if Input.is_action_pressed("game_right"):
+			move_right()
+		
+		if Input.is_action_pressed("game_x"):
+			toggle_map()
 		
 	
 
@@ -117,7 +121,12 @@ func toggle_map():
 		$GUI/HUD/center/map.hide()
 	else:
 		$GUI/HUD/center/map.show()
-	
+
+func cinematic_mode():
+	if $GUI.is_visible_in_tree():
+		$GUI.hide()
+	else:
+		$GUI.show()
 	
 func set_direction(dir):
 	current_dir += dir
